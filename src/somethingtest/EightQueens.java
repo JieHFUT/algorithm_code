@@ -5,4 +5,5 @@ package somethingtest;
  *
  */
 public class EightQueens {
+
 }

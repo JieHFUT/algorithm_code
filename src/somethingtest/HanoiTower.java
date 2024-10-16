@@ -6,5 +6,4 @@ package somethingtest;
  */
 public class HanoiTower {
 
-
 }

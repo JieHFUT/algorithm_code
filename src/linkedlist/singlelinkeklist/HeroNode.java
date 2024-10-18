@@ -1,4 +1,4 @@
-package linkedlist;
+package linkedlist.singlelinkeklist;
 
 
 // 定义节点对象
@@ -18,6 +18,6 @@ public class HeroNode {
     // 输出
     @Override
     public String toString() {
-        return " " + no + " name: " + name + " nickname: " + nickname;
+        return "[" + no + " name: " + name + " nickname: " + nickname + "]";
     }
 }

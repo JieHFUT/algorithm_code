@@ -29,5 +29,41 @@ public class SingleLinkedListTest {
         linkedList.addOrderByNo(hero1);
         linkedList.list();
 
+        linkedList.reverse1(linkedList.getHead());
+        System.out.println("====== 反转 1 ==========");
+        linkedList.list();
+
+        linkedList.reverse2(linkedList.getHead());
+        System.out.println("====== 反转 2 ==========");
+        linkedList.list();
+
+        System.out.println("逆向打印");
+        linkedList.printFromLast(linkedList.getHead());
+
+        HeroNode hero11 = new HeroNode(1, "宋江", "及时雨");
+        HeroNode hero22 = new HeroNode(3, "卢俊义", "玉麒麟");
+        HeroNode hero33 = new HeroNode(5, "吴用", "智多星");
+        HeroNode hero44 = new HeroNode(7, "林冲", "豹子头");
+        HeroNode hero55 = new HeroNode(2, "宋江", "及时雨");
+        HeroNode hero66 = new HeroNode(5, "卢俊义", "玉麒麟");
+        HeroNode hero77 = new HeroNode(8, "吴用", "智多星");
+        HeroNode hero88 = new HeroNode(9, "林冲", "豹子头");
+
+        SingleLinkedList list2 = new SingleLinkedList();
+        list2.addOrderByNo(hero11);
+        list2.addOrderByNo(hero22);
+        list2.addOrderByNo(hero33);
+        list2.addOrderByNo(hero44);
+        SingleLinkedList list3 = new SingleLinkedList();
+        list3.addOrderByNo(hero55);
+        list3.addOrderByNo(hero66);
+        list3.addOrderByNo(hero77);
+        list3.addOrderByNo(hero88);
+
+        HeroNode heroNode = new SingleLinkedList().combine(list2.getHead(), list3.getHead());
+        SingleLinkedList list4 = new SingleLinkedList();
+        list4.addInTail(heroNode.next);
+        list4.list();
+
     }
 }

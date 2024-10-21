@@ -1,5 +1,8 @@
 package linkedlist.singlelinkeklist;
 
+import java.util.Iterator;
+import java.util.Stack;
+
 // 定义SingleLinkedList 管理我们的英雄
 public class SingleLinkedList {
 
@@ -121,4 +124,147 @@ public class SingleLinkedList {
     ////////////////////////////////////////////////////////////////////////
     // 获取到单链表的有效节点的个数（如果带头节点不统计头节点）
 
+    /**
+     *
+     * @param head 链表的头节点
+     * @return 返回的就是有效节点的个数
+     */
+    public static int getLength(HeroNode head) {
+        if (head.next == null) {
+            return 0;
+        }
+        HeroNode current = head.next;
+        int length = 0;
+        while (current != null) {
+            current = current.next;
+            length++;
+        }
+        return length;
+    }
+
+    // 查找单链表中的倒数第k个结点 【新浪面试题】
+    // 1. 先遍历一边得到链表 length，再遍历到 length - k
+    public HeroNode findLastIndexNode1(HeroNode head, int index) {
+        if (head.next == null) {
+            return null; // 链表为空
+        }
+        int length = getLength(head);
+        if (length <= 0 || index > length) {
+            return null;
+        }
+        HeroNode current = head.next;
+        for (int i = 0; i < length - index; i++) {
+            current = current.next;
+        }
+        return current;
+    }
+    // 2. 使用快慢指针方法
+    public HeroNode findLastIndexNode2(HeroNode head, int index) {
+        if (head.next == null) {
+            return null;
+        }
+        HeroNode fast = head.next;
+        HeroNode slow = head.next;
+        for (int i = 0; i < index; i++) {
+            fast = fast.next;
+        }
+        while (fast != null) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        return slow;
+    }
+
+    // 单链表的反转[腾讯面试题]
+    // 1. 双指针
+    public void reverse1(HeroNode head) {
+        if (head.next == null || head.next.next == null) {
+            return;
+        }
+        HeroNode prev = head.next;
+        HeroNode next = head.next.next;
+        prev.next = null;
+
+        while (next != null) {
+            HeroNode tmp = next.next;
+            next.next = prev;
+            prev = next;
+            next = tmp;
+        }
+        head.next = prev;
+    }
+    // 2. 插入法
+    public void reverse2(HeroNode head) {
+        if (head.next == null || head.next.next == null) {
+            return;
+        }
+        HeroNode current = head.next;
+        HeroNode next = null;
+        HeroNode retHead = new HeroNode(0, "", "");
+        while (current != null) {
+            next = current.next;
+            current.next = retHead.next;
+            retHead.next = current;
+            current = next;
+        }
+        head.next = retHead.next;
+    }
+
+
+    // 从尾到头打印单链表[百度面试题]
+    // 1. 使用栈解决
+    // 2. 先将单链表反转过来，然后再遍历（但是会破坏链表结构）
+    public void printFromLast(HeroNode head) {
+        if (head.next == null) {
+            return;
+        }
+        Stack<HeroNode> stack = new Stack<>();
+        HeroNode current = head.next;
+        while (current != null) {
+            stack.push(current);
+            current = current.next;
+        }
+        Iterator iterator = stack.iterator();
+        while (iterator.hasNext()) {
+            System.out.print(iterator.next() + "\t");
+        }
+        System.out.println();
+    }
+
+
+    // 合并两个有序的单链表，合并之后的链表依然有序
+    public HeroNode combine(HeroNode head1, HeroNode head2) {
+        if (head1 == null) return head2;
+        if (head2 == null) return head1;
+        HeroNode list1 = head1.next;
+        HeroNode list2 = head2.next;
+        HeroNode ret = new HeroNode(0, "", "");
+        HeroNode current = ret;
+        while (list1 != null && list2 != null) {
+            if(list1.no < list2.no) {
+                current.next = list1;
+                list1 = list1.next;
+                current = current.next;
+            } else {
+                current.next = list2;
+                list2 = list2.next;
+                current = current.next;
+            }
+        }
+        if (list1 != null) {
+            while (list1 != null) {
+                current.next = list1;
+                list1 = list1.next;
+                current = current.next;
+            }
+        }
+        if (list2 != null) {
+            while (list2 != null) {
+                current.next = list2;
+                list2 = list2.next;
+                current = current.next;
+            }
+        }
+        return ret;
+    }
 }

@@ -2,6 +2,8 @@ package stack;
 
 import java.util.Scanner;
 
+
+// 处理多位数的时候
 public class Calculator2 {
     public static void main(String[] args) {
 
@@ -12,25 +14,10 @@ public class Calculator2 {
         System.out.println("请输入计算表达式：");
         String input = sc.nextLine(); // "7-3+2*3-6"  = 4
         int index = 0;
+        String keepNum = "";
         while(true) {
-            // 获得此时字符串的首个运算符或者数字
-            char ch;
-            StringBuffer sb = new StringBuffer();
-            while(true) {
-                if (input.charAt(index) == '+' || input.charAt(index) == '-'
-                        || input.charAt(index) == '*' || input.charAt(index) == '/') {
-                    ch = input.charAt(index);
-                    break;
-                }
-                if (index == input.length() - 1 || input.charAt(index + 1) == '+' || input.charAt(index + 1) == '-'
-                        || input.charAt(index + 1) == '*' || input.charAt(index + 1) == '/') {
-                    sb.append(input.charAt(index));
-                    ch = (char) Integer.parseInt(sb.toString());
-                    break;
-                }
-                sb.append(input.charAt(index));
-                index++;
-            }
+            // 获得此时字符串的首个元素
+            char ch = input.charAt(index);
             // 判断是不是运算符
             if(ArrayStack.isOper(ch)) {
                 // 是运算符，获得该元素的优先级和 operStack 栈中的栈顶比较
@@ -46,8 +33,21 @@ public class Calculator2 {
                     operStack.push(ch);
                 }
             } else {
-                // 是数字
-                numStack.push(Integer.parseInt(String.valueOf(ch)));
+                // ch 是数字
+                // numStack.push(Integer.parseInt(String.valueOf(ch)));
+                // 在处理多位数的时候，需要向后看一位，如果下一位是数字，就继续扫描，否则就直接入栈
+                keepNum += ch;
+                if (index == input.length() - 1) {
+                    // 当前的 ch 已经是 input 的最后一个字符了
+                    numStack.push(Integer.parseInt(keepNum));
+                } else {
+                    // 对下一个字符进行判断
+                    if(ArrayStack.isOper(input.charAt(index + 1))) {
+                        // 下一个字符是运算符，直接将该 keepNum push 到 numStack 中   "1" "343"
+                        numStack.push(Integer.parseInt(keepNum));
+                        keepNum = "";
+                    }
+                }
             }
             index++;
             if (index >= input.length())

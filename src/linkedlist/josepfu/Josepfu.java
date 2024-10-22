@@ -8,6 +8,10 @@ public class Josepfu {
         circle.addBoy(10);
         circle.showBoy();
 
+        CircleSingleLinkedList circle2 = new CircleSingleLinkedList();
+        circle2.addBoy(5);
+        circle2.countBoy(1,2,5);
+
 
     }
 }

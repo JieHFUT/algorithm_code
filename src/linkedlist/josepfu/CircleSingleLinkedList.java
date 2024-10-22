@@ -42,7 +42,46 @@ public class CircleSingleLinkedList {
         System.out.println();
     }
 
-    // 根据用户的输入，生成一个小孩出圈的顺序
-    
+
+    /**
+     * 根据用户的输入，生成一个小孩出圈的顺序
+     * @param startNo 表示从第几个小孩开始数数
+     * @param countNo 表示数几下
+     * @param nums 表示最初有多少小孩在圈中
+     */
+    public void countBoy(int startNo, int countNo, int nums) {
+        if (first == null || startNo < 1 || startNo > nums) {
+            System.out.println("Invalid input");
+            return;
+        }
+        Boy helper = first;
+
+        // 先让 helper 指向最后一个节点
+        while(true) {
+            if (helper.getNext() == first)
+                break;
+            helper = helper.getNext();
+        }
+
+        for (int i = 0; i < startNo -1 ; i++) {
+            helper = helper.getNext();
+            first = first.getNext();
+        }
+        //当小孩报数时，让first 和 helper 指针同时 的移动  m  - 1 次, 然后出圈
+        //这里是一个循环操作，知道圈中只有一个节点
+        while(true) {
+            if (first == helper) {
+                break; // 说明圈里目前只剩下一个节点了
+            }
+            for (int i = 0; i < countNo - 1; i++) {
+                first = first.getNext();
+                helper = helper.getNext();
+            }
+            System.out.printf("需要出圈的是 %d\n", first.getNo());
+            first = first.getNext();
+            helper.setNext(first);
+        }
+        System.out.printf("最后一个出圈的是 %d\n", helper.getNo());
+    }
 
 }

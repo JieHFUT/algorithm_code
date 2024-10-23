@@ -22,12 +22,15 @@ public class PolanNotation {
         // 将字符串转成 arraylist 存储起来
         List<String> list = getListFromString(suffixExpression);
         // 将该 list 传递给 caclulate()，返回逆波兰表达式的计算结果
-        System.out.println("计算的结果是：" + caclulate(list));
+        System.out.println("直接逆序计算的结果是：" + caclulate(list));
         // 中缀表达式 => 后缀表达式
-        String behind = midToBehind(suffixExpression);
+        List<String> list2 = getListFromMidSuffixExpression("4+(36+4)*2-4");
+        System.out.println("中序转list: " + list2); // [4, +, (, 36, +, 4, ), *, 2, -, 4]
+        System.out.println("中序转逆序计算的结果是: " + caclulate(midToBehind("4+(36+4)*2-4")));
+
 
     }
-    // 将字符串转成 arraylist 存储起来  "30 10 + 5 * 6 -"  =>  ["30", "10", "+", "5", "*", "6"]
+    // 将字符串转成 arraylist 存储起来  "30 10 + 5 * 6 -"  =>  [30, 10, +, 5, *, 6, -]
     public static List<String> getListFromString(String suffixExpression) {
         String[] expressions = suffixExpression.split(" ");
         List<String> list = new ArrayList<>();
@@ -63,9 +66,8 @@ public class PolanNotation {
         return Integer.parseInt(stack.pop());
     }
 
-
     // 中缀表达式转换为后缀表达式
-    public static String midToBehind(String suffixExpression) {  // 如：2+(2+4)*4-5
+    public static List<String> midToBehind(String suffixExpression) {  // 如：2+(2+4)*4-5
         // 1. 初始化两个栈, 遇到操作数直接入栈
         // 2. 如果遇到运算符时(比较运算符的优先级)
         //    1. 如果运算符栈是空的或者该运算符是 “(” 直接入栈
@@ -75,16 +77,67 @@ public class PolanNotation {
         // 4. 重以上复步骤，直到表达式的最右边，将运算符栈中的运算符依次弹出并且压入到操作数栈中
         // 5. 将操作数栈中的元素出栈，得到的结果就是该后缀表达式的逆序
         int i = 0; // 用于遍历 list
-        List<String> list = getListFromMidSuffixExpression(suffixExpression);
-
-        return null;
+        List<String> list = getListFromMidSuffixExpression(suffixExpression); // [4, +, (, 36, +, 4, ), *, 2, -, 4]
+        Stack<String> operStack = new Stack<>(); // 用于存储运算符
+        List<String> arrayList = new ArrayList<>(); // 用于存储操作数
+        for (String item : list) {
+            // 对于每一个元素, 如果是数字就直接进入 arraylist
+            if (item.matches("\\d+")) {
+                arrayList.add(item);
+            } else if (item.equals("(") || operStack.isEmpty()) {
+                operStack.push(item);
+            } else if (item.equals(")")) {
+                // 如果遇到右括号 “)” 依次弹出运算符栈顶的运算符，直到遇到左括号，此时将这一对括号丢弃
+                while(!operStack.peek().equals("(")) {
+                    arrayList.add(operStack.pop());
+                }
+                operStack.pop();
+            } else {
+                // 比较优先级,如果运算符的优先级比栈顶的运算符的优先级高，也直接压入栈
+                while(!operStack.isEmpty() && PolanNotation.operPriority(item) <=
+                        PolanNotation.operPriority(operStack.peek())) {
+                    // 将栈中的运算符出栈，然后 add 进 arraylist 中
+                    arrayList.add(operStack.pop());
+                }
+                operStack.push(item);
+            }
+        }
+        while(!operStack.isEmpty()) {
+            arrayList.add(operStack.pop());
+        }
+        return arrayList;
     }
 
     // 将一个正常的中序字符串转换为一个 list
     public static List<String> getListFromMidSuffixExpression(String suffixExpression) {
-        // "4+(36+4)*2-4"  => ["4", "(", "36", "+", "4", ")", "*", "2", "-", "4"]
+        // "4+(36+4)*2-4"  => [4, +, (, 36, +, 4, ), *, 2, -, 4]
+        int i = 0; // 索引，用来遍历该字符串
+        List<String> list = new ArrayList<>();
+        while(true) {
+            if (suffixExpression.equals("")) return list;
+            if(suffixExpression.charAt(i) < 48 || suffixExpression.charAt(i) > 57) {
+                // 说明该字符不是数字，直接添加到 list 中
+                list.add("" + suffixExpression.charAt(i++));
+            }else {
+                StringBuffer str = new StringBuffer();
+                while(i < suffixExpression.length() && suffixExpression.charAt(i) >= 48 && suffixExpression.charAt(i) <= 57) {
+                    // 该位置的字符是数字并且没有越界
+                    str.append(suffixExpression.charAt(i++));
+                }
+                list.add(str.toString());
+            }
+            if (i == suffixExpression.length()) break;
+        }
+        return list;
+    }
 
-        return null;
+    // 返回一个运算符对应的优先级
+    public static int operPriority(String operation) {
+        if(operation.equals("+") || operation.equals("-"))
+            return 1;
+        if(operation.equals("*") || operation.equals("/"))
+            return 2;
+        return 0;
     }
 }
 

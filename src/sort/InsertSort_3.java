@@ -7,6 +7,7 @@ import java.util.Arrays;
  * Package: sort
  * Description:
  * 插入排序 => 10万个数据: spent time: 1509 ms
+ *                     spent time: 3640 ms
  * @Author jieHFUT
  * @Create 2024/10/23 23:56
  * @Version 1.0
@@ -26,7 +27,34 @@ public class InsertSort_3 {
         System.out.println(Arrays.toString(arr));
     }
 
+
     public static void insertSort(int[] arr) {
+        for (int i = 0; i < arr.length - 1; i++) {
+            // 将后面 n -1 个元素依次插入前面的有序, 此时是第 i+1 个元素
+            int j = 0;
+            int toInsert = arr[i + 1];
+            for (j = i; j >= 0; j--) {
+                // 对前面 i 个元素依次比对
+                if (arr[j] > toInsert) {
+                    // 如果后面的元素
+                    arr[j + 1] = arr[j];
+                } else {
+                    // 找到该插入的点，其后面的元素已经依次后移了
+                    arr[j + 1] = toInsert;
+                    break;
+                }
+            }
+            // 如果遍历结束，有序列表的所有元素都比 toInsert 大
+            if (j == -1) {
+                arr[j + 1] = toInsert;
+            }
+        }
+    }
+
+
+
+
+    public static void insertSort1(int[] arr) {
         int insertVal = 0;
         int insertIndex = 0;
         //使用for循环来把代码简化

@@ -2,7 +2,7 @@ package sort;
 
 import java.util.Arrays;
 
-// 快速排序
+// 快速排序 24ms
 public class QuickSort_5 {
     public static void main(String[] args) {
 //        int[] arr = new int[]{23,4,6,76,546,45,43,4,35,45,45,65,7,65,34,123,8};

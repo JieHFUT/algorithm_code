@@ -2,7 +2,7 @@ package sort;
 
 import java.util.Arrays;
 
-// 归并排序
+// 归并排序 wrong
 public class MergeSort_6 {
     public static void main(String[] args) {
         int[] arr = new int[100_000];

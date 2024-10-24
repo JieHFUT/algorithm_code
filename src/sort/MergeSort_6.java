@@ -15,8 +15,6 @@ public class MergeSort_6 {
         long end = System.currentTimeMillis();
         System.out.println("spent time: " + (end - start) + " ms");
         System.out.println(Arrays.toString(arr));
-
-
     }
 
 

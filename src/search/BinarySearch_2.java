@@ -23,24 +23,24 @@ import java.util.List;
 public class BinarySearch_2 {
     public static void main(String[] args) {
         // 需要一个有序的数组
-//        int[] arr = new int[100_000_000];
-//        for (int i = 0; i < 100_000_000; i++) {
-//            arr[i] = i;
-//        }
-//        long start = System.currentTimeMillis();
-//        int ret = binarySearch(arr, (int)(Math.random() * 100_000_000));
-//        long end = System.currentTimeMillis();
-//        System.out.println("ret=" + ret + "   " + (end - start) + "ms");
-
-        int[] arr = new int[]{1,2,3,4,5,6,6,6,6,6,6,7,8,9,61};
-        long start = System.currentTimeMillis();
-        List<Integer> result = binarySearchFindAll(arr, 6);
-        long end = System.currentTimeMillis();
-        Iterator iterator = result.iterator();
-        while (iterator.hasNext()) {
-            System.out.println(iterator.next());
+        int[] arr = new int[100_000_000];
+        for (int i = 0; i < 100_000_000; i++) {
+            arr[i] = i + 1;
         }
-        System.out.println("spent " + (end - start) + "ms");
+        long start = System.currentTimeMillis();
+        int ret = binarySearch(arr, (int)(Math.random() * 100_000_000));
+        long end = System.currentTimeMillis();
+        System.out.println("ret=" + ret + "   " + (end - start) + "ms");
+
+//        int[] arr = new int[]{1,2,3,4,5,6,6,6,6,6,6,7,8,9,61};
+//        long start = System.currentTimeMillis();
+//        List<Integer> result = binarySearchFindAll(arr, 6);
+//        long end = System.currentTimeMillis();
+//        Iterator iterator = result.iterator();
+//        while (iterator.hasNext()) {
+//            System.out.println(iterator.next());
+//        }
+//        System.out.println("spent " + (end - start) + "ms");
 
     }
 

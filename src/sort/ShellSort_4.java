@@ -13,7 +13,7 @@ public class ShellSort_4 {
             arr[i] = (int) (Math.random() * 100_000); // [0, 1) * 100_000
         }
         long start = System.currentTimeMillis();
-        shellSort2(arr);
+        shellSort(arr);
         long end = System.currentTimeMillis();
         System.out.println("spent time: " + (end - start) + " ms");
         // System.out.println(Arrays.toString(arr));

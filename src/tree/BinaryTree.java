@@ -35,6 +35,22 @@ public class BinaryTree {
     }
 
 
+    // 前序 中序 后序 遍历查找
+    public HeroNode preSearch(int toFind) {
+        if (root != null)
+            return this.root.preSearch(toFind);
+        throw new RuntimeException("tree is null");
+    }
+    public HeroNode infixSearch(int toFind) {
+        if (root != null)
+            return this.root.infixSearch(toFind);
+        throw new RuntimeException("tree is null");
+    }
+    public HeroNode postSearch(int toFind) {
+        if (root != null)
+            return this.root.postSearch(toFind);
+        throw new RuntimeException("tree is null");
+    }
 
 
 

@@ -23,7 +23,18 @@ public class BinaryTreeTest {
 
         System.out.println("后序遍历：");
         tree.postOrder(); // 2, 4, 3, 1
+        System.out.println("======================================");
 
+
+        System.out.println("pre search=> ");
+        System.out.println("the result is: " + tree.preSearch(4));
+
+
+        System.out.println("infix search=> ");
+        System.out.println("the result is: " + tree.infixSearch(4));
+
+        System.out.println("post search=> ");
+        System.out.println("the result is: " + tree.postSearch(4));
 
     }
 }

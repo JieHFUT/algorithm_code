@@ -79,4 +79,49 @@ public class HeroNode {
     }
 
 
+    // 前序 中序 后序 三种查找方法
+    public HeroNode preSearch(int toFind) {
+        System.out.println("in preSearch");
+        if (toFind == this.getNo()) return this;
+        // 左、右递归
+        HeroNode result = null;
+        if (this.left != null)
+            result = this.left.preSearch(toFind);
+        if (result != null) return result;
+        if (this.right != null)
+            result = this.right.preSearch(toFind);
+        if (result != null) return result;
+        return result;
+    }
+
+    public HeroNode infixSearch(int toFind) {
+        System.out.println("in infixSearch");
+        HeroNode result = null;
+        if (this.left != null)
+            result =  this.left.infixSearch(toFind);
+        if (result != null) return result;
+        if (toFind == this.getNo()) return this;
+        if (this.right != null)
+            result =  this.right.infixSearch(toFind);
+        if (result != null) return result;
+        return result;
+    }
+
+    public HeroNode postSearch(int toFind) {
+        System.out.println("in postSearch");
+        HeroNode result = null;
+        if (this.left != null)
+            result =  this.left.postSearch(toFind);
+        if (result != null) return result;
+        if (this.right != null)
+            result = this.right.postSearch(toFind);
+        if (result != null) return result;
+        if (toFind == this.getNo()) return this;
+        return result;
+    }
+
+    // 二叉树的节点删除
+    
+
+
 }

@@ -1,6 +1,5 @@
 package hashtab;
 
-import java.security.Key;
 import java.util.Scanner;
 
 /**
@@ -24,7 +23,6 @@ public class HashTabTest {
             System.out.println("find: 寻找雇员");
             System.out.println("exit: 退出程序");
             input = scanner.next();
-
             switch (input) {
                 case "add":
                     System.out.println("输入id:");
@@ -51,7 +49,6 @@ public class HashTabTest {
                     break;
             }
         }
-
     }
 }
 

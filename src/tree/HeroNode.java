@@ -12,6 +12,7 @@ public class HeroNode {
         this.no = no;
         this.name = name;
     }
+
     public int getNo() {
         return no;
     }
@@ -24,22 +25,19 @@ public class HeroNode {
     public void setName(String name) {
         this.name = name;
     }
-
     public HeroNode getRight() {
         return right;
     }
-
     public void setRight(HeroNode right) {
         this.right = right;
     }
-
     public HeroNode getLeft() {
         return left;
     }
-
     public void setLeft(HeroNode left) {
         this.left = left;
     }
+
 
     @Override
     public String toString() {
@@ -120,7 +118,26 @@ public class HeroNode {
         return result;
     }
 
-    // 二叉树的节点删除
+
+    // 二叉树的节点删除，如果删除的是叶子节点，则删除该节点
+    // 如果要删除的是非叶子节点，直接删除该子树
+    //                      => 即如果某个节点的左子节点不为空，并且左子节点就是要删除的节点，就删除左子树，return
+    //                      => 即如果某个节点的右子节点不为空，并且右子节点就是要删除的节点，就删除左子树，return
+    //                      => 如果左右节点都没有满足上述条件，就需要递归左右子树
+    //                      => 如果树只有 root 节点，就将这个树置空
+    //                      => 如果找不到要删除的节点，就直接 return
+    public void deleteByNo(int no) {
+        if (this.getNo() == no) return;
+
+        if (this.getLeft() != null && this.getLeft().getNo() == no) {
+            this.setLeft(null);
+            return;
+        }
+        if (this.getRight() != null && this.getRight().getNo() == no) this.setRight(null); return;
+        // 遍历
+
+    }
+
     
 
 

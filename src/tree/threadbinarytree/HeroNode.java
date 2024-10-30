@@ -1,9 +1,5 @@
-package tree;
+package tree.threadbinarytree;
 
-
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
 
 // 树的节点
 public class HeroNode {
@@ -12,6 +8,8 @@ public class HeroNode {
     private String name;
     private HeroNode left;
     private HeroNode right;
+    private int leftType; // 0 意味着指向的是左子树，1 意味着指向前驱节点
+    private int rightType; // 0 意味着指向的是右子树，1 意味着指向后继节点
     public HeroNode(int no, String name) {
         this.no = no;
         this.name = name;
@@ -41,7 +39,20 @@ public class HeroNode {
     public void setLeft(HeroNode left) {
         this.left = left;
     }
+    public int getRightType() {
+        return rightType;
+    }
+    public void setRightType(int rightType) {
+        this.rightType = rightType;
+    }
 
+    public int getLeftType() {
+        return leftType;
+    }
+
+    public void setLeftType(int leftType) {
+        this.leftType = leftType;
+    }
 
     @Override
     public String toString() {

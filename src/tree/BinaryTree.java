@@ -91,7 +91,7 @@ public class BinaryTree {
     }
 
     // 线索化二叉树 [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 有空指针域
-    // 见包
+    // 见包 thread_binary_tree
 
 
 
@@ -123,6 +123,7 @@ public class BinaryTree {
     }
     // 获取第K层节点的个数
     public int getKLeaveOfNumber(int k) {
+        
         return 0;
     }
     // 获取二叉树的高度

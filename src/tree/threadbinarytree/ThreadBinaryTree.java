@@ -6,9 +6,9 @@ import java.util.List;
 public class ThreadBinaryTree {
 
     // 根节点
-    private tree.HeroNode root;
+    private HeroNode root;
     private HeroNode prev; // 用来记录 node 的前驱节点的值
-    public void setRoot(tree.HeroNode root) {
+    public void setRoot(HeroNode root) {
         this.root = root;
     }
 
@@ -34,7 +34,20 @@ public class ThreadBinaryTree {
     }
     // 遍历线索化二叉树
     public void threadTreeList() {
-        if (root == null) return;
+        HeroNode node = this.root;
+        if (node == null) throw new RuntimeException("Tree is empty");
+        while (node != null) {
+            // 一直向左
+            while (node.getLeft() != null)
+                node = node.getLeft();
+            // 已经到了最左边
+            System.out.println(node);
+            if (node.getLeftType() == 1) {
+                node = node.getRight();
+                System.out.println(node);
+            }
+            node = node.getRight();
+        }
 
     }
 
@@ -64,17 +77,17 @@ public class ThreadBinaryTree {
 
 
     // 前序 中序 后序 遍历查找
-    public tree.HeroNode preSearch(int toFind) {
+    public HeroNode preSearch(int toFind) {
         if (root != null)
             return this.root.preSearch(toFind);
         throw new RuntimeException("tree is null");
     }
-    public tree.HeroNode infixSearch(int toFind) {
+    public HeroNode infixSearch(int toFind) {
         if (root != null)
             return this.root.infixSearch(toFind);
         throw new RuntimeException("tree is null");
     }
-    public tree.HeroNode postSearch(int toFind) {
+    public HeroNode postSearch(int toFind) {
         if (root != null)
             return this.root.postSearch(toFind);
         throw new RuntimeException("tree is null");

@@ -16,7 +16,7 @@ import java.util.*;
 public class HuffmanCode {
     public static void main(String[] args) {
 
-        String content = "i like like like java do you like a java";
+        String content = "i like like 893 hu i3ey89 34y98 r2";
         Node root = createHuffmanTree(content);
         root.preOrder();
 
@@ -33,6 +33,7 @@ public class HuffmanCode {
             System.out.print(b + " ");
         }
         System.out.println();
+        System.out.println(decode(map, compressArray));
 
     }
 
@@ -195,7 +196,7 @@ public class HuffmanCode {
      * @return 解码后的可读的字符串
      */
 
-    public static void decode(Map<Byte, String> huffmanCodes, byte[] bytes) {
+    public static String decode(Map<Byte, String> huffmanCodes, byte[] bytes) {
         // 先把 byte[] 转化为 01010010100010... 编码
         StringBuilder stringBuilder = new StringBuilder();
 
@@ -212,12 +213,12 @@ public class HuffmanCode {
         for (Map.Entry<Byte, String> entry : huffmanCodes.entrySet())
             turnHuffmanCodes.put(entry.getValue(), entry.getKey());
         // 比对
-        int index = 1;
         List<Byte> bytesList = new ArrayList<>();
         for (int i = 0; i < stringBuilder.length(); ) {
+            int index = 1; // 计数器
             boolean flag = true;
             while (flag) {
-                String code = stringBuilder.substring(i, index);
+                String code = stringBuilder.substring(i, i + index);
                 if (turnHuffmanCodes.get(code) == null) {
                     // 没有这个编码方式对应的字符
                     index++;
@@ -227,8 +228,16 @@ public class HuffmanCode {
                     flag = false;
                 }
             }
-            i = index;
+
+            i += index;
         }
+
+        int length = bytesList.size();
+        byte[] result = new byte[length];
+
+        for (int i = 0; i < length; i++)
+            result[i] = bytesList.remove(0);
+        return new String(result);
     }
 
 

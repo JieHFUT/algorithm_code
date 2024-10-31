@@ -67,6 +67,13 @@ public class BinaryTreeTest {
         // 获得树的叶子节点的个数
         System.out.println("tree's level node number is: " + tree.getLeaveOfNumber());
 
+        System.out.println("下面是层序遍历的结果: ");
+        List<List<HeroNode>> levelOrderByList= tree.levelOrderByList();
+        for (List<HeroNode> levelList : levelOrderByList) {
+            for (HeroNode heroNode : levelList) {
+                System.out.println(heroNode);
+            }
+        }
 
 
     }

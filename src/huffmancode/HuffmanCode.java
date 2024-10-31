@@ -241,7 +241,13 @@ public class HuffmanCode {
     }
 
 
-
+    /**
+     * @param src
+     * @param dest
+     */
+    public static void zipFile(String src, String dest) {
+        
+    }
 
 
 }

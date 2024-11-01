@@ -2,6 +2,10 @@ package huffmancode;
 
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
 import java.util.*;
 
 /**
@@ -16,24 +20,30 @@ import java.util.*;
 public class HuffmanCode {
     public static void main(String[] args) {
 
-        String content = "i like like 893 hu i3ey89 34y98 r2";
-        Node root = createHuffmanTree(content);
-        root.preOrder();
+//        String content = "i like like 893 hu i3ey89 34y98 r2";
+//        Node root = createHuffmanTree(content);
+//        root.preOrder();
+//
+//        System.out.println("将哈夫曼树转化为字符对应的编码：");
+//        HashMap<Byte, String> map = getHuffmanCodes(root);
+//        for (Map.Entry<Byte, String> entry : map.entrySet()) {
+//            System.out.println(entry.getKey() + " : " + entry.getValue());
+//        }
+//        System.out.println("将字符串转换为压缩好的 byte 数组: ");
+//        // 1010100010111111110010001011111111001000101111111100100101001101110001110000011011101000111100101000101111111100110001001010011011100
+//        // -88 -65 -56 -65 -56 -65 -55 77 -57 6 -24 -14 -117 -4 -60 -90 28
+//        byte[] compressArray = zip(content);
+//        for (byte b : compressArray) {
+//            System.out.print(b + " ");
+//        }
+//        System.out.println();
+//        System.out.println(decode(map, compressArray));
 
-        System.out.println("将哈夫曼树转化为字符对应的编码：");
-        HashMap<Byte, String> map = getHuffmanCodes(root);
-        for (Map.Entry<Byte, String> entry : map.entrySet()) {
-            System.out.println(entry.getKey() + " : " + entry.getValue());
-        }
-        System.out.println("将字符串转换为压缩好的 byte 数组: ");
-        // 1010100010111111110010001011111111001000101111111100100101001101110001110000011011101000111100101000101111111100110001001010011011100
-        // -88 -65 -56 -65 -56 -65 -55 77 -57 6 -24 -14 -117 -4 -60 -90 28
-        byte[] compressArray = zip(content);
-        for (byte b : compressArray) {
-            System.out.print(b + " ");
-        }
-        System.out.println();
-        System.out.println(decode(map, compressArray));
+
+        // 对文件进行处理
+//        zipFile(".//src//huffmancode//luffy.jpg", ".//src//huffmancode//newluffy.jpg");
+//        System.out.println("压缩完成~");
+
 
     }
 
@@ -86,7 +96,6 @@ public class HuffmanCode {
         }
         return nodes.get(0);
     }
-
 
     //生成赫夫曼树对应的赫夫曼编码
     //思路:
@@ -242,12 +251,45 @@ public class HuffmanCode {
 
 
     /**
+     * 编写一个方法将一个文件进行压缩
      * @param src
      * @param dest
      */
     public static void zipFile(String src, String dest) {
-        
+        // 创建输入流，输出流，对象输出流
+        File input = new File(src);
+        File output = new File(dest);
+
+        FileInputStream fis = null;
+        FileOutputStream fos = null;
+        ObjectOutputStream oos = null;
+        // 将源文件转化为 byte[]=>string
+        try {
+            fis = new FileInputStream(input);
+            byte[] buffer = new byte[fis.available()];
+            String toZip = new String(buffer);
+            byte[] toTrans = zip(toZip);
+
+            fos = new FileOutputStream(output);
+            oos = new ObjectOutputStream(fos);
+            oos.writeObject(toTrans);
+            oos.writeObject(huffmanCodes);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                oos.close();
+                fos.close();
+                fis.close();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }
     }
+
+
+
+
 
 
 }

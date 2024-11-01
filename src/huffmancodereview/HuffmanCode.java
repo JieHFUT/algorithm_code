@@ -337,7 +337,6 @@ public class HuffmanCode {
         System.out.println(Integer.parseInt("110101101", 2)); // 429
 
 
-
         System.out.println((byte) Integer.parseInt("01010011", 2)); // 83
         // 10101101 补码：10101101  反码:10101100  原码:11010011     原码=> -83
         System.out.println((byte) Integer.parseInt("10101101", 2)); // -83
@@ -364,12 +363,27 @@ public class HuffmanCode {
 
     @Test
     public void zip(){
-        zip(".//src//huffmancodereview//luffy.jie", ".//src//huffmancodereview//luffy.huf");
+        zip(".//src//huffmancodereview//sun.bmp", ".//src//huffmancodereview//compress.huf");
+        System.out.println("压缩完成~");
     }
     @Test
     public void decode(){
-        decode(".//src//huffmancodereview//luffy.huf", ".//src//huffmancodereview//luffy2.jpg");
+        decode(".//src//huffmancodereview//compress.huf", ".//src//huffmancodereview//decode.bmp");
+        System.out.println("解压完成~");
     }
+
+    @Test
+    public void zipVideo(){
+        zip(".//src//huffmancodereview//tocompress.mp4", ".//src//huffmancodereview//compressed.huf");
+        System.out.println("压缩完成~");
+    }
+    @Test
+    public void decodeVideo(){
+        decode(".//src//huffmancodereview//compressed.huf", ".//src//huffmancodereview//decode.mp4");
+        System.out.println("解压完成~");
+    }
+
+
 
     // 传入一个原文件，将起压缩输出到目标文件
     public static void zip(String src, String dest) {
@@ -411,6 +425,7 @@ public class HuffmanCode {
     public static void decode(String src, String dest) {
         File srcFile = new File(src);
         File destDest = new File(dest);
+
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 
@@ -419,12 +434,12 @@ public class HuffmanCode {
         try {
             fis = new FileInputStream(srcFile);
             ois = new ObjectInputStream(fis);
+
             byte[] buffer = (byte[]) ois.readObject();
-            System.out.println(Arrays.toString(buffer));
             Map<Byte, String> huffmanCodes = (Map<Byte, String>) ois.readObject();
 
             byte[] decoded = decode(buffer, huffmanCodes);
-            System.out.println(Arrays.toString(decoded));
+
             fos = new FileOutputStream(destDest);
             fos.write(decoded);
 

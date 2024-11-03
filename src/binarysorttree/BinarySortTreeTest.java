@@ -29,7 +29,7 @@ public class BinarySortTreeTest {
     @Test
     public void test(){
         BinarySortTree tree = new BinarySortTree();
-        int[] toSort = {3,2,4,6,4,7};
+        int[] toSort = {15,7,25,18,30,17,20};
         for (int i = 0; i < toSort.length; i++) {
             tree.add(new Node(toSort[i]));
         }
@@ -37,5 +37,6 @@ public class BinarySortTreeTest {
         tree.preOrder();
         System.out.println("输出排序树的层序遍历结果为：");
         tree.levelOrder();
+        tree.delete(18);
     }
 }

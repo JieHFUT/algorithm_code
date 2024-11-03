@@ -1,20 +1,18 @@
-package binarysorttree;
+package avl;
 
-import javax.net.ssl.SSLContext;
 import java.util.LinkedList;
 import java.util.Queue;
 
 /**
  * ClassName: Node
- * Package: binarysorttree
+ * Package: avl
  * Description:
- * ¶ş²æÅÅĞòÊ÷
+ * å¹³è¡¡äºŒå‰æ ‘
  * @Author jieHFUT
- * @Create 2024/11/1 22:09
+ * @Create 2024/11/3 19:58
  * @Version 1.0
  */
 public class Node implements Comparable<Node>{
-
 
     private int value;
     private Node left;
@@ -49,27 +47,30 @@ public class Node implements Comparable<Node>{
     }
 
 
-    // Ìí¼ÓÊı¾İ£¬Í¬Ê±½«Æä½øĞĞÅÅĞò
+    // æ·»åŠ æ•°æ®ï¼ŒåŒæ—¶å°†å…¶è¿›è¡Œæ’åº
+    // å¦‚æœå½“æ·»åŠ å®Œä¸€ä¸ªèŠ‚ç‚¹åï¼Œä¸æ»¡è¶³ AVL æ ‘ï¼Œå°±éœ€è¦æ—‹è½¬
     public void add(Node toAdd) {
         if (this.compareTo(toAdd) < 0) {
-            // Èç¹ûÊ÷ÖĞµÄ½Úµã±ÈÒªÌí¼ÓµÄ½ÚµãÔªËØĞ¡
-            // ÏòÊ÷µÄÓÒ×ÓÊ÷±È½Ï
+            // å¦‚æœæ ‘ä¸­çš„èŠ‚ç‚¹æ¯”è¦æ·»åŠ çš„èŠ‚ç‚¹å…ƒç´ å°
+            // å‘æ ‘çš„å³å­æ ‘æ¯”è¾ƒ
             if(this.right == null)
                 this.right = toAdd;
             else
                 this.right.add(toAdd);
         } else {
-            // Èç¹ûÊ÷ÖĞµÄ½Úµã±ÈÒªÌí¼ÓµÄ½ÚµãÔªËØ´ó
-            // Ïò×ó×ÓÊ÷±È½Ï
+            // å¦‚æœæ ‘ä¸­çš„èŠ‚ç‚¹æ¯”è¦æ·»åŠ çš„èŠ‚ç‚¹å…ƒç´ å¤§
+            // å‘å·¦å­æ ‘æ¯”è¾ƒ
             if (this.left == null)
                 this.left = toAdd;
             else
                 this.left.add(toAdd);
         }
+
+
     }
 
 
-    // ²ãĞò±éÀú
+    // å±‚åºéå†
     public void levelOrder() {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(this);
@@ -83,57 +84,39 @@ public class Node implements Comparable<Node>{
         }
     }
 
+
     /**
-     * ¸ù¾İÖµÀ´ÕÒµ½½Úµã£¬Èç¹ûÃ»ÓĞÕÒµ½¾Í·µ»Ø null
-     * @param value
+     * è¿”å›å½“å‰èŠ‚ç‚¹çš„æ ‘çš„é«˜åº¦
      * @return
      */
-    public Node search(int value) {
-        return search(this, value);
-    }
-    public Node search(Node node, int value) {
-        // 1. Èç¹ûÒªÕÒµÄÖµ¾ÍÔÚ¸Ã½ÚµãÉÏ
-        if (node.value == value) return node;
-        // 2. Èç¹ûÒªÕÒµÄÖµ±È¸Ã½ÚµãµÄÖµ´ó¾ÍÏòÓÒµİ¹é£¬·ñÔò¾ÍÏñ×óµİ¹é
-        if (node.value > value) {
-            if (node.left != null)
-                return search(node.left, value);
-            else
-                return null;
-        } else {
-            if (node.right != null)
-                return search(node.right, value);
-            else
-                return null;
-        }
+    public int height() {
+        return Math.max(left == null ? 0 : left.height(), right == null ? 0 : right.height()) + 1;
     }
 
     /**
-     * ²éÕÒ¸Ã½ÚµãµÄ¸¸Ç×½Úµã£¬Ã»ÓĞ¸¸½Úµã»òÕßÃ»ÓĞÕÒµ½¸Ã½Úµã¾Í·µ»Ø null
-     * @param value
+     * è¿”å›å½“å‰èŠ‚ç‚¹çš„å·¦å­æ ‘çš„é«˜åº¦
      * @return
      */
-    public Node searchParent(int value) {
-        if (this.value == value) return null;
+    public int leftHeight() {
+        if (left == null) return 0;
+        return left.height();
+    }
 
-        if (this.left != null && this.left.value == value) {
-            // ¸Ã½ÚµãµÄ×ó×Ó½Úµã¾ÍÊÇ target
-            return this;
-        } else if (this.right != null && this.right.value == value) {
-            // ¸Ã½ÚµãµÄÓÒ×Ó½Úµã¾ÍÊÇ target
-            return this;
-        } else {
-            // ¸Ã½ÚµãµÄ×Ó½Úµã²»ÊÇÒªÕÒµÄ½Úµã£¬ÍùÏÂÑ°ÕÒ
-            if (this.value > value && this.left != null) {
-                return this.left.searchParent(value);
-            } else if (this.value <= value && this.right != null) {
-                return this.right.searchParent(value);
-            } else {
-                return null;
-            }
-        }
+    /**
+     * è¿”å›å½“å‰èŠ‚ç‚¹å³å­æ ‘çš„é«˜åº¦
+     * @return
+     */
+    public int rightHeight() {
+        if (right == null) return 0;
+        return right.height();
     }
 
 
+    /**
+     * å·¦æ—‹è½¬
+     */
+    public void leftRotate() {
+
+    }
 
 }

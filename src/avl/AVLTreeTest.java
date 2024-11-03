@@ -13,15 +13,15 @@ public class AVLTreeTest {
     public static void main(String[] args) {
 
         AVLTree avlTree = new AVLTree();
-        int[] arr = new int[]{4,3,6,5,7,8};
+        int[] arr = new int[]{10, 5, 15, 8};
 
         for (int i = 0; i < arr.length; i++) {
             avlTree.add(new Node(arr[i]));
         }
-        avlTree.preOrder();
-        System.out.println("树的高度为：" + avlTree.height());
-        System.out.println("树的左高度为：" + avlTree.leftHeight());
-        System.out.println("树的右高度为：" + avlTree.rightHeight());
 
+        avlTree.add(new Node(9));
+//        System.out.println("树的高度为：" + avlTree.height());
+//        System.out.println("树的左高度为：" + avlTree.leftHeight());
+//        System.out.println("树的右高度为：" + avlTree.rightHeight());
     }
 }

@@ -50,7 +50,8 @@ public class Node implements Comparable<Node>{
     // 添加数据，同时将其进行排序
     // 如果当添加完一个节点后，不满足 AVL 树，就需要旋转
     public void add(Node toAdd) {
-        if (this.compareTo(toAdd) < 0) {
+
+        if (value < toAdd.value) {
             // 如果树中的节点比要添加的节点元素小
             // 向树的右子树比较
             if(this.right == null)
@@ -65,8 +66,23 @@ public class Node implements Comparable<Node>{
             else
                 this.left.add(toAdd);
         }
-
-
+        // 需要左旋
+        if (rightHeight() - leftHeight() > 1) {
+            // 如果右子树的左子树 > 右子树的右子树 => 需要先对右子树进行右旋
+            if (right != null && right.leftHeight() > right.rightHeight()) {
+                right.rightRotate();
+            }
+            leftRotate();
+            return;
+        }
+        // 需要右旋
+        if (leftHeight() - rightHeight() > 1) {
+            // 如果左子树的右子树 > 左子树的左子树 => 需要先对左子树进行左旋
+            if (left != null && left.rightHeight() > left.leftHeight()) {
+                left.leftRotate();
+            }
+            rightRotate();
+        }
     }
 
 
@@ -114,9 +130,28 @@ public class Node implements Comparable<Node>{
 
     /**
      * 左旋转
+     * 原因：右子树的高度 - 左子树高度 > 1
      */
     public void leftRotate() {
+        Node newLeft = new Node(this.value);
+        newLeft.left = left;
+        newLeft.right = right.left;
+        this.value = right.value;
+        this.right = right.right;
+        this.left = newLeft;
+    }
 
+    /**
+     * 右旋转
+     * 原因：左子树的高度 - 右子树高度 > 1
+     */
+    public void rightRotate() {
+        Node newRight = new Node(this.value);
+        newRight.right = right;
+        newRight.left = left.right;
+        this.value = left.value;
+        this.left = left.left;
+        this.right = newRight;
     }
 
 }

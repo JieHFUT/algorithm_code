@@ -60,4 +60,13 @@ public class AVLTree {
         return root.rightHeight();
     }
 
+
+    // ×óÐý
+    public void leftRotate() {
+        root.leftRotate();
+    }
+    // ÓÒÐý
+    public void rightRotate() {
+        root.rightRotate();
+    }
 }

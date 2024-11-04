@@ -22,6 +22,7 @@ public class HuffmanCode {
                 "括完整的历史记录。 这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本\n" +
                 "括完整的历史记录。 这么一来，任何一处协同工作用的服务器发生故障，事后都可以用任何一个镜像出来的本\n" +
                 "地仓库恢复。 因为每一次的克隆操作，实际上都是一次对代码仓库的完整备份。";
+
         byte[] input = content.getBytes();
         System.out.println("输入得到的字节数组为：");
         System.out.println(Arrays.toString(input));

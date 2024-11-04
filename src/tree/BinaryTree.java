@@ -199,8 +199,7 @@ public class BinaryTree {
         }
         return result;
     }
-    // 判断一棵树是不是完全二叉树
-    // 叶结点只能出现在最底层的两层，且最底层叶结点均处于次底层叶结点的左侧
+    // 判断一棵树是不是完全二叉树 ：叶结点只能出现在最底层的两层，且最底层叶结点均处于次底层叶结点的左侧
     public boolean isCompleteTree() {
         
         return false;

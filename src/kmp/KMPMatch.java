@@ -5,23 +5,30 @@ import java.util.Arrays;
 public class KMPMatch {
     public static void main(String[] args) {
 
-        int[] next = kmpNext("ABCDABD");
+        String dest = "ABCDABD";
+        String toMatch = "BBC ABCDAB ABCDABCDABDE";
+
+        int[] next = kmpNext(dest);
         System.out.println("next=" + Arrays.toString(next));
+        int ret = kmpMatch(toMatch, dest, next);
+        System.out.println("è¿”å›å€¼ï¼šindex=" + ret);
 
     }
+
+
 
 //    public static int[] kmpNext(String dest) {
 //        int[] next = new int[dest.length()];
 //        next[0] = 0;
-//        // i Ö¸Ïò dest µÄÄ³Ò»¸ö×Ö·û£¬ j Ö¸Ïò
+//        // i æŒ‡å‘ dest çš„æŸä¸€ä¸ªå­—ç¬¦ï¼Œ j æŒ‡å‘
 //        for (int i = 0, j = 0; i < next.length; i++) {
-//            // ´Ë´¦µÄ×Ö·û´®µÄ³¤¶ÈÎª i
+//            // æ­¤å¤„çš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸º i
 //            //
 //            if (j > 0 && dest.charAt(i) != dest.charAt(j)) {
 //
 //            }
 //
-//            // Èç¹ûÖ¸ÏòµÄ×Ö·ûºÍÇ°ÃæµÄÒ»Ñù
+//            // å¦‚æœæŒ‡å‘çš„å­—ç¬¦å’Œå‰é¢çš„ä¸€æ ·
 //            if (dest.charAt(i) == dest.charAt(j)) {
 //                j++;
 //            }
@@ -29,26 +36,41 @@ public class KMPMatch {
 //        }
 //    }
 
-    //»ñÈ¡µ½Ò»¸ö×Ö·û´®(×Ó´®) µÄ²¿·ÖÆ¥ÅäÖµ±í
-    public static  int[] kmpNext(String dest) {
-        //´´½¨Ò»¸önext Êı×é±£´æ²¿·ÖÆ¥ÅäÖµ
+    //è·å–åˆ°ä¸€ä¸ªå­—ç¬¦ä¸²(å­ä¸²) çš„éƒ¨åˆ†åŒ¹é…å€¼è¡¨
+    public static int[] kmpNext(String dest) {
         int[] next = new int[dest.length()];
-        next[0] = 0; //Èç¹û×Ö·û´®ÊÇ³¤¶ÈÎª1 ²¿·ÖÆ¥ÅäÖµ¾ÍÊÇ0
-        for(int i = 1, j = 0; i < dest.length(); i++) {
-            //µ±dest.charAt(i) != dest.charAt(j) £¬ÎÒÃÇĞèÒª´Ónext[j-1]»ñÈ¡ĞÂµÄj
-            //Ö±µ½ÎÒÃÇ·¢ÏÖ ÓĞ  dest.charAt(i) == dest.charAt(j)³ÉÁ¢²ÅÍË³ö
-            //ÕâÊ±kmpËã·¨µÄºËĞÄµã
-            while(j > 0 && dest.charAt(i) != dest.charAt(j)) {
-                j = next[j-1];
+        next[0] = 0;
+        for (int i = 1, j = 0; i < dest.length(); i++) {
+            while (j > 0 && dest.charAt(i) != dest.charAt(j)) {
+                j = next[j - 1];
             }
-
-            //µ±dest.charAt(i) == dest.charAt(j) Âú×ãÊ±£¬²¿·ÖÆ¥ÅäÖµ¾ÍÊÇ+1
-            if(dest.charAt(i) == dest.charAt(j)) {
+            // å¦‚æœè¯´æ­¤æ—¶çš„å…ƒç´ ç­‰äºä¹‹å‰åŒ¹é…çš„åä¸€ä¸ª
+            if (dest.charAt(i) == dest.charAt(j)) {
                 j++;
             }
             next[i] = j;
         }
         return next;
     }
+
+
+    public static int kmpMatch(String toMatch, String dest, int[] next) {
+        for (int i = 0, j = 0; i < toMatch.length(); i++) {
+            //
+            while (j > 0 && toMatch.charAt(i) != dest.charAt(j)) {
+                j = next[j - 1];
+            }
+
+            if (toMatch.charAt(i) == dest.charAt(j)) {
+                j++;
+            }
+            if (j == dest.length()) {
+                return i - j + 1;
+            }
+        }
+        return -1;
+    }
+
+
 
 }

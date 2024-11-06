@@ -19,7 +19,7 @@ public class Kruskal {
         Kruskal kruskal = new Kruskal(vertexs, matrix);
         // 打印邻接矩阵
         kruskal.printMatrix();
-
+        // 获得所有边的数组，给数组排序
 
     }
 
@@ -75,10 +75,14 @@ public class Kruskal {
         }
     }
 
+    // 获得所有的边
+    public Link[] getLinks() {
+        return null;
+    }
 
     // 对所有的边进行排序
     public void sortEdges(Link[] links) {
-        
+
     }
 
 

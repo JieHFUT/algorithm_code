@@ -1,5 +1,8 @@
 package kruskal;
 
+import java.util.Arrays;
+import java.util.Comparator;
+
 // 克鲁斯卡尔算法
 public class Kruskal {
     public static void main(String[] args) {
@@ -19,7 +22,14 @@ public class Kruskal {
         Kruskal kruskal = new Kruskal(vertexs, matrix);
         // 打印邻接矩阵
         kruskal.printMatrix();
-        // 获得所有边的数组，给数组排序
+        // 获得所有边的数组
+        Link[] links = kruskal.getLinks();
+        System.out.println("排序前: " + Arrays.toString(links));
+        // 给所有的边进行排序
+        kruskal.sortLinks(links);
+        System.out.println("排序后: " + Arrays.toString(links));
+        // 进行克鲁斯卡尔算法
+
 
     }
 
@@ -36,7 +46,7 @@ public class Kruskal {
     // 边的权值矩阵
     private int[][] matrix;
     // 边不能连通
-    private static final int INF = Integer.MAX_VALUE;
+    private static final int INF = 65535;
 
     // 在构造方法中对传入的数据进行赋值
     public Kruskal(String[] vertexs, int[][] matrix) {
@@ -69,23 +79,44 @@ public class Kruskal {
     public void printMatrix() {
         for (int i = 0; i < this.matrix.length; i++) {
             for (int j = 0; j < this.matrix[0].length; j++) {
-                System.out.printf("%-12d", this.matrix[i][j]);
+                System.out.printf("%-7d", this.matrix[i][j]);
             }
             System.out.println();
         }
     }
 
-    // 获得所有的边
+    // 通过 matrix 获得所有的边
     public Link[] getLinks() {
-        return null;
+        Link[] links = new Link[this.edgeNums];
+        int index = 0;
+        for (int i = 0; i < this.matrix.length; i++) {
+            for (int j = i + 1; j < this.matrix[0].length; j++) {
+                if (this.matrix[i][j] != INF) {
+                    links[index++] = new Link(vertexs[i], vertexs[j], this.matrix[i][j]);
+                }
+            }
+        }
+        return links;
     }
 
     // 对所有的边进行排序
+    public void sortLinks(Link[] links) {
+        Arrays.sort(links);
+    }
+    // 第二种排序方法
     public void sortEdges(Link[] links) {
-
+        Arrays.sort(links, new Comparator<Link>() {
+            @Override
+            public int compare(Link o1, Link o2) {
+                return o1.weight - o2.weight;
+            }
+        });
     }
 
+    // 开始进行克鲁斯卡尔算法
+    public void kruskal() {
 
+    }
 
 
 

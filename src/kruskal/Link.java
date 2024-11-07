@@ -1,11 +1,16 @@
 package kruskal;
 
 
-// 用来表示一条边的信息
-public class Link implements Comparable<Link>{
-    String start;
-    String end;
-    int weight;
+/**
+ * 这是边的类，用来描述一条边的信息
+ */
+public class Link {
+    // 边的起点
+    public String start;
+    // 边的终点
+    public String end;
+    // 边的权值
+    public int weight;
 
     public Link(String start, String end, int weight) {
         this.start = start;
@@ -15,12 +20,10 @@ public class Link implements Comparable<Link>{
 
     @Override
     public String toString() {
-        return "Link [start=" + start + ", end=" + end + ", weight=" + weight + "]";
+        return "Link{" +
+                "start=" + start +
+                ", end=" + end +
+                ", weight=" + weight +
+                '}';
     }
-
-    @Override
-    public int compareTo(Link o) {
-        return this.weight - o.weight;
-    }
-
 }

@@ -3,108 +3,67 @@ package kruskal;
 import java.util.Arrays;
 import java.util.Comparator;
 
-// 克鲁斯卡尔算法
 public class Kruskal {
-    public static void main(String[] args) {
-        String[] vertexs = {"A地", "B地", "C地", "D地", "E地", "F地", "G地"};
-        //克鲁斯卡尔算法的邻接矩阵
-        int matrix[][] = {
-                /*A*//*B*//*C*//*D*//*E*//*F*//*G*/
-                /*A*/ {   0,  12, INF, INF, INF,  16,  14},
-                /*B*/ {  12,   0,  10, INF, INF,   7, INF},
-                /*C*/ { INF,  10,   0,   3,   5,   6, INF},
-                /*D*/ { INF, INF,   3,   0,   4, INF, INF},
-                /*E*/ { INF, INF,   5,   4,   0,   2,   8},
-                /*F*/ {  16,   7,   6, INF,   2,   0,   9},
-                /*G*/ {  14, INF, INF, INF,   8,   9,   0}};
-        //大家可以在去测试其它的邻接矩阵，结果都可以得到最小生成树.
-
-        Kruskal kruskal = new Kruskal(vertexs, matrix);
-        // 打印邻接矩阵
-        kruskal.printMatrix();
-        // 获得所有边的数组
-        Link[] links = kruskal.getLinks();
-        System.out.println("排序前: " + Arrays.toString(links));
-        // 给所有的边进行排序
-        kruskal.sortLinks(links);
-        System.out.println("排序后: " + Arrays.toString(links));
-        // 进行克鲁斯卡尔算法
-
-
-    }
-
-
-
-
-
-
-
-    // 边的个数
-    private int edgeNums;
-    // 顶点数组
+    // 用来表示两个顶点不联通的情况
+    public static final int INF = 65535;
+    // 用来描述顶点信息
     private String[] vertexs;
-    // 边的权值矩阵
-    private int[][] matrix;
-    // 边不能连通
-    private static final int INF = 65535;
+    // 用来描述边与边之间的权值信息
+    private int[][] weights;
+    // 用来记录边的个数，用来给边排序
+    private int linkNum;
 
-    // 在构造方法中对传入的数据进行赋值
-    public Kruskal(String[] vertexs, int[][] matrix) {
-        int number = vertexs.length;
 
-        // 构建顶点数组
-        this.vertexs = new String[number];
-        for (int i = 0; i < vertexs.length; i++) {
+    // 通过构造方法来进行初始化
+    public Kruskal(String[] vertexs, int[][] weights) {
+        int len = vertexs.length;
+        // 初始化顶点信息
+        this.vertexs = new String[len];
+        for (int i = 0; i < len; i++) {
             this.vertexs[i] = vertexs[i];
         }
-        // 构建邻接矩阵
-        this.matrix = new int[number][number];
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = 0; j < matrix[0].length; j++) {
-                this.matrix[i][j] = matrix[i][j];
+        // 初始化边的权值信息
+        this.weights = new int[len][len];
+        for (int i = 0; i < len; i++) {
+            for (int j = 0; j < len; j++) {
+                this.weights[i][j] = weights[i][j];
             }
         }
-        // 统计边的个数
-        for (int i = 0; i < matrix.length; i++) {
-            for (int j = i + 1; j < matrix[0].length; j++) {
-                if (matrix[i][j] != INF) {
-                    this.edgeNums++;
+        // 计算一共有多少条边
+        for (int i = 0; i < len; i++) {
+            for (int j = i + 1; j < len; j++) {
+                if (this.weights[i][j] != INF) {
+                    this.linkNum++;
                 }
             }
         }
     }
-    //////////////////   上面是构造方法    /////////////////////////////
 
-    // 打印邻接矩阵
-    public void printMatrix() {
-        for (int i = 0; i < this.matrix.length; i++) {
-            for (int j = 0; j < this.matrix[0].length; j++) {
-                System.out.printf("%-7d", this.matrix[i][j]);
+    // 打印邻接表
+    public void print(){
+        for (int i = 0; i < this.weights.length; i++) {
+            for (int j = 0; j < this.weights[i].length; j++) {
+                System.out.printf("%-7d", this.weights[i][j]);
             }
             System.out.println();
         }
     }
 
-    // 通过 matrix 获得所有的边
+    // 获得所有的边 link[]
     public Link[] getLinks() {
-        Link[] links = new Link[this.edgeNums];
         int index = 0;
-        for (int i = 0; i < this.matrix.length; i++) {
-            for (int j = i + 1; j < this.matrix[0].length; j++) {
-                if (this.matrix[i][j] != INF) {
-                    links[index++] = new Link(vertexs[i], vertexs[j], this.matrix[i][j]);
+        Link[] links = new Link[this.linkNum];
+        for (int i = 0; i < this.weights.length; i++) {
+            for (int j = i + 1; j < this.weights[i].length; j++) {
+                if (this.weights[i][j] != INF) {
+                    links[index++] = new Link(this.vertexs[i], this.vertexs[j], this.weights[i][j]);
                 }
             }
         }
         return links;
     }
-
-    // 对所有的边进行排序
+    // 给所有的边进行排序
     public void sortLinks(Link[] links) {
-        Arrays.sort(links);
-    }
-    // 第二种排序方法
-    public void sortEdges(Link[] links) {
         Arrays.sort(links, new Comparator<Link>() {
             @Override
             public int compare(Link o1, Link o2) {
@@ -113,13 +72,65 @@ public class Kruskal {
         });
     }
 
-    // 开始进行克鲁斯卡尔算法
-    public void kruskal() {
+    // 获得某一个顶点对应的下标
+    public int getIndex(String vertex) {
+        for (int i = 0; i < this.vertexs.length; i++) {
+            if (this.vertexs[i].equals(vertex)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 
+    // 开始 kruskal 算法
+
+    /**
+     * 获得某一个顶点在最小生成树中的终点
+     * @param ends
+     * @param index
+     * @return
+     */
+    public int getDest(int[] ends, int index) {
+        while (ends[index] != 0) {
+            index = ends[index];
+        }
+        return index;
+    }
+    /**
+     * 开始寻找一条路径可以通过所有的顶点
+     */
+    public Link[] kruskal() {
+        // 判断每一个节点的终点的数组
+        int[] ends = new int[this.vertexs.length];
+        // 用来保存每次添加哪一条边的返回数组
+        int index = 0;
+        Link[] ret = new Link[this.vertexs.length - 1];
+        // 获得排序好的所有的边的集合
+        Link[] links = this.getLinks();
+        sortLinks(links);
+
+        // 获取排序中此时的最短边
+        // 每次获得一条边，一共要获得顶点数-1条边，遍历所有的边，如果没有产生回路就将其添加到 ret 中
+        for (int i = 0; i < this.linkNum; i++) {
+            // 获得该边的两个顶点对应的下标
+            int prev = getIndex(links[i].start);
+            int post = getIndex(links[i].end);
+            // 获得两个顶点对应的终点
+            int prevDest = getDest(ends, prev);
+            int postDest = getDest(ends, post);
+
+            // 判断这条边是否会产生回路
+            if (prevDest != postDest) {
+                // prevDest != postDest 不会产生回路
+                // 设置终点
+                ends[prevDest] = postDest;
+                // 将这条边返回到结果
+                ret[index++] = links[i];
+            }
+        }
+        return ret;
     }
 
 
 
-
 }
-

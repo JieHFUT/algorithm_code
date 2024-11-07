@@ -87,11 +87,11 @@ public class Graph {
                 stringBuilder.append("=>");
             }
             // 加入中间路径
-            stringBuilder.append(stringBuilder1.reverse().toString());
+            stringBuilder.append(stringBuilder1.reverse());
 
             stringBuilder.append("=>");
             stringBuilder.append(vertexs[i]);
-            System.out.println(stringBuilder.toString());
+            System.out.println(stringBuilder);
         }
     }
 

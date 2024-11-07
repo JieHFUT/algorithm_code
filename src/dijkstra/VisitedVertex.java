@@ -22,17 +22,25 @@ public class VisitedVertex {
         isVisited[index] = 1;
         // 除了出发顶点到出发顶点自己外，其余距离初始化为无限大
         distance = new int[count];
-        Arrays.fill(distance, Integer.MAX_VALUE);
+        Arrays.fill(distance, 65535);
         distance[index] = 0;
         // 初始化前驱顶点
         prev = new int[count];
     }
 
-    //
-
-
-
-
-
+    // 在某一个顶点遍历结束，对起周边顶点的距离进行更新后，选择更新后最短距离的顶点，继续遍历
+    public int getNew() {
+        int min = Integer.MAX_VALUE;
+        int index = 0;
+        for (int i = 0; i < isVisited.length; i++) {
+            if (isVisited[i] == 0 && distance[i] < min) {
+                min = distance[i];
+                index = i;
+            }
+        }
+        // 更新 index 顶点被访问过
+        isVisited[index] = 1;
+        return index;
+    }
 
  }

@@ -30,7 +30,7 @@ public class Dijkstra {
         // 创建图对象
         Graph graph = new Graph(vertexs, weights);
         // 寻找到某一个顶点到其他顶点的最短路径
-        graph.dijkstra(0);
+        graph.dijkstra(2);
 
     }
 }

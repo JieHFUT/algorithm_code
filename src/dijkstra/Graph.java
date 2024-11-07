@@ -77,7 +77,7 @@ public class Graph {
             stringBuilder.append(")：");
             int index = i;
             StringBuilder stringBuilder1 = new StringBuilder();
-            while (visitedVertex.prev[index] != 0) {
+            while (visitedVertex.prev[index] != begin) {
                 stringBuilder1.append(new StringBuilder(vertexs[visitedVertex.prev[index]]).reverse());
                 stringBuilder1.append(">=");
                 index = visitedVertex.prev[index];

@@ -273,28 +273,75 @@ public class BinaryTree {
 
     // 判断是否是高度平衡的二叉树(2 functions)
     // 高度平衡就是说一个节点的两颗子树的高度差不大于1，并且其两颗子树也是高度平衡的二叉树
-    public boolean isBalanceTree() {
-        HeroNode thisRoot = this.root;
-        if (thisRoot == null) return true;
+    public boolean isBanlanceTree(HeroNode thisRoot) {
+
+        return true;
+    }
+    // 判断是否是高度平衡的二叉树(第二种方法)
+    public boolean isBanlanceTree2(HeroNode thisRoot) {
+        if (thisRoot == null) return false;
         // 获取其两颗子树的高度
         int leftHeight = height(thisRoot.getLeft());
         int rightHeight = height(thisRoot.getRight());
         if (Math.abs(leftHeight - rightHeight) > 1) return false;
-        // 比较子树
-
-        return true;
+        boolean left = false;
+        boolean right = false;
+        if (thisRoot.getLeft() != null) {
+            left = isBanlanceTree2(thisRoot.getLeft());
+        }
+        if (thisRoot.getRight() != null) {
+            right = isBanlanceTree2(thisRoot.getRight());
+        }
+        return left && right;
     }
+
+
+
 
     // 判断一颗二叉树是否轴对称
-    public boolean isSymmetricTree() {
+    public boolean isSymmetricTree(HeroNode thisRoot) {
+        // 思路：将其一颗子树的左右全部反过来，如果反过来的子树和另外一颗子树是相同的树 => 轴对称
+        if (thisRoot == null) return false;
+        // 将其右子树反过来
+        turnOneTree(thisRoot.getRight());
+        boolean flag = isSameTree(thisRoot.getLeft(), thisRoot.getRight());
+        if (flag)
+            return true;
         return false;
     }
-    // 将一棵树的每一个节点的左右节点的指向反过来(2 functions)
-    public void turnOneTree() {
-
+    public boolean isSymmetricTree(HeroNode left, HeroNode right) {
+        // 一棵树的左右子树
+        if (left == null && right == null) return true;
+        if (left == null || right == null) return false;
+        if (!left.getName().equals(right.getName())) return false;
+        return isSameTree(left.getLeft(),right.getRight()) && isSameTree(left.getRight(), right.getLeft());
     }
+
+
+
+
+
+
+    // 将一棵树的每一个节点的左右节点的指向反过来(2 functions)
+    public void turnOneTree(HeroNode thisRoot) {
+        if (thisRoot == null) return;
+        swap(thisRoot);
+        if (thisRoot.getLeft() != null) turnOneTree(thisRoot.getLeft());
+        if (thisRoot.getRight() != null) turnOneTree(thisRoot.getRight());
+    }
+    public void swap(HeroNode node) {
+        HeroNode temp = node.getLeft();
+        node.setLeft(node.getRight());
+        node.setRight(temp);
+    }
+
+
+
+
+
     // 找到两个指定节点最近的公共祖先
     public static HeroNode lowestCommonAncestor(HeroNode p, HeroNode q) {
+
         return null;
     }
 

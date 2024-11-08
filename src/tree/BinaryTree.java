@@ -264,14 +264,27 @@ public class BinaryTree {
         return isSubTree(thisRoot, otherRoot2);
     }
     public boolean isSubTree(HeroNode thisRoot, HeroNode otherRoot) {
+        if (thisRoot == null) return false;
+        if (isSameTree(thisRoot, otherRoot)) return true;
+        return isSubTree(thisRoot.getLeft(), otherRoot.getLeft()) || isSubTree(thisRoot.getRight(), otherRoot.getRight());
+    }
 
+
+
+    // 判断是否是高度平衡的二叉树(2 functions)
+    // 高度平衡就是说一个节点的两颗子树的高度差不大于1，并且其两颗子树也是高度平衡的二叉树
+    public boolean isBalanceTree() {
+        HeroNode thisRoot = this.root;
+        if (thisRoot == null) return true;
+        // 获取其两颗子树的高度
+        int leftHeight = height(thisRoot.getLeft());
+        int rightHeight = height(thisRoot.getRight());
+        if (Math.abs(leftHeight - rightHeight) > 1) return false;
+        // 比较子树
 
         return true;
     }
-    // 判断是否是高度平衡的二叉树(2 functions)
-    public boolean isBalanceTree() {
-        return false;
-    }
+
     // 判断一颗二叉树是否轴对称
     public boolean isSymmetricTree() {
         return false;

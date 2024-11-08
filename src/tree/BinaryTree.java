@@ -199,18 +199,74 @@ public class BinaryTree {
         }
         return result;
     }
+
+
     // 判断一棵树是不是完全二叉树 ：叶结点只能出现在最底层的两层，且最底层叶结点均处于次底层叶结点的左侧
     public boolean isCompleteTree() {
-        
-        return false;
+        // 向队列中一直放节点，直到出现第一个空节点
+        HeroNode node = this.root;
+        Queue<HeroNode> queue = new LinkedList();
+        queue.add(node);
+        while (!queue.isEmpty()) {
+            // 从队列中拿出节点
+            HeroNode top = queue.poll();
+            if (top != null) {
+                queue.add(top.getLeft());
+                queue.add(top.getRight());
+            } else {
+                // 如果是一个完全二叉树，被放到队列里应该是 node node node ... node node null null null ... null
+                // 在 node 之间不会穿插 null
+                break;
+            }
+        }
+        // 如果队列中剩下的不全是 null，就说明其不是完全二叉树
+        while (!queue.isEmpty()) {
+            HeroNode top = queue.poll();
+            if (top != null) {
+                return false;
+            }
+        }
+        return true;
     }
+
+
+
+
+
+
     // 判断两棵树是否相同
     public boolean isSameTree(HeroNode otherRoot) {
-        return false;
+        HeroNode thisRoot = this.root;
+        HeroNode otherRoot2 = otherRoot;
+        return isSameTree(thisRoot, otherRoot2);
     }
+    public boolean isSameTree(HeroNode thisRoot, HeroNode otherRoot) {
+        if (thisRoot == null && otherRoot == null) return true;
+        if (thisRoot == null) return false;
+        if (otherRoot == null) return false;
+        // 如果这两个节点的值不一样
+        if (!thisRoot.getName().equals(otherRoot.getName())) return false;
+        // 这两个节点的值一样，比较子节点
+        if (!isSameTree(thisRoot.getLeft(), otherRoot.getLeft())) return false;
+        if (!isSameTree(thisRoot.getRight(), otherRoot.getRight())) return false;
+        return true;
+    }
+
+
+
+
+
+
     // 判断一棵树是否包含另外一棵树
     public boolean isSubTree(HeroNode otherRoot) {
-        return false;
+        HeroNode thisRoot = this.root;
+        HeroNode otherRoot2 = otherRoot;
+        return isSubTree(thisRoot, otherRoot2);
+    }
+    public boolean isSubTree(HeroNode thisRoot, HeroNode otherRoot) {
+
+
+        return true;
     }
     // 判断是否是高度平衡的二叉树(2 functions)
     public boolean isBalanceTree() {

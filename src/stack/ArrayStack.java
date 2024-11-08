@@ -2,28 +2,28 @@ package stack;
 
 public class ArrayStack {
 
-    private int maxSize; //  ç”¨äºè®°å½•æ ˆçš„å¤§å°
+    private int maxSize; //  ÓÃÓÚ¼ÇÂ¼Õ»µÄ´óĞ¡
 
-    private int top = -1; // ç”¨äºè¡¨ç¤ºæ ˆé¡¶å…ƒç´ ç´¢å¼•ä½ç½®
+    private int top = -1; // ÓÃÓÚ±íÊ¾Õ»¶¥ÔªËØË÷ÒıÎ»ÖÃ
 
     private int[] stack;
 
-    // æ„é€ æ–¹æ³•
+    // ¹¹Ôì·½·¨
     public ArrayStack(int maxSize) {
         this.maxSize = maxSize;
         stack = new int[maxSize];
     }
 
-    // åˆ¤æ–­æ ˆæ»¡
+    // ÅĞ¶ÏÕ»Âú
     public boolean isFull() {
         return top == maxSize - 1;
     }
-    // åˆ¤æ–­æ ˆç©º
+    // ÅĞ¶ÏÕ»¿Õ
     public boolean isEmpty() {
         return top == -1;
     }
 
-    // å…¥æ ˆ
+    // ÈëÕ»
     public void push(int value) {
         if (isFull()) {
             System.out.println("Stack is full");
@@ -31,7 +31,7 @@ public class ArrayStack {
         }
         stack[++top] = value;
     }
-    // å‡ºæ ˆ
+    // ³öÕ»
     public int pop() {
         if (isEmpty())
             throw new RuntimeException("Stack is empty");
@@ -40,7 +40,7 @@ public class ArrayStack {
         return ret;
     }
 
-    //æ˜¾ç¤ºæ ˆçš„æƒ…å†µ[éå†æ ˆ]ï¼Œ éå†æ—¶ï¼Œéœ€è¦ä»æ ˆé¡¶å¼€å§‹æ˜¾ç¤ºæ•°æ®
+    //ÏÔÊ¾Õ»µÄÇé¿ö[±éÀúÕ»]£¬ ±éÀúÊ±£¬ĞèÒª´ÓÕ»¶¥¿ªÊ¼ÏÔÊ¾Êı¾İ
     public void list() {
         if (isEmpty()) throw new RuntimeException("Stack is empty");
         for (int i = top; i >= 0; i--) {
@@ -49,27 +49,27 @@ public class ArrayStack {
         System.out.println();
     }
 
-    // è¿”å›å½“å‰æ ˆé¡¶çš„å€¼
+    // ·µ»Øµ±Ç°Õ»¶¥µÄÖµ
     public int peek() {
         if (isEmpty()) throw new RuntimeException("Stack is empty");
         return stack[top];
     }
 
     /////////////////////////////////////////////////////////////////////
-    //è¿”å›è¿ç®—ç¬¦çš„ä¼˜å…ˆçº§ï¼Œä¼˜å…ˆçº§æ˜¯ç¨‹åºå‘˜æ¥ç¡®å®š, ä¼˜å…ˆçº§ä½¿ç”¨æ•°å­—è¡¨ç¤º
-    //æ•°å­—è¶Šå¤§ï¼Œåˆ™ä¼˜å…ˆçº§å°±è¶Šé«˜.
+    //·µ»ØÔËËã·ûµÄÓÅÏÈ¼¶£¬ÓÅÏÈ¼¶ÊÇ³ÌĞòÔ±À´È·¶¨, ÓÅÏÈ¼¶Ê¹ÓÃÊı×Ö±íÊ¾
+    //Êı×ÖÔ½´ó£¬ÔòÓÅÏÈ¼¶¾ÍÔ½¸ß.
     public static int priority(int oper){
         if(oper == '*' || oper == '/') return 1;
         if(oper == '+' || oper == '-') return 0;
         return -1;
     }
 
-    // åˆ¤æ–­æ˜¯ä¸æ˜¯ä¸€ä¸ªè¿ç®—ç¬¦å·
+    // ÅĞ¶ÏÊÇ²»ÊÇÒ»¸öÔËËã·ûºÅ
     public static boolean isOper(char oper) {
         return oper == '+' || oper == '-' || oper == '*' || oper == '/';
     }
 
-    // è®¡ç®—
+    // ¼ÆËã
     public static int cal(int num1, int num2, int oper) {
 
         switch (oper) {

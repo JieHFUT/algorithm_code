@@ -12,69 +12,69 @@ import java.util.Arrays;
  * @Version 1.0
  */
 public class Graph {
-    // é¡¶ç‚¹æ•°ç»„åç§°
+    // ¶¥µãÊı×éÃû³Æ
     String[] vertexs;
-    // é‚»æ¥çŸ©é˜µ
+    // ÁÚ½Ó¾ØÕó
     int[][] weights;
 
     VisitedVertex visitedVertex;
-    // æ„é€ å™¨
+    // ¹¹ÔìÆ÷
     public Graph(String[] vertexs, int[][] weights) {
         this.vertexs = vertexs;
         this.weights = weights;
     }
 
-    // æ˜¾ç¤ºé‚»æ¥çŸ©é˜µ
+    // ÏÔÊ¾ÁÚ½Ó¾ØÕó
     public void print() {
         for (int[] links : weights) {
             System.out.println(Arrays.toString(links));
         }
     }
 
-    // å¼€å§‹è¿›è¡Œè¿ªæ°æ–¯ç‰¹æ‹‰ç®—æ³•å®ç°   beginï¼šè¡¨ç¤ºä»å“ªä¸ªé¡¶ç‚¹å¼€å§‹å¯»æ‰¾æœ€çŸ­è·¯å¾„
+    // ¿ªÊ¼½øĞĞµÏ½ÜË¹ÌØÀ­Ëã·¨ÊµÏÖ   begin£º±íÊ¾´ÓÄÄ¸ö¶¥µã¿ªÊ¼Ñ°ÕÒ×î¶ÌÂ·¾¶
     public void dijkstra(int begin) {
-        // è·å¾—ä¸‰ä¸ªæ•°ç»„
+        // »ñµÃÈı¸öÊı×é
         visitedVertex = new VisitedVertex(vertexs.length, begin);
-        // æ ¹æ®å¼€å§‹èŠ‚ç‚¹æ›´æ–°
+        // ¸ù¾İ¿ªÊ¼½Úµã¸üĞÂ
         update(begin);
-        // éå†ä¹‹åçš„ vertexs.length -1 é¡¶ç‚¹
+        // ±éÀúÖ®ºóµÄ vertexs.length -1 ¶¥µã
         for (int i = 1; i < vertexs.length; i++) {
-            // å¾—åˆ°åœ¨ update ä¸­æŸä¸€ä¸ªé¡¶ç‚¹éå†ç»“æŸæ‹¥æœ‰æœ€çŸ­è·ç¦»çš„é‚£ä¸ªé¡¶ç‚¹
+            // µÃµ½ÔÚ update ÖĞÄ³Ò»¸ö¶¥µã±éÀú½áÊøÓµÓĞ×î¶Ì¾àÀëµÄÄÇ¸ö¶¥µã
             int theNew = visitedVertex.getNew();
             update(theNew);
         }
         showResult(begin);
     }
 
-    // æ ¹æ®æŸä¸€ä¸ªé¡¶ç‚¹ï¼Œåœ¨éå†å…¶å‘¨è¾¹é¡¶ç‚¹çš„è¿‡ç¨‹ä¸­ï¼Œæ›´æ–°åˆ°æŸä¸€ä¸ªé¡¶ç‚¹çš„æœ€å°å€¼ï¼Œå¹¶ä¸”è®¾ç½®å‰é©±é¡¶ç‚¹
+    // ¸ù¾İÄ³Ò»¸ö¶¥µã£¬ÔÚ±éÀúÆäÖÜ±ß¶¥µãµÄ¹ı³ÌÖĞ£¬¸üĞÂµ½Ä³Ò»¸ö¶¥µãµÄ×îĞ¡Öµ£¬²¢ÇÒÉèÖÃÇ°Çı¶¥µã
     public void update(int index) {
-        // len å°±æ˜¯æˆ‘ä»¬è¦å»å¯»æ‰¾çš„æŸä¸€ä¸ªèŠ‚ç‚¹çš„æœ€çŸ­è·¯å¾„
-        // len = å‡ºå‘é¡¶ç‚¹åˆ° index çš„æœ€çŸ­è·¯å¾„ + min{ä»indexéå†æ—¶ï¼Œindex åˆ° i çš„è·ç¦»}
+        // len ¾ÍÊÇÎÒÃÇÒªÈ¥Ñ°ÕÒµÄÄ³Ò»¸ö½ÚµãµÄ×î¶ÌÂ·¾¶
+        // len = ³ö·¢¶¥µãµ½ index µÄ×î¶ÌÂ·¾¶ + min{´Óindex±éÀúÊ±£¬index µ½ i µÄ¾àÀë}
         int len = 0;
-        // éå†è¿™ä¸ªé¡¶ç‚¹å‘¨å›´çš„é¡¶ç‚¹
+        // ±éÀúÕâ¸ö¶¥µãÖÜÎ§µÄ¶¥µã
         for (int i = 0; i < weights[index].length; i++) {
             len = visitedVertex.distance[index] + weights[index][i];
-            // å¦‚æœè¯¥èŠ‚ç‚¹ i æ²¡æœ‰è¢«è®¿é—®è¿‡ï¼Œå¹¶ä¸”len < ä»å¼€å§‹èŠ‚ç‚¹åˆ° i çš„è·ç¦»
+            // Èç¹û¸Ã½Úµã i Ã»ÓĞ±»·ÃÎÊ¹ı£¬²¢ÇÒlen < ´Ó¿ªÊ¼½Úµãµ½ i µÄ¾àÀë
             if (visitedVertex.isVisited[i] == 0
                     && len < visitedVertex.distance[i]){
-                // æ›´æ–°å‡ºå‘èŠ‚ç‚¹åˆ°è¯¥èŠ‚ç‚¹ i çš„è·ç¦»
+                // ¸üĞÂ³ö·¢½Úµãµ½¸Ã½Úµã i µÄ¾àÀë
                 visitedVertex.distance[i] = len;
-                // æ›´æ–° i é¡¶ç‚¹çš„å‰é©±ä¸º index
+                // ¸üĞÂ i ¶¥µãµÄÇ°ÇıÎª index
                 visitedVertex.prev[i] = index;
             }
         }
     }
 
-    // æä¾›ä¸€ä¸ªè¾“å‡ºç»“æœçš„æ–¹æ³•
+    // Ìá¹©Ò»¸öÊä³ö½á¹ûµÄ·½·¨
     // isVisited prev distance
-    // è¾“å‡ºå½¢å¦‚ï¼šF(8)ï¼šA=>G=>F
+    // Êä³öĞÎÈç£ºF(8)£ºA=>G=>F
     public void showResult(int begin) {
         for (int i = 0; i < visitedVertex.isVisited.length; i++) {
             StringBuilder stringBuilder = new StringBuilder();
             stringBuilder.append(vertexs[i]);
             stringBuilder.append("(");
             stringBuilder.append(visitedVertex.distance[i]);
-            stringBuilder.append(")ï¼š");
+            stringBuilder.append(")£º");
             int index = i;
             StringBuilder stringBuilder1 = new StringBuilder();
             while (visitedVertex.prev[index] != begin) {
@@ -86,7 +86,7 @@ public class Graph {
             if (visitedVertex.prev[begin] != 0) {
                 stringBuilder.append("=>");
             }
-            // åŠ å…¥ä¸­é—´è·¯å¾„
+            // ¼ÓÈëÖĞ¼äÂ·¾¶
             stringBuilder.append(stringBuilder1.reverse());
 
             stringBuilder.append("=>");

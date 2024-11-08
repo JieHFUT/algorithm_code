@@ -4,7 +4,7 @@ package search;
  * ClassName: BinarySearch_2
  * Package: search
  * Description:
- * äºŒåˆ†æŸ¥æ‰¾
+ * ¶ş·Ö²éÕÒ
  * @Author jieHFUT
  * @Create 2024/10/25 2:24
  * @Version 1.0
@@ -15,14 +15,14 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- * å¦‚æœ mid å°±æ˜¯æˆ‘ä»¬è¦æ‰¾çš„ç›®æ ‡ï¼Œè¿”å› mid
- * å¦‚æœ mid å¤„å€¼å°äº target, å°±åƒå³è¾¹éå†
- * å¦‚æœ mid å¤„å€¼å¤§äº target, å°±åƒå·¦è¾¹éå†
- * å¦‚æœéå†å®Œè¿˜æ²¡æœ‰æ‰¾åˆ°å°±è¿”å› -1
+ * Èç¹û mid ¾ÍÊÇÎÒÃÇÒªÕÒµÄÄ¿±ê£¬·µ»Ø mid
+ * Èç¹û mid ´¦ÖµĞ¡ÓÚ target, ¾ÍÏñÓÒ±ß±éÀú
+ * Èç¹û mid ´¦Öµ´óÓÚ target, ¾ÍÏñ×ó±ß±éÀú
+ * Èç¹û±éÀúÍê»¹Ã»ÓĞÕÒµ½¾Í·µ»Ø -1
  */
 public class BinarySearch_2 {
     public static void main(String[] args) {
-        // éœ€è¦ä¸€ä¸ªæœ‰åºçš„æ•°ç»„
+        // ĞèÒªÒ»¸öÓĞĞòµÄÊı×é
         int[] arr = new int[100_000_000];
         for (int i = 0; i < 100_000_000; i++) {
             arr[i] = i + 1;
@@ -46,7 +46,7 @@ public class BinarySearch_2 {
 
 
 
-    // è¿”å›ç¬¬ä¸€ä¸ªç¬¦åˆè¦æ±‚çš„æ•°å­—çš„ä¸‹æ ‡
+    // ·µ»ØµÚÒ»¸ö·ûºÏÒªÇóµÄÊı×ÖµÄÏÂ±ê
     public static int binarySearch(int[] arr, int target) {
         return binarySearch(arr, 0, arr.length - 1, target);
     }
@@ -77,9 +77,9 @@ public class BinarySearch_2 {
 
 
     /**
-     * è¿”å›æ‰€æœ‰çš„ç­‰äº target çš„ä¸‹æ ‡
-     * åœ¨æ‰¾åˆ° mid çš„å€¼çš„æ—¶å€™ä¸è¦é©¬ä¸Šè¿”å›
-     * å‘ mid ç´¢å¼•å€¼çš„å·¦è¾¹æ‰«æï¼Œå°†æ‰€æœ‰æ»¡è¶³è¦æ±‚çš„å…¨éƒ¨åŠ å…¥é›†åˆï¼Œå†å‘å³è¾¹æ‰«æ
+     * ·µ»ØËùÓĞµÄµÈÓÚ target µÄÏÂ±ê
+     * ÔÚÕÒµ½ mid µÄÖµµÄÊ±ºò²»ÒªÂíÉÏ·µ»Ø
+     * Ïò mid Ë÷ÒıÖµµÄ×ó±ßÉ¨Ãè£¬½«ËùÓĞÂú×ãÒªÇóµÄÈ«²¿¼ÓÈë¼¯ºÏ£¬ÔÙÏòÓÒ±ßÉ¨Ãè
      * {1,2,3,4,5,6,6,6,6,6,6,7,8,9,61}
      *               mid
      *            6,5,7,8,9,10
@@ -95,14 +95,14 @@ public class BinarySearch_2 {
         int mid = (left + right) / 2;
         if (arr[mid] == target) {
             List<Integer> list = new ArrayList<>();
-            // å‘å·¦
+            // Ïò×ó
             int leftIndex = mid - 1;
             while (leftIndex >= 0 && arr[leftIndex] == target) {
                 list.add(leftIndex);
                 leftIndex--;
             }
             list.add(mid);
-            // å‘å³
+            // ÏòÓÒ
             int rightIndex = mid + 1;
             while (rightIndex < arr.length && arr[rightIndex] == target) {
                 list.add(rightIndex);

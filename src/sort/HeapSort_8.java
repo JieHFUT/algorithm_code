@@ -24,13 +24,13 @@ public class HeapSort_8 {
         System.out.println("spent " + (end - start) + " ms");
 
     }
-    // éå¶å­èŠ‚ç‚¹
+    // ·ÇÒ¶×Ó½Úµã
     public static void heapSort(int[] arr) {
-        // å˜æˆäº†ä¸€ä¸ªå¤§é¡¶å †
+        // ±ä³ÉÁËÒ»¸ö´ó¶¥¶Ñ
         for (int i = arr.length / 2 - 1; i >= 0 ; i--) {
             adjust(arr, i, arr.length);
         }
-        // äº¤æ¢
+        // ½»»»
         for (int i = arr.length - 1; i > 0; i--) {
             swap(arr, 0, i);
             adjust(arr, 0, i);
@@ -42,10 +42,10 @@ public class HeapSort_8 {
         arr[i] = arr[j];
         arr[j] = temp;
     }
-    // è°ƒæ•´ tree, ä»å·¦è‡³å³ï¼Œä»ä¸‹å¾€ä¸Š
+    // µ÷Õû tree, ´Ó×óÖÁÓÒ£¬´ÓÏÂÍùÉÏ
     public static void adjust(int[] arr, int i, int length) {
-        // i ä¸ºè¦æ’åºçš„æ ‘æ ¹ï¼Œå…¶å·¦å³å­æ ‘å·²ç»æ’åºå®Œæ¯•
-        // è°å’Œæ ¹äº¤æ¢ï¼Œè°å°±è¦é‡æ’
+        // i ÎªÒªÅÅĞòµÄÊ÷¸ù£¬Æä×óÓÒ×ÓÊ÷ÒÑ¾­ÅÅĞòÍê±Ï
+        // Ë­ºÍ¸ù½»»»£¬Ë­¾ÍÒªÖØÅÅ
         int temp = arr[i];
         for (int k = i * 2 + 1; k < length; k = k * 2 + 1) {
             if (k + 1 < length && arr[k] < arr[k + 1]) {

@@ -6,12 +6,12 @@ public class DoubleLinkedListTest {
 
         DoubleLinkedList list = new DoubleLinkedList();
 
-        //è¿›è¡Œæµ‹è¯•
-        //å…ˆåˆ›å»ºèŠ‚ç‚¹
-        HeroNode hero1 = new HeroNode(1, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
-        HeroNode hero2 = new HeroNode(2, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
-        HeroNode hero3 = new HeroNode(3, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
-        HeroNode hero4 = new HeroNode(4, "æ—å†²", "è±¹å­å¤´");
+        //½øĞĞ²âÊÔ
+        //ÏÈ´´½¨½Úµã
+        HeroNode hero1 = new HeroNode(1, "ËÎ½­", "¼°Ê±Óê");
+        HeroNode hero2 = new HeroNode(2, "Â¬¿¡Òå", "Óñ÷è÷ë");
+        HeroNode hero3 = new HeroNode(3, "ÎâÓÃ", "ÖÇ¶àĞÇ");
+        HeroNode hero4 = new HeroNode(4, "ÁÖ³å", "±ª×ÓÍ·");
 
         list.addInTail(hero1);
         list.addInTail(hero2);
@@ -19,11 +19,11 @@ public class DoubleLinkedListTest {
         list.addInTail(hero4);
 
         list.list();
-        list.update(new HeroNode(4, "å¦‚äº‘é¾™", "å…¬å­™èƒœ"));
-        System.out.println("ä¿®æ”¹...");
+        list.update(new HeroNode(4, "ÈçÔÆÁú", "¹«ËïÊ¤"));
+        System.out.println("ĞŞ¸Ä...");
         list.list();
         list.del(3);
-        System.out.println("åˆ é™¤...");
+        System.out.println("É¾³ı...");
         list.list();
 
     }

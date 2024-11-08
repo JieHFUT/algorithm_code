@@ -4,7 +4,7 @@ package search;
  * ClassName: DifferAllocSearch
  * Package: search
  * Description:
- * å·®å€¼æŸ¥æ‰¾ï¼ˆæŒ‰ç…§æ¯”é‡åˆ†é…æŸ¥è¯¢ï¼‰
+ * ²îÖµ²éÕÒ£¨°´ÕÕ±ÈÖØ·ÖÅä²éÑ¯£©
  * @Author jieHFUT
  * @Create 2024/10/27 18:36
  * @Version 1.0

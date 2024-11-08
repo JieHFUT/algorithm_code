@@ -8,7 +8,7 @@ import java.util.*;
  * ClassName: Greedy
  * Package: greedy
  * Description:
- * è´ªå¿ƒç®—æ³•
+ * Ì°ĞÄËã·¨
  * @Author jieHFUT
  * @Create 2024/11/5 21:27
  * @Version 1.0
@@ -16,68 +16,68 @@ import java.util.*;
 public class Greedy {
 
     public static void main(String[] args) {
-        // åˆ›å»ºå¹¿æ’­ç”µè§†å°
+        // ´´½¨¹ã²¥µçÊÓÌ¨
         HashMap<String, HashSet<String>> map = new HashMap<>();
         HashSet<String> first = new HashSet<>();
-        first.add("åŒ—äº¬");
-        first.add("ä¸Šæµ·");
-        first.add("å¤©æ´¥");
+        first.add("±±¾©");
+        first.add("ÉÏº£");
+        first.add("Ìì½ò");
         HashSet<String> second = new HashSet<>();
-        second.add("å¹¿å·");
-        second.add("åŒ—äº¬");
-        second.add("æ·±åœ³");
+        second.add("¹ãÖİ");
+        second.add("±±¾©");
+        second.add("ÉîÛÚ");
         HashSet<String> third = new HashSet<>();
-        third.add("æˆéƒ½");
-        third.add("ä¸Šæµ·");
-        third.add("æ­å·");
+        third.add("³É¶¼");
+        third.add("ÉÏº£");
+        third.add("º¼Öİ");
         HashSet<String> fourth = new HashSet<>();
-        fourth.add("ä¸Šæµ·");
-        fourth.add("å¤©æ´¥");
+        fourth.add("ÉÏº£");
+        fourth.add("Ìì½ò");
         HashSet<String> fifth = new HashSet<>();
-        fifth.add("æ­å·");
-        fifth.add("å¤§è¿");
-        // å°†å„ä¸ªç”µè§†å°æ”¾å…¥åˆ° boardcasts
+        fifth.add("º¼Öİ");
+        fifth.add("´óÁ¬");
+        // ½«¸÷¸öµçÊÓÌ¨·ÅÈëµ½ boardcasts
         map.put("first", first);
         map.put("second", second);
         map.put("third", third);
         map.put("fourth", fourth);
         map.put("fifth", fifth);
 
-        // åˆ›é€ ä¸€ä¸ªæ€»çš„æ‹¥æœ‰å…¨éƒ¨åœ°åŒºçš„set
+        // ´´ÔìÒ»¸ö×ÜµÄÓµÓĞÈ«²¿µØÇøµÄset
         HashSet<String> all = new HashSet<>();
-        all.add("åŒ—äº¬");
-        all.add("ä¸Šæµ·");
-        all.add("å¤©æ´¥");
-        all.add("å¹¿å·");
-        all.add("æ·±åœ³");
-        all.add("æˆéƒ½");
-        all.add("æ­å·");
-        all.add("å¤§è¿");
+        all.add("±±¾©");
+        all.add("ÉÏº£");
+        all.add("Ìì½ò");
+        all.add("¹ãÖİ");
+        all.add("ÉîÛÚ");
+        all.add("³É¶¼");
+        all.add("º¼Öİ");
+        all.add("´óÁ¬");
 
 
-        // åˆ›é€ ä¸€ä¸ªç”¨æ¥å­˜æ”¾ç»“æœçš„
+        // ´´ÔìÒ»¸öÓÃÀ´´æ·Å½á¹ûµÄ
         List<String> result = new ArrayList();
-        // ç”¨æ¥è®°å½•ä¸€è½®ä¸­æ‰¾åˆ°çš„è¦†ç›–æœªè¦†ç›–çš„åŒºåŸŸæ•°é‡æœ€å¤§çš„å¹¿æ’­å°çš„é‚£å‡ ä¸ªåŒºåŸŸ
+        // ÓÃÀ´¼ÇÂ¼Ò»ÂÖÖĞÕÒµ½µÄ¸²¸ÇÎ´¸²¸ÇµÄÇøÓòÊıÁ¿×î´óµÄ¹ã²¥Ì¨µÄÄÇ¼¸¸öÇøÓò
         HashSet<String> temp = new HashSet<>();
         HashSet<String> temp1 = new HashSet<>();
-        // ç”¨æ¥è¿½è¸ªæŸä¸€è½®é€‰æ‹©å¹¿æ’­å°ä¸­ => è¦†ç›–æœªè¦†ç›–çš„åŒºåŸŸæ•°é‡æœ€å¤§çš„å¹¿æ’­å°
+        // ÓÃÀ´×·×ÙÄ³Ò»ÂÖÑ¡Ôñ¹ã²¥Ì¨ÖĞ => ¸²¸ÇÎ´¸²¸ÇµÄÇøÓòÊıÁ¿×î´óµÄ¹ã²¥Ì¨
         String maxNumber = null;
 
 
         while (all.size() != 0) {
             maxNumber = null;
-            // ä¸€æ¬¡å¾ªç¯æ·»åŠ ä¸€ä¸ªå¹¿æ’­ç”µè§†å°ï¼Œå»æ‰¾å‰©ä½™çš„èƒ½å¤Ÿè¦†ç›–æœ€å¤šæœªè¦†ç›–åœ°åŒºçš„å¹¿æ’­ç”µè§†å°
+            // Ò»´ÎÑ­»·Ìí¼ÓÒ»¸ö¹ã²¥µçÊÓÌ¨£¬È¥ÕÒÊ£ÓàµÄÄÜ¹»¸²¸Ç×î¶àÎ´¸²¸ÇµØÇøµÄ¹ã²¥µçÊÓÌ¨
 
-            // number ç¬¬å‡ ä¸ªå¹¿æ’­ç”µè§†å°çš„åç§°ï¼Œéå†å¹¿æ’­ç”µè§†å°
+            // number µÚ¼¸¸ö¹ã²¥µçÊÓÌ¨µÄÃû³Æ£¬±éÀú¹ã²¥µçÊÓÌ¨
             for (String number : map.keySet()) {
                 temp.clear();
                 temp1.clear();
-                // å¾—åˆ°æŸä¸€ä¸ªå¹¿æ’­ç”µè§†å°èƒ½å¤Ÿè¦†ç›–çš„åŒºåŸŸ
+                // µÃµ½Ä³Ò»¸ö¹ã²¥µçÊÓÌ¨ÄÜ¹»¸²¸ÇµÄÇøÓò
                 HashSet areas = map.get(number);
                 temp.addAll(areas);
-                // å¾—åˆ°æŸä¸€ä¸ªå¹¿æ’­ç”µè§†å°èƒ½å¤Ÿè¦†ç›–çš„æœªè¦†ç›–çš„åŒºåŸŸ
+                // µÃµ½Ä³Ò»¸ö¹ã²¥µçÊÓÌ¨ÄÜ¹»¸²¸ÇµÄÎ´¸²¸ÇµÄÇøÓò
                 temp.retainAll(all);
-                // æ‰¾åˆ°æœ€å¤§çš„
+                // ÕÒµ½×î´óµÄ
                 if (maxNumber != null) {
                     HashSet maxAreas = map.get(maxNumber);
                     temp1.addAll(maxAreas);
@@ -89,8 +89,8 @@ public class Greedy {
                     maxNumber = number;
                 }
             }
-            // åœ¨è¿™ä¸ªåœ°æ–¹æ‰¾åˆ°äº†è¦†ç›–æœªè¦†ç›–çš„åŒºåŸŸæ•°é‡æœ€å¤§çš„å¹¿æ’­å°
-            // å»æ‰æ‰¾åˆ°çš„åŒºåŸŸ
+            // ÔÚÕâ¸öµØ·½ÕÒµ½ÁË¸²¸ÇÎ´¸²¸ÇµÄÇøÓòÊıÁ¿×î´óµÄ¹ã²¥Ì¨
+            // È¥µôÕÒµ½µÄÇøÓò
             if (maxNumber != null) {
                 result.add(maxNumber);
                 all.removeAll(map.get(maxNumber));
@@ -109,42 +109,42 @@ public class Greedy {
     @Test
     public void test(){
 
-        // åˆ›å»ºå¹¿æ’­ç”µè§†å°
+        // ´´½¨¹ã²¥µçÊÓÌ¨
         HashMap<String, HashSet<String>> map = new HashMap<>();
         HashSet<String> first = new HashSet<>();
-        first.add("åŒ—äº¬");
-        first.add("ä¸Šæµ·");
-        first.add("å¤©æ´¥");
+        first.add("±±¾©");
+        first.add("ÉÏº£");
+        first.add("Ìì½ò");
         HashSet<String> second = new HashSet<>();
-        second.add("å¹¿å·");
-        second.add("åŒ—äº¬");
-        second.add("æ·±åœ³");
+        second.add("¹ãÖİ");
+        second.add("±±¾©");
+        second.add("ÉîÛÚ");
         HashSet<String> third = new HashSet<>();
-        third.add("æˆéƒ½");
-        third.add("ä¸Šæµ·");
-        third.add("æ­å·");
+        third.add("³É¶¼");
+        third.add("ÉÏº£");
+        third.add("º¼Öİ");
         HashSet<String> fourth = new HashSet<>();
-        fourth.add("ä¸Šæµ·");
-        fourth.add("å¤©æ´¥");
+        fourth.add("ÉÏº£");
+        fourth.add("Ìì½ò");
         HashSet<String> fifth = new HashSet<>();
-        fifth.add("æ­å·");
-        fifth.add("å¤§è¿");
-        // å°†å„ä¸ªç”µè§†å°æ”¾å…¥åˆ° boardcasts
+        fifth.add("º¼Öİ");
+        fifth.add("´óÁ¬");
+        // ½«¸÷¸öµçÊÓÌ¨·ÅÈëµ½ boardcasts
         map.put("first", first);
         map.put("second", second);
         map.put("third", third);
         map.put("fourth", fourth);
         map.put("fifth", fifth);
 
-        // åˆ›é€ ä¸€ä¸ªæ€»çš„æ‹¥æœ‰å…¨éƒ¨åœ°åŒºçš„set
+        // ´´ÔìÒ»¸ö×ÜµÄÓµÓĞÈ«²¿µØÇøµÄset
         HashSet<String> all = new HashSet<>();
-        all.add("åŒ—äº¬");
-        all.add("ä¸Šæµ·");
-        all.add("å¹¿å·");
-        all.add("æ·±åœ³");
-        all.add("æˆéƒ½");
-        all.add("æ­å·");
-        all.add("å¤§è¿");
+        all.add("±±¾©");
+        all.add("ÉÏº£");
+        all.add("¹ãÖİ");
+        all.add("ÉîÛÚ");
+        all.add("³É¶¼");
+        all.add("º¼Öİ");
+        all.add("´óÁ¬");
 
         //
         map.get("first").retainAll(all);
@@ -154,8 +154,8 @@ public class Greedy {
         while (iterator.hasNext()){
             System.out.println(iterator.next());
         }
-        // ä¸Šæµ·
-        // åŒ—äº¬
+        // ÉÏº£
+        // ±±¾©
     }
 
 }

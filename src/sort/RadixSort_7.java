@@ -6,7 +6,7 @@ import java.util.Arrays;
  * ClassName: Radix
  * Package: sort
  * Description:
- * æ¡¶æ’åº ä¹Ÿå«åŸºæ•°æ’åº 23ms
+ * Í°ÅÅĞò Ò²½Ğ»ùÊıÅÅĞò 23ms
  * @Author jieHFUT
  * @Create 2024/10/24 23:22
  * @Version 1.0
@@ -29,7 +29,7 @@ public class RadixSort_7 {
         int[][] bucket = new int[10][arr.length];
         int[] bucketIndexNumber = new int[bucket.length];
 
-        // è®¡ç®—è¯¥æ•°ç»„çš„æœ€å¤§æ•°å­—çš„ä½æ•°
+        // ¼ÆËã¸ÃÊı×éµÄ×î´óÊı×ÖµÄÎ»Êı
         int max = arr[0];
         for (int i = 0; i < arr.length; i++) {
             if (arr[i] > max) {
@@ -39,22 +39,22 @@ public class RadixSort_7 {
         int enlarged = 1;
         int maxNum = (max + "").length();
         for (int k = 0; k < maxNum; k++, enlarged *= 10) {
-            // ä¾æ¬¡æ’åºä¸ªä½ã€åä½ã€ç™¾ä½
-            // ä¸ªã€åã€ç™¾... ä½æ•°çš„æ•°å­—
+            // ÒÀ´ÎÅÅĞò¸öÎ»¡¢Ê®Î»¡¢°ÙÎ»
+            // ¸ö¡¢Ê®¡¢°Ù... Î»ÊıµÄÊı×Ö
             for (int i = 0; i < arr.length; i++) {
-                // è·å¾—è¯¥æ•°ç»„çš„ç¬¬ i ä¸ªå…ƒç´ çš„ä¸ªä½æ•°
+                // »ñµÃ¸ÃÊı×éµÄµÚ i ¸öÔªËØµÄ¸öÎ»Êı
                 int digit = (arr[i] / enlarged) % 10;
-                // å°†è¯¥æ•°å­—æ”¾è¿›å¯¹åº”çš„æ¡¶ä¸­
+                // ½«¸ÃÊı×Ö·Å½ø¶ÔÓ¦µÄÍ°ÖĞ
                 bucket[digit][bucketIndexNumber[digit]] = arr[i];
                 bucketIndexNumber[digit]++;
             }
-            // æ­¤æ—¶æ•°ç»„ä¸­çš„æ•°å­—å·²ç»å…¨éƒ¨å…¥æ¡¶ï¼Œå°†æ¡¶ä¸­çš„æ•°å­—å…¨éƒ¨æ‹¿å‡ºæ”¾å›æ•°ç»„ä¸­
+            // ´ËÊ±Êı×éÖĞµÄÊı×ÖÒÑ¾­È«²¿ÈëÍ°£¬½«Í°ÖĞµÄÊı×ÖÈ«²¿ÄÃ³ö·Å»ØÊı×éÖĞ
             int recodeArr = 0;
             for (int i = 0; i < bucket.length; i++) {
                 if (bucketIndexNumber[i] > 0) {
-                    // è¯´æ˜ç¬¬ i ä¸ªæ¡¶ä¸­æœ‰æ•°æ®
+                    // ËµÃ÷µÚ i ¸öÍ°ÖĞÓĞÊı¾İ
                     for (int j = 0; j < bucketIndexNumber[i]; j++) {
-                        // ä»ä¸‹æ ‡ä¸º 0 çš„ä½ç½®æ‹¿æ•°æ®ï¼Œæ‹¿ bucketIndexNumber[i] ä¸ª
+                        // ´ÓÏÂ±êÎª 0 µÄÎ»ÖÃÄÃÊı¾İ£¬ÄÃ bucketIndexNumber[i] ¸ö
                         arr[recodeArr++] = bucket[i][j];
                     }
                 }

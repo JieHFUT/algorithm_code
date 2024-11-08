@@ -1,10 +1,10 @@
 package linkedlist.josepfu;
 
-// è¡¨ç¤ºèŠ‚ç‚¹ç±»
+// ±íÊ¾½ÚµãÀà
 public class Boy {
 
-    private int no; // ç¼–å·
-    private Boy next; // æŒ‡å‘ä¸‹ä¸€ä¸ªèŠ‚ç‚¹
+    private int no; // ±àºÅ
+    private Boy next; // Ö¸ÏòÏÂÒ»¸ö½Úµã
 
     public Boy(int no) {
         this.no = no;

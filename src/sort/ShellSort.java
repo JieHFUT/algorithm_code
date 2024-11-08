@@ -23,12 +23,12 @@ public class ShellSort {
         System.out.println(Arrays.toString(Arrays.copyOf(arr, 100)));
         System.out.println("spent " + (end - start) + " ms");
     }
-    // äº¤æ¢æ³•
+    // ½»»»·¨
     public static void shellSort(int[] arr) {
-        // åˆ†ç»„
+        // ·Ö×é
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < arr.length; i++) {
-                // å‰é¢çš„æ•°å­—å·²ç»æ˜¯æœ‰åºçš„äº†
+                // Ç°ÃæµÄÊı×ÖÒÑ¾­ÊÇÓĞĞòµÄÁË
                 for (int j = i; j >= gap; j -= gap) {
                     if (arr[j] < arr[j - gap]) {
                         swap(j, j - gap, arr);
@@ -37,7 +37,7 @@ public class ShellSort {
             }
         }
     }
-    // æ’å…¥æ³•
+    // ²åÈë·¨
     public static void shellSort2(int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < arr.length; i++) {

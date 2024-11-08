@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class BinaryTree {
 
-    // æ ¹èŠ‚ç‚¹
+    // ¸ù½Úµã
     private HeroNode root;
 
     public void setRoot(HeroNode root) {
@@ -15,7 +15,7 @@ public class BinaryTree {
     }
 
 
-    // å‰åºéå†
+    // Ç°Ğò±éÀú
     public void preOrder() {
         if (root != null)
             root.preOrder();
@@ -23,7 +23,7 @@ public class BinaryTree {
             System.out.println("tree is null");
     }
 
-    // ä¸­åºéå†
+    // ÖĞĞò±éÀú
     public void infixOrder() {
         if (root != null)
             root.infixOrder();
@@ -31,7 +31,7 @@ public class BinaryTree {
             System.out.println("tree is null");
     }
 
-    // ååºéå†
+    // ºóĞò±éÀú
     public void postOrder() {
         if (root != null)
             root.postOrder();
@@ -40,7 +40,7 @@ public class BinaryTree {
     }
 
 
-    // å‰åº ä¸­åº ååº éå†æŸ¥æ‰¾
+    // Ç°Ğò ÖĞĞò ºóĞò ±éÀú²éÕÒ
     public HeroNode preSearch(int toFind) {
         if (root != null)
             return this.root.preSearch(toFind);
@@ -69,7 +69,7 @@ public class BinaryTree {
     }
 
 
-    // å‰åºå­˜å‚¨äºŒå‰æ ‘
+    // Ç°Ğò´æ´¢¶ş²æÊ÷
     public static List<HeroNode> preOrderToList(HeroNode[] array) {
         return preOrderToList(array, 0);
     }
@@ -92,12 +92,12 @@ public class BinaryTree {
         return list;
     }
 
-    // çº¿ç´¢åŒ–äºŒå‰æ ‘ [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 æœ‰ç©ºæŒ‡é’ˆåŸŸ
-    // è§åŒ… thread_binary_tree
+    // ÏßË÷»¯¶ş²æÊ÷ [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 ÓĞ¿ÕÖ¸ÕëÓò
+    // ¼û°ü thread_binary_tree
 
 
 
-    // è·å–æ ‘ä¸­èŠ‚ç‚¹çš„ä¸ªæ•°
+    // »ñÈ¡Ê÷ÖĞ½ÚµãµÄ¸öÊı
     public int nodeOfNumber() {
         return this.nodeOfNumber(this.root);
     }
@@ -105,7 +105,7 @@ public class BinaryTree {
         if (node == null) return 0;
         return 1 + nodeOfNumber(node.getLeft()) + nodeOfNumber(node.getRight());
     }
-    // è·å–å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°
+    // »ñÈ¡Ò¶×Ó½ÚµãµÄ¸öÊı
     public int getLeaveOfNumber() {
         return this.getLeaveOfNumber(this.root);
     }
@@ -123,7 +123,7 @@ public class BinaryTree {
         return getLeaveOfNumber2(node.getLeft()) +
                 getLeaveOfNumber2(node.getRight());
     }
-    // è·å–ç¬¬Kå±‚èŠ‚ç‚¹çš„ä¸ªæ•°
+    // »ñÈ¡µÚK²ã½ÚµãµÄ¸öÊı
     public int getKLeaveOfNumber(int k) {
         return getKLeaveOfNumber(this.root, k);
     }
@@ -132,7 +132,7 @@ public class BinaryTree {
         if (k == 1 && node != null) return 1;
         return getKLeaveOfNumber(node.getLeft(), k - 1) + getKLeaveOfNumber(node.getRight(), k - 1);
     }
-    // è·å–äºŒå‰æ ‘çš„é«˜åº¦
+    // »ñÈ¡¶ş²æÊ÷µÄ¸ß¶È
     public int height() {
         return height(this.root);
     }
@@ -142,7 +142,7 @@ public class BinaryTree {
         int rightHeight = height(node.getRight());
         return Math.max(leftHeight, rightHeight) + 1;
     }
-    // æ£€æµ‹ç¼–å·noçš„å…ƒç´ æ˜¯å¦å­˜åœ¨
+    // ¼ì²â±àºÅnoµÄÔªËØÊÇ·ñ´æÔÚ
     public HeroNode findByNo(int no) {
         return this.findByNo(this.root, no);
     }
@@ -155,7 +155,7 @@ public class BinaryTree {
             return findByNo(node.getRight(), no);
         return null;
     }
-    // å±‚åºéå†(1.é˜Ÿåˆ—  2.éé€’å½’)
+    // ²ãĞò±éÀú(1.¶ÓÁĞ  2.·Çµİ¹é)
     public void levelOrderByQueue() {
         Queue<HeroNode> queue = new LinkedList<>();
         HeroNode node = this.root;
@@ -199,32 +199,32 @@ public class BinaryTree {
         }
         return result;
     }
-    // åˆ¤æ–­ä¸€æ£µæ ‘æ˜¯ä¸æ˜¯å®Œå…¨äºŒå‰æ ‘ ï¼šå¶ç»“ç‚¹åªèƒ½å‡ºç°åœ¨æœ€åº•å±‚çš„ä¸¤å±‚ï¼Œä¸”æœ€åº•å±‚å¶ç»“ç‚¹å‡å¤„äºæ¬¡åº•å±‚å¶ç»“ç‚¹çš„å·¦ä¾§
+    // ÅĞ¶ÏÒ»¿ÃÊ÷ÊÇ²»ÊÇÍêÈ«¶ş²æÊ÷ £ºÒ¶½áµãÖ»ÄÜ³öÏÖÔÚ×îµ×²ãµÄÁ½²ã£¬ÇÒ×îµ×²ãÒ¶½áµã¾ù´¦ÓÚ´Îµ×²ãÒ¶½áµãµÄ×ó²à
     public boolean isCompleteTree() {
         
         return false;
     }
-    // åˆ¤æ–­ä¸¤æ£µæ ‘æ˜¯å¦ç›¸åŒ
+    // ÅĞ¶ÏÁ½¿ÃÊ÷ÊÇ·ñÏàÍ¬
     public boolean isSameTree(HeroNode otherRoot) {
         return false;
     }
-    // åˆ¤æ–­ä¸€æ£µæ ‘æ˜¯å¦åŒ…å«å¦å¤–ä¸€æ£µæ ‘
+    // ÅĞ¶ÏÒ»¿ÃÊ÷ÊÇ·ñ°üº¬ÁíÍâÒ»¿ÃÊ÷
     public boolean isSubTree(HeroNode otherRoot) {
         return false;
     }
-    // åˆ¤æ–­æ˜¯å¦æ˜¯é«˜åº¦å¹³è¡¡çš„äºŒå‰æ ‘(2 functions)
+    // ÅĞ¶ÏÊÇ·ñÊÇ¸ß¶ÈÆ½ºâµÄ¶ş²æÊ÷(2 functions)
     public boolean isBalanceTree() {
         return false;
     }
-    // åˆ¤æ–­ä¸€é¢—äºŒå‰æ ‘æ˜¯å¦è½´å¯¹ç§°
+    // ÅĞ¶ÏÒ»¿Å¶ş²æÊ÷ÊÇ·ñÖá¶Ô³Æ
     public boolean isSymmetricTree() {
         return false;
     }
-    // å°†ä¸€æ£µæ ‘çš„æ¯ä¸€ä¸ªèŠ‚ç‚¹çš„å·¦å³èŠ‚ç‚¹çš„æŒ‡å‘åè¿‡æ¥(2 functions)
+    // ½«Ò»¿ÃÊ÷µÄÃ¿Ò»¸ö½ÚµãµÄ×óÓÒ½ÚµãµÄÖ¸Ïò·´¹ıÀ´(2 functions)
     public void turnOneTree() {
 
     }
-    // æ‰¾åˆ°ä¸¤ä¸ªæŒ‡å®šèŠ‚ç‚¹æœ€è¿‘çš„å…¬å…±ç¥–å…ˆ
+    // ÕÒµ½Á½¸öÖ¸¶¨½Úµã×î½üµÄ¹«¹²×æÏÈ
     public static HeroNode lowestCommonAncestor(HeroNode p, HeroNode q) {
         return null;
     }

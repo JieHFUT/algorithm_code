@@ -4,7 +4,7 @@ package dynamic;
  * ClassName: KnapsackProblem
  * Package: dynamic
  * Description:
- * èƒŒåŒ…é—®é¢˜
+ * ±³°üÎÊÌâ
  * @Author jieHFUT
  * @Create 2024/11/5 7:14
  * @Version 1.0
@@ -12,22 +12,22 @@ package dynamic;
 public class KnapsackProblem {
     public static void main(String[] args) {
 
-        // å»ºç«‹ä¸€ä¸ªæ•°ç»„ï¼Œè¡¨ç¤ºç‰©å“çš„é‡é‡
+        // ½¨Á¢Ò»¸öÊı×é£¬±íÊ¾ÎïÆ·µÄÖØÁ¿
         int[] weight = {1,3,5,3,6,4,7,5};
-        // å»ºç«‹ä¸€ä¸ªæ•°ç»„ï¼Œè¡¨ç¤ºç‰©å“çš„ä»·å€¼
+        // ½¨Á¢Ò»¸öÊı×é£¬±íÊ¾ÎïÆ·µÄ¼ÛÖµ
         int[] value = {100, 200, 150, 300, 400, 180, 320, 260};
-        // èƒŒåŒ…çš„å®¹é‡
+        // ±³°üµÄÈİÁ¿
         int capacity = 18;
-        // ç‰©å“çš„ä¸ªæ•°
+        // ÎïÆ·µÄ¸öÊı
         int number = value.length;
 
 
-        // åˆ›å»ºä¸€ä¸ªäºŒç»´æ•°ç»„è¡¨ç¤ºåœ¨éå†åˆ°è¯¥è¡Œé›¶ä»¶çš„æ—¶å€™ï¼Œåœ¨èƒŒåŒ…å®¹é‡ä¸ºè¯¥åˆ—çš„æ—¶å€™ï¼ŒèƒŒåŒ…èƒ½å¤Ÿå­˜æ”¾ç‰©å“çš„æœ€å¤§å€¼
+        // ´´½¨Ò»¸ö¶şÎ¬Êı×é±íÊ¾ÔÚ±éÀúµ½¸ÃĞĞÁã¼şµÄÊ±ºò£¬ÔÚ±³°üÈİÁ¿Îª¸ÃÁĞµÄÊ±ºò£¬±³°üÄÜ¹»´æ·ÅÎïÆ·µÄ×î´óÖµ
         int[][] maxValue = new int[number + 1][capacity + 1];
-        // ä¸ºäº†è®°å½•åœ¨èƒŒåŒ…å®¹é‡ä¸ºæŸä¸€ä¸ªå€¼çš„æ—¶å€™ => æ”¾çš„å•†å“çš„ç§ç±»å’Œä¸ªæ•°
+        // ÎªÁË¼ÇÂ¼ÔÚ±³°üÈİÁ¿ÎªÄ³Ò»¸öÖµµÄÊ±ºò => ·ÅµÄÉÌÆ·µÄÖÖÀàºÍ¸öÊı
         int[][] path = new int[number + 1][capacity + 1];
 
-        // åˆå§‹åŒ–ç¬¬ä¸€è¡Œå’Œç¬¬ä¸€åˆ—
+        // ³õÊ¼»¯µÚÒ»ĞĞºÍµÚÒ»ÁĞ
         for (int i = 0; i < maxValue.length; i++) {
             maxValue[i][0] = 0;
         }
@@ -37,10 +37,10 @@ public class KnapsackProblem {
 
 
 
-        // ä»ç¬¬ä¸€è¡Œå¼€å§‹å¤„ç†
+        // ´ÓµÚÒ»ĞĞ¿ªÊ¼´¦Àí
         for (int i = 1; i < maxValue.length; i++) {
             for (int j = 1; j < maxValue[0].length; j++) {
-                // å¯¹æ¯ä¸€ä¸ª maxValue è¿›è¡Œåˆ¤æ–­
+                // ¶ÔÃ¿Ò»¸ö maxValue ½øĞĞÅĞ¶Ï
                 if (weight[i - 1] > j) {
                     maxValue[i][j] = maxValue[i - 1][j];
                 } else {
@@ -49,10 +49,10 @@ public class KnapsackProblem {
                     int scheme1 = maxValue[i -1][j];
                     int scheme2 = maxValue[i -1][j - weight[i - 1]] + value[i - 1];
                     if (scheme1 > scheme2) {
-                        // ä¸æ”¾æ–°çš„ç‰©å“
+                        // ²»·ÅĞÂµÄÎïÆ·
                         maxValue[i][j] = scheme1;
                     } else {
-                        // æ”¾ç½®æ–°çš„ç‰©å“
+                        // ·ÅÖÃĞÂµÄÎïÆ·
                         maxValue[i][j] = scheme2;
                         path[i][j] = 1;
                     }
@@ -61,7 +61,7 @@ public class KnapsackProblem {
 
         }
 
-        System.out.println("èƒŒåŒ…è¡¨ä»·å€¼è¡¨");
+        System.out.println("±³°ü±í¼ÛÖµ±í");
         int count = 1;
         System.out.println("-----1----2----3----4----5----6----7----8----9----10---11---12---13---14---15---16---17---18   ");
         for (int[] ints : maxValue) {
@@ -71,19 +71,19 @@ public class KnapsackProblem {
             System.out.println();
         }
 
-        System.out.println("å„ä¸ªèƒŒåŒ…å®¹é‡é‡Œç‰©å“çš„æ·»åŠ æƒ…å†µ");
+        System.out.println("¸÷¸ö±³°üÈİÁ¿ÀïÎïÆ·µÄÌí¼ÓÇé¿ö");
         for (int[] ints : path) {
             for (int num : ints) {
                 System.out.printf("%-5d", num);
             }
             System.out.println();
         }
-        System.out.println("èƒŒåŒ…é‡Œæœ€ç»ˆå­˜æ”¾çš„ç‰©å“ä¸º");
+        System.out.println("±³°üÀï×îÖÕ´æ·ÅµÄÎïÆ·Îª");
         int x = path.length - 1;
         int y = path[0].length - 1;
         while (x >= 0 && y >= 0) {
             if (path[x][y] == 1) {
-                System.out.printf("ç¬¬%dä¸ªç‰©å“æ”¾è¿›èƒŒåŒ…ä¸­\n", x);
+                System.out.printf("µÚ%d¸öÎïÆ··Å½ø±³°üÖĞ\n", x);
                 y -= weight[x-1];
             }
             x--;

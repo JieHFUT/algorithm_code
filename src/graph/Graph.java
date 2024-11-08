@@ -12,15 +12,15 @@ import java.util.List;
  * ClassName: Graph
  * Package: graph
  * Description:
- * é¡¶ç‚¹ï¼švertex
- * è¾¹ï¼šedge
- * è·¯å¾„ï¼š
- * æ— å‘å›¾ï¼š
- * æœ‰å‘å›¾
- * å¸¦æƒå›¾ï¼šä¹Ÿç§°ä¸ºç½‘
- * è¡¨ç¤ºæ–¹æ³•ï¼š
- * 1. é‚»æ¥çŸ©é˜µ -> äºŒç»´æ•°ç»„
- * 2. é‚»æ¥è¡¨ -> é“¾è¡¨
+ * ¶¥µã£ºvertex
+ * ±ß£ºedge
+ * Â·¾¶£º
+ * ÎŞÏòÍ¼£º
+ * ÓĞÏòÍ¼
+ * ´øÈ¨Í¼£ºÒ²³ÆÎªÍø
+ * ±íÊ¾·½·¨£º
+ * 1. ÁÚ½Ó¾ØÕó -> ¶şÎ¬Êı×é
+ * 2. ÁÚ½Ó±í -> Á´±í
  * @Author jieHFUT
  * @Create 2024/11/4 0:37
  * @Version 1.0
@@ -28,34 +28,34 @@ import java.util.List;
 
 public class Graph {
 
-    // å›¾èŠ‚ç‚¹åç§°çš„é›†åˆ
+    // Í¼½ÚµãÃû³ÆµÄ¼¯ºÏ
     private List<String> vertexList;
-    // è¾¹çš„è¿æ¥è¡¨ç¤º
+    // ±ßµÄÁ¬½Ó±íÊ¾
     public int[][] edges;
-    // è¾¹çš„æ•°é‡
+    // ±ßµÄÊıÁ¿
     public int numOfEdge;
-    // è®°å½•æŸä¸€ä¸ªèŠ‚ç‚¹æ˜¯å¦è¢«è®¿é—®è¿‡
+    // ¼ÇÂ¼Ä³Ò»¸ö½ÚµãÊÇ·ñ±»·ÃÎÊ¹ı
     public boolean[] isVisited;
 
-    // æ„é€ å™¨
+    // ¹¹ÔìÆ÷
     public Graph(int numOfVertex) {
-        // åˆå§‹åŒ–
+        // ³õÊ¼»¯
         isVisited = new boolean[numOfVertex];
         edges = new int[numOfVertex][numOfVertex];
         vertexList = new ArrayList<String>(numOfVertex);
         numOfEdge = 0;
     }
 
-    // æ’å…¥èŠ‚ç‚¹
+    // ²åÈë½Úµã
     public void insertVertex(String vertex) {
         vertexList.add(vertex);
     }
 
     /**
-     * æ— å‘å›¾æ·»åŠ è¾¹
-     * @param from å¼€å§‹èŠ‚ç‚¹
-     * @param to æŒ‡å‘èŠ‚ç‚¹
-     * @param weight æƒé‡
+     * ÎŞÏòÍ¼Ìí¼Ó±ß
+     * @param from ¿ªÊ¼½Úµã
+     * @param to Ö¸Ïò½Úµã
+     * @param weight È¨ÖØ
      */
     public void insertEdge(int from, int to, int weight) {
         edges[from - 1][to - 1] = weight;
@@ -65,23 +65,23 @@ public class Graph {
 
 
 
-    // è¿”å›æŸä¸€ä¸ªé¡¶ç‚¹çš„åç§°
+    // ·µ»ØÄ³Ò»¸ö¶¥µãµÄÃû³Æ
     public String getValueByIndex(int index) {
         return vertexList.get(index);
     }
-    // è¿”å›é¡¶ç‚¹çš„ä¸ªæ•°
+    // ·µ»Ø¶¥µãµÄ¸öÊı
     public int getNumOfVertex() {
         return vertexList.size();
     }
-    // è¿”å›è¾¹çš„æ•°é‡
+    // ·µ»Ø±ßµÄÊıÁ¿
     public int getNumOfEdge() { return numOfEdge; }
-    // è¿”å›ä¸¤ä¸ªèŠ‚ç‚¹ä¹‹é—´çš„æƒå€¼
+    // ·µ»ØÁ½¸ö½ÚµãÖ®¼äµÄÈ¨Öµ
     public int getWeight(int from, int to) {
         return edges[from][to];
     }
 
 
-    // æ‰“å°çŸ©é˜µ
+    // ´òÓ¡¾ØÕó
     public void printGraph() {
         for (int[] vertexOfEdge : edges) {
             System.out.println(Arrays.toString(vertexOfEdge));
@@ -91,18 +91,18 @@ public class Graph {
 
     /////////////////////////////////////////////////////////////////////////////////////
 
-    // æŸ¥æ‰¾ç¬¬ä¸€ä¸ªé‚»æ¥èŠ‚ç‚¹çš„ä¸‹æ ‡
+    // ²éÕÒµÚÒ»¸öÁÚ½Ó½ÚµãµÄÏÂ±ê
     public int getFirstNeighbor(int vertex) {
         for (int i = 0; i < edges[vertex - 1].length; i++) {
             if (edges[vertex - 1][i] > 0) {
-                // è¯´æ˜è¯¥å‡ ç‚¹æ‰¾åˆ°äº†ç›¸è¿æ¥çš„èŠ‚ç‚¹
+                // ËµÃ÷¸Ã¼¸µãÕÒµ½ÁËÏàÁ¬½ÓµÄ½Úµã
                 return i + 1;
             }
         }
         return -1;
     }
 
-    // æ ¹æ®å‰ä¸€ä¸ªé‚»æ¥èŠ‚ç‚¹çš„ä¸‹æ ‡æ¥è·å–ä¸‹ä¸€ä¸ªé‚»æ¥èŠ‚ç‚¹
+    // ¸ù¾İÇ°Ò»¸öÁÚ½Ó½ÚµãµÄÏÂ±êÀ´»ñÈ¡ÏÂÒ»¸öÁÚ½Ó½Úµã
     public int getNextNeighbor(int vertex, int prevNeighbor) {
         for (int i = prevNeighbor; i < edges[vertex - 1].length; i++) {
             if (edges[vertex - 1][i] > 0) {
@@ -112,7 +112,7 @@ public class Graph {
         return -1;
     }
 
-    // æ·±åº¦ä¼˜å…ˆéå†ç®—æ³•
+    // Éî¶ÈÓÅÏÈ±éÀúËã·¨
     public void dfs() {
         isVisited = new boolean[vertexList.size()];
         for (int i = 0; i < vertexList.size(); i++) {
@@ -123,12 +123,12 @@ public class Graph {
         System.out.println();
     }
     public void dfs(int vertex, boolean[] isVisited) {
-        // ç¬¬ä¸€æ¬¡å°±æ˜¯ç¬¬ä¸€ä¸ªèŠ‚ç‚¹ vertex = 1
+        // µÚÒ»´Î¾ÍÊÇµÚÒ»¸ö½Úµã vertex = 1
         isVisited[vertex - 1] = true;
         System.out.print(getValueByIndex(vertex - 1) + " ");
         int neighbor = getFirstNeighbor(vertex);
         while (neighbor != -1) {
-            // æœ‰é‚»æ¥èŠ‚ç‚¹
+            // ÓĞÁÚ½Ó½Úµã
             if (!isVisited[neighbor - 1]) {
                 dfs(neighbor, isVisited);
             } else {
@@ -140,7 +140,7 @@ public class Graph {
 
 
 
-    // å¹¿åº¦ä¼˜å…ˆéå† ä½¿ç”¨ä¸€ä¸ªé˜Ÿåˆ—ä¿æŒè®¿é—®è¿‡çš„èŠ‚ç‚¹çš„é¡ºåº
+    // ¹ã¶ÈÓÅÏÈ±éÀú Ê¹ÓÃÒ»¸ö¶ÓÁĞ±£³Ö·ÃÎÊ¹ıµÄ½ÚµãµÄË³Ğò
     public void bfs() {
         isVisited = new boolean[vertexList.size()];
         for (int i = 0; i < vertexList.size(); i++) {
@@ -151,32 +151,32 @@ public class Graph {
         System.out.println();
     }
     public void bfs(boolean[] isVisited, int vertex) {
-        // é˜Ÿåˆ—ï¼Œç”¨æ¥è®°å½•è®¿é—®èŠ‚ç‚¹çš„é¡ºåº
+        // ¶ÓÁĞ£¬ÓÃÀ´¼ÇÂ¼·ÃÎÊ½ÚµãµÄË³Ğò
         LinkedList<Integer> queue = new LinkedList();
-        // æ‰“å°å½“å‰èŠ‚ç‚¹
+        // ´òÓ¡µ±Ç°½Úµã
         System.out.print(getValueByIndex(vertex - 1) + " ");
         isVisited[vertex - 1] = true;
-        // å½“å‰èŠ‚ç‚¹å…¥é˜Ÿåˆ—
+        // µ±Ç°½ÚµãÈë¶ÓÁĞ
         queue.addLast(vertex);
         while (!queue.isEmpty()) {
             int current = queue.removeFirst();
-            // è·å–ç¬¬ä¸€ä¸ªé‚»æ¥èŠ‚ç‚¹
+            // »ñÈ¡µÚÒ»¸öÁÚ½Ó½Úµã
             int neighbor = getFirstNeighbor(current);
 
             while (neighbor != -1) {
                 if (!isVisited[neighbor - 1]) {
-                    // å½“å‰èŠ‚ç‚¹çš„é‚»æ¥èŠ‚ç‚¹æ²¡è¢« visited
+                    // µ±Ç°½ÚµãµÄÁÚ½Ó½ÚµãÃ»±» visited
                     System.out.print(getValueByIndex(neighbor - 1) + " ");
-                    // é‚»æ¥èŠ‚ç‚¹å…¥é˜Ÿåˆ—
+                    // ÁÚ½Ó½ÚµãÈë¶ÓÁĞ
                     queue.addLast(neighbor);
                     isVisited[neighbor - 1] = true;
                 } else {
-                    // å½“å‰èŠ‚ç‚¹è¿™ä¸ªé‚»æ¥èŠ‚ç‚¹è¢« visited
+                    // µ±Ç°½ÚµãÕâ¸öÁÚ½Ó½Úµã±» visited
                     int nextNeighbor = getNextNeighbor(current, neighbor);
                     neighbor = nextNeighbor;
                 }
             }
-            // å½“å‰èŠ‚ç‚¹æ²¡æœ‰é‚»æ¥èŠ‚ç‚¹ return
+            // µ±Ç°½ÚµãÃ»ÓĞÁÚ½Ó½Úµã return
         }
     }
 

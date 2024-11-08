@@ -6,7 +6,7 @@ import java.util.Arrays;
  * ClassName: SelectSort_2
  * Package: sort
  * Description:
- * é€‰æ‹©æ’åº => 10ä¸‡ä¸ªæ•°æ®: spent time: 2456 ms
+ * Ñ¡ÔñÅÅĞò => 10Íò¸öÊı¾İ: spent time: 2456 ms
  * @Author jieHFUT
  * @Create 2024/10/23 23:28
  * @Version 1.0
@@ -33,11 +33,11 @@ public class SelectSort_2 {
                     minIndex = j;
                 }
             }
-            // å°†è¿™ä¸ªæœ€å°å€¼ä¸ i å¤„å…ƒç´ äº¤æ¢
+            // ½«Õâ¸ö×îĞ¡ÖµÓë i ´¦ÔªËØ½»»»
             swap(i, minIndex, arr);
         }
     }
-    // äº¤æ¢ä¸€ä¸ªæ•°ç»„ä¸¤ä¸ªä¸‹æ ‡ä½ç½®çš„å…ƒç´  i j arr
+    // ½»»»Ò»¸öÊı×éÁ½¸öÏÂ±êÎ»ÖÃµÄÔªËØ i j arr
     public static void swap(int i, int j, int[] arr) {
         int temp = arr[i];
         arr[i] = arr[j];

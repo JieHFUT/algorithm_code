@@ -1,7 +1,7 @@
 package recursion;
 
 /**
- * å…«çš‡åé—®é¢˜ å›æº¯
+ * °Ë»ÊºóÎÊÌâ »ØËİ
  *
  *
  */
@@ -10,14 +10,14 @@ public class EightQueens {
     public static void main(String[] args) {
         EightQueens queens = new EightQueens();
         queens.putQueens(1);
-        System.out.printf("ä¸€å…±æœ‰ %d ç§è§£æ³•", queens.count);
+        System.out.printf("Ò»¹²ÓĞ %d ÖÖ½â·¨", queens.count);
     }
 
     int count = 0;
-    int queenNum = 8; // ä»£è¡¨çš‡åçš„æ•°é‡
-    int[] queens = new int[queenNum]; // ç”¨äºå­˜å‚¨çš‡åçš„ä½ç½®
+    int queenNum = 8; // ´ú±í»ÊºóµÄÊıÁ¿
+    int[] queens = new int[queenNum]; // ÓÃÓÚ´æ´¢»ÊºóµÄÎ»ÖÃ
 
-    // æ‰“å°çš‡åçš„ä½ç½®
+    // ´òÓ¡»ÊºóµÄÎ»ÖÃ
     private void printQueens(int[] queens) {
         count++;
         for (int i = 0; i < queenNum; i++) {
@@ -26,32 +26,32 @@ public class EightQueens {
         System.out.println();
     }
 
-    // åˆ¤æ–­ç¬¬ n è¡Œçš„çš‡åæ˜¯ä¸æ˜¯å’Œå‰é¢çš„ n-1 ä¸ªçš‡åçš„ä½ç½®å†²çª
+    // ÅĞ¶ÏµÚ n ĞĞµÄ»ÊºóÊÇ²»ÊÇºÍÇ°ÃæµÄ n-1 ¸ö»ÊºóµÄÎ»ÖÃ³åÍ»
     private boolean judgeConflict(int n) {
         for (int i = 0; i < n - 1; i++) {
-            // å’Œå‰é¢ n-1 è¡Œçš‡åçš„ä½ç½®è¿›è¡Œå¯¹æ¯”
+            // ºÍÇ°Ãæ n-1 ĞĞ»ÊºóµÄÎ»ÖÃ½øĞĞ¶Ô±È
             if(queens[i] == queens[n - 1] || Math.abs(n - i - 1) == Math.abs(queens[n - 1] - queens[i])) {
-                // è¯´æ˜è¿™ä¸ªçš‡åå’Œä¹‹å‰çš„åœ¨åŒä¸€è¡Œæˆ–è€…å¯¹è§’
+                // ËµÃ÷Õâ¸ö»ÊºóºÍÖ®Ç°µÄÔÚÍ¬Ò»ĞĞ»òÕß¶Ô½Ç
                 return false;
             }
         }
         return true;
     }
 
-    // æ”¾ç½®ç¬¬ n ä¸ªçš‡å
+    // ·ÅÖÃµÚ n ¸ö»Êºó
     private void putQueens(int n) {
         if (n == queenNum + 1) {
             printQueens(queens);
             return;
         }
         for (int i = 0; i < queenNum; i++) {
-            // å…ˆå°†è¯¥çš‡åæ”¾åœ¨ç¬¬ä¸€ä¸ªä½ç½®ä¸Šï¼Œç„¶åæ£€æµ‹å…¶æ˜¯å¦å†²çª
+            // ÏÈ½«¸Ã»Êºó·ÅÔÚµÚÒ»¸öÎ»ÖÃÉÏ£¬È»ºó¼ì²âÆäÊÇ·ñ³åÍ»
             queens[n - 1] = i;
             if (judgeConflict(n)) {
-                // ä¸å†²çªçš„è¯ï¼Œå°±æ”¾ç½®ç¬¬ n+1 ä¸ªçš‡å
+                // ²»³åÍ»µÄ»°£¬¾Í·ÅÖÃµÚ n+1 ¸ö»Êºó
                 putQueens(n + 1);
             }
-            // å†²çªçš„è¯ï¼Œå°±å°†ç¬¬ n ä¸ªçš‡åå‘åæŒªä¸€ä½ç›´åˆ°å…¶ä¸å†²çªä¸ºæ­¢
+            // ³åÍ»µÄ»°£¬¾Í½«µÚ n ¸ö»ÊºóÏòºóÅ²Ò»Î»Ö±µ½Æä²»³åÍ»ÎªÖ¹
         }
     }
 

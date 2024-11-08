@@ -1,32 +1,32 @@
 package queue;
-// åˆ›å»ºä¸€ä¸ªç¯å½¢é˜Ÿåˆ—
+// ´´½¨Ò»¸ö»·ĞÎ¶ÓÁĞ
 public class CircleArrayQueue {
 
-    private int maxSize; // è¡¨ç¤ºæ•°ç»„çš„æœ€å¤§å®¹é‡
+    private int maxSize; // ±íÊ¾Êı×éµÄ×î´óÈİÁ¿
     private int front;
     private int rear;
     private int[] array;
 
-    // ç¯å½¢é˜Ÿåˆ—çš„æ„é€ æ–¹æ³•
+    // »·ĞÎ¶ÓÁĞµÄ¹¹Ôì·½·¨
     public CircleArrayQueue(int maxSize) {
         this.maxSize = maxSize;
         array = new int[maxSize];
     }
 
 
-    // åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦å·²æ»¡
+    // ÅĞ¶Ï¶ÓÁĞÊÇ·ñÒÑÂú
     public boolean isFull() {
         return front == (rear + 1) % maxSize;
     }
 
-    // åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+    // ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ
     public boolean isEmpty() {
         return front == rear;
     }
 
-    // æ·»åŠ æ•°æ®åˆ°é˜Ÿåˆ—
+    // Ìí¼ÓÊı¾İµ½¶ÓÁĞ
     public void add(int value) {
-        // åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦å·²æ»¡
+        // ÅĞ¶Ï¶ÓÁĞÊÇ·ñÒÑÂú
         if (isFull()) {
             System.out.println("Queue is full");
             return;
@@ -35,7 +35,7 @@ public class CircleArrayQueue {
         rear = (rear + 1) % maxSize;
     }
 
-    // è¯»å–é˜Ÿåˆ—çš„æ•°æ®ï¼Œå‡ºé˜Ÿåˆ—
+    // ¶ÁÈ¡¶ÓÁĞµÄÊı¾İ£¬³ö¶ÓÁĞ
     public int getQueue() {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");
@@ -45,7 +45,7 @@ public class CircleArrayQueue {
         return ret;
     }
 
-    // æ˜¾ç¤ºé˜Ÿåˆ—çš„æ‰€æœ‰æ•°æ®
+    // ÏÔÊ¾¶ÓÁĞµÄËùÓĞÊı¾İ
     public void showQueue() {
         if (isEmpty()) {
             System.out.println("Queue is empty");
@@ -57,13 +57,13 @@ public class CircleArrayQueue {
         }
     }
 
-    // æ±‚å‡ºå½“å‰é˜Ÿåˆ—æœ‰æ•ˆæ•°æ®çš„ä¸ªæ•°
+    // Çó³öµ±Ç°¶ÓÁĞÓĞĞ§Êı¾İµÄ¸öÊı
     public int useSize() {
         return (rear + maxSize - front) % maxSize;
     }
 
 
-    // æ˜¾ç¤ºé˜Ÿåˆ—çš„å¤´æ•°æ®
+    // ÏÔÊ¾¶ÓÁĞµÄÍ·Êı¾İ
     public int headQueue() {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");

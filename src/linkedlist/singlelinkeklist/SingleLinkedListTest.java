@@ -5,23 +5,23 @@ public class SingleLinkedListTest {
 
         SingleLinkedList linkedList = new SingleLinkedList();
 
-        //è¿›è¡Œæµ‹è¯•
-        //å…ˆåˆ›å»ºèŠ‚ç‚¹
-        HeroNode hero1 = new HeroNode(1, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
-        HeroNode hero2 = new HeroNode(2, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
-        HeroNode hero3 = new HeroNode(3, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
-        HeroNode hero4 = new HeroNode(4, "æ—å†²", "è±¹å­å¤´");
+        //½øĞĞ²âÊÔ
+        //ÏÈ´´½¨½Úµã
+        HeroNode hero1 = new HeroNode(1, "ËÎ½­", "¼°Ê±Óê");
+        HeroNode hero2 = new HeroNode(2, "Â¬¿¡Òå", "Óñ÷è÷ë");
+        HeroNode hero3 = new HeroNode(3, "ÎâÓÃ", "ÖÇ¶àĞÇ");
+        HeroNode hero4 = new HeroNode(4, "ÁÖ³å", "±ª×ÓÍ·");
 
-        //åŠ å…¥
+        //¼ÓÈë
 //        linkedList.addInTail(hero4);
 //        linkedList.addInTail(hero2);
 //        linkedList.addInTail(hero1);
 //        linkedList.addInTail(hero3);
 //        linkedList.list();
-//        [4 name: æ—å†² nickname: è±¹å­å¤´]
-//        [2 name: å¢ä¿Šä¹‰ nickname: ç‰éº’éºŸ]
-//        [1 name: å®‹æ±Ÿ nickname: åŠæ—¶é›¨]
-//        [3 name: å´ç”¨ nickname: æ™ºå¤šæ˜Ÿ]
+//        [4 name: ÁÖ³å nickname: ±ª×ÓÍ·]
+//        [2 name: Â¬¿¡Òå nickname: Óñ÷è÷ë]
+//        [1 name: ËÎ½­ nickname: ¼°Ê±Óê]
+//        [3 name: ÎâÓÃ nickname: ÖÇ¶àĞÇ]
 
         linkedList.addOrderByNo(hero2);
         linkedList.addOrderByNo(hero4);
@@ -30,24 +30,24 @@ public class SingleLinkedListTest {
         linkedList.list();
 
         linkedList.reverse1(linkedList.getHead());
-        System.out.println("====== åè½¬ 1 ==========");
+        System.out.println("====== ·´×ª 1 ==========");
         linkedList.list();
 
         linkedList.reverse2(linkedList.getHead());
-        System.out.println("====== åè½¬ 2 ==========");
+        System.out.println("====== ·´×ª 2 ==========");
         linkedList.list();
 
-        System.out.println("é€†å‘æ‰“å°");
+        System.out.println("ÄæÏò´òÓ¡");
         linkedList.printFromLast(linkedList.getHead());
 
-        HeroNode hero11 = new HeroNode(1, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
-        HeroNode hero22 = new HeroNode(3, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
-        HeroNode hero33 = new HeroNode(5, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
-        HeroNode hero44 = new HeroNode(7, "æ—å†²", "è±¹å­å¤´");
-        HeroNode hero55 = new HeroNode(2, "å®‹æ±Ÿ", "åŠæ—¶é›¨");
-        HeroNode hero66 = new HeroNode(5, "å¢ä¿Šä¹‰", "ç‰éº’éºŸ");
-        HeroNode hero77 = new HeroNode(8, "å´ç”¨", "æ™ºå¤šæ˜Ÿ");
-        HeroNode hero88 = new HeroNode(9, "æ—å†²", "è±¹å­å¤´");
+        HeroNode hero11 = new HeroNode(1, "ËÎ½­", "¼°Ê±Óê");
+        HeroNode hero22 = new HeroNode(3, "Â¬¿¡Òå", "Óñ÷è÷ë");
+        HeroNode hero33 = new HeroNode(5, "ÎâÓÃ", "ÖÇ¶àĞÇ");
+        HeroNode hero44 = new HeroNode(7, "ÁÖ³å", "±ª×ÓÍ·");
+        HeroNode hero55 = new HeroNode(2, "ËÎ½­", "¼°Ê±Óê");
+        HeroNode hero66 = new HeroNode(5, "Â¬¿¡Òå", "Óñ÷è÷ë");
+        HeroNode hero77 = new HeroNode(8, "ÎâÓÃ", "ÖÇ¶àĞÇ");
+        HeroNode hero88 = new HeroNode(9, "ÁÖ³å", "±ª×ÓÍ·");
 
         SingleLinkedList list2 = new SingleLinkedList();
         list2.addOrderByNo(hero11);

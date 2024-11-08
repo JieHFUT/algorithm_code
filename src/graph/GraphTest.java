@@ -3,24 +3,24 @@ package graph;
 public class GraphTest {
     public static void main(String[] args) {
         Graph graph = new Graph(5);
-        // æ„é€ æ— å‘å›¾çš„é¡¶ç‚¹
-        String[] vertexs = {"1.åŒ—äº¬", "2.å¤©æ´¥", "3.è‹å·", "4.ä¸Šæµ·", "5.æ·±åœ³"};
+        // ¹¹ÔìÎŞÏòÍ¼µÄ¶¥µã
+        String[] vertexs = {"1.±±¾©", "2.Ìì½ò", "3.ËÕÖİ", "4.ÉÏº£", "5.ÉîÛÚ"};
         for (int i = 0; i < vertexs.length; i++) {
             graph.insertVertex(vertexs[i]);
         }
-        // æ„é€ æ— å‘å›¾çš„è¾¹
+        // ¹¹ÔìÎŞÏòÍ¼µÄ±ß
         graph.insertEdge(1,3,1);
         graph.insertEdge(1,5,1);
         graph.insertEdge(2,3,1);
         graph.insertEdge(2,4,1);
         graph.insertEdge(3,4,1);
-        // æ‰“å°çŸ©é˜µ
-        System.out.println("æ— å‘å›¾çŸ©é˜µä¸º: ");
+        // ´òÓ¡¾ØÕó
+        System.out.println("ÎŞÏòÍ¼¾ØÕóÎª: ");
         graph.printGraph();
-        System.out.println("æ·±åº¦ä¼˜å…ˆéå†ç»“æœä¸ºï¼š");
+        System.out.println("Éî¶ÈÓÅÏÈ±éÀú½á¹ûÎª£º");
         graph.dfs();
 
-        System.out.println("å¹¿åº¦ä¼˜å…ˆéå†ç»“æœä¸ºï¼š");
+        System.out.println("¹ã¶ÈÓÅÏÈ±éÀú½á¹ûÎª£º");
         graph.bfs();
     }
 }

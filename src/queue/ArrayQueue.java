@@ -1,36 +1,36 @@
 package queue;
 
 /**
- * ä½¿ç”¨æ•°ç»„æ¨¡æ‹Ÿé˜Ÿåˆ—ç¼–å†™ä¸€ä¸ª Queue
+ * Ê¹ÓÃÊı×éÄ£Äâ¶ÓÁĞ±àĞ´Ò»¸ö Queue
  */
 public class ArrayQueue {
 
-    private int maxSize; // è¡¨ç¤ºæ•°ç»„çš„æœ€å¤§å®¹é‡
-    private int front; // è¡¨ç¤ºæ•°ç»„çš„é˜Ÿåˆ—å¤´ï¼Œå‡º
-    private int rear; // æ ‡è¯†æ•°ç»„çš„é˜Ÿåˆ—å°¾ï¼Œè¿›
-    private int[] array; // ç”¨äºå­˜å‚¨æ•°æ®
+    private int maxSize; // ±íÊ¾Êı×éµÄ×î´óÈİÁ¿
+    private int front; // ±íÊ¾Êı×éµÄ¶ÓÁĞÍ·£¬³ö
+    private int rear; // ±êÊ¶Êı×éµÄ¶ÓÁĞÎ²£¬½ø
+    private int[] array; // ÓÃÓÚ´æ´¢Êı¾İ
 
-    // åˆ›å»ºæ•°ç»„çš„æ„é€ æœŸ
+    // ´´½¨Êı×éµÄ¹¹ÔìÆÚ
     public ArrayQueue(int maxSize) {
         this.maxSize = maxSize;
-        this.front = -1; // æŒ‡å‘é˜Ÿåˆ—å¤´éƒ¨ï¼Œåˆ†æå‡ºfrontæ˜¯æŒ‡å‘é˜Ÿåˆ—å¤´çš„å‰ä¸€ä¸ªä½ç½®.
-        this.rear = -1; // æŒ‡å‘é˜Ÿåˆ—å°¾ï¼ŒæŒ‡å‘é˜Ÿåˆ—å°¾çš„æ•°æ®(å³å°±æ˜¯é˜Ÿåˆ—æœ€åä¸€ä¸ªæ•°æ®)
+        this.front = -1; // Ö¸Ïò¶ÓÁĞÍ·²¿£¬·ÖÎö³öfrontÊÇÖ¸Ïò¶ÓÁĞÍ·µÄÇ°Ò»¸öÎ»ÖÃ.
+        this.rear = -1; // Ö¸Ïò¶ÓÁĞÎ²£¬Ö¸Ïò¶ÓÁĞÎ²µÄÊı¾İ(¼´¾ÍÊÇ¶ÓÁĞ×îºóÒ»¸öÊı¾İ)
         this.array = new int[maxSize];
     }
 
-    // åˆ¤æ–­é˜Ÿåˆ—æ˜¯å¦ä¸ºç©º
+    // ÅĞ¶Ï¶ÓÁĞÊÇ·ñÎª¿Õ
     public boolean isEmpty() {
         return front == rear;
     }
 
-    // åˆ¤æ–­é˜Ÿåˆ—æ˜¯å·²æ»¡
+    // ÅĞ¶Ï¶ÓÁĞÊÇÒÑÂú
     public boolean isFull() {
         return rear == maxSize - 1;
     }
 
-    // æ·»åŠ æ•°æ®åˆ°é˜Ÿåˆ—
+    // Ìí¼ÓÊı¾İµ½¶ÓÁĞ
     public void addQueue(int element) {
-        // åˆ¤æ–­æ•°ç»„æ˜¯å¦å·²æ»¡
+        // ÅĞ¶ÏÊı×éÊÇ·ñÒÑÂú
         if (isFull()) {
             System.out.println("Queue is full");
             return;
@@ -38,7 +38,7 @@ public class ArrayQueue {
         array[++rear] = element;
     }
 
-    // è·å–é˜Ÿåˆ—çš„æ•°æ®ï¼Œå‡ºé˜Ÿåˆ—
+    // »ñÈ¡¶ÓÁĞµÄÊı¾İ£¬³ö¶ÓÁĞ
     public int getQueue() {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");
@@ -46,7 +46,7 @@ public class ArrayQueue {
         return array[++front];
     }
 
-    // æ˜¾ç¤ºé˜Ÿåˆ—çš„æ‰€æœ‰æ•°æ®
+    // ÏÔÊ¾¶ÓÁĞµÄËùÓĞÊı¾İ
     public void showQueue() {
         if (isEmpty()) {
             System.out.println("Queue is empty");
@@ -58,7 +58,7 @@ public class ArrayQueue {
         System.out.println();
     }
 
-    // æ˜¾ç¤ºé˜Ÿåˆ—çš„å¤´æ•°æ®
+    // ÏÔÊ¾¶ÓÁĞµÄÍ·Êı¾İ
     public int headQueue() {
         if (isEmpty()) {
             throw new RuntimeException("Queue is empty");

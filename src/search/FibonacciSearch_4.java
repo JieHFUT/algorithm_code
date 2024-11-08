@@ -6,14 +6,14 @@ import java.util.Arrays;
  * ClassName: FibonacciSearch_4
  * Package: search
  * Description:
- * æ–æ³¢é‚£å¥‘æŸ¥æ‰¾
+ * ì³²¨ÄÇÆõ²éÕÒ
  * @Author jieHFUT
  * @Create 2024/10/27 19:13
  * @Version 1.0
  */
 public class FibonacciSearch_4 {
     public static void main(String[] args) {
-        // éœ€è¦ä¸€ä¸ªæœ‰åºçš„æ•°ç»„
+        // ĞèÒªÒ»¸öÓĞĞòµÄÊı×é
         int[] arr = new int[100_000];
         for (int i = 0; i < 100_000; i++) {
             arr[i] = i + 1;
@@ -24,7 +24,7 @@ public class FibonacciSearch_4 {
         System.out.println("ret=" + ret + "   " + (end - start) + "ms");
     }
     public static int maxSize = 1000;
-    // æ„é€ æ–æ³¢é‚£å¥‘æ•°åˆ—
+    // ¹¹Ôìì³²¨ÄÇÆõÊıÁĞ
     public static int[] fib() {
         int[] arr = new int[maxSize];
         arr[0] = 1;
@@ -39,12 +39,12 @@ public class FibonacciSearch_4 {
     public static int fibonacciSearch(int[] arr, int target) {
         int low = 0;
         int high = arr.length - 1;
-        // å°† arr å‡‘æˆ fib é•¿åº¦
+        // ½« arr ´Õ³É fib ³¤¶È
         int k = 0;
         int[] f = fib();
         while (high > f[k] - 1)
             k++;
-        // æ‰¾åˆ°å¤§äºæ•°ç»„é•¿åº¦çš„å¹¶ä¸”æœ€æ¥è¿‘å…¶é•¿åº¦çš„æ–æ³¢é‚£å¥‘æ•°
+        // ÕÒµ½´óÓÚÊı×é³¤¶ÈµÄ²¢ÇÒ×î½Ó½üÆä³¤¶ÈµÄì³²¨ÄÇÆõÊı
         int[] fib = Arrays.copyOf(arr, f[k] - 1);
         for (int i = arr.length; i < fib.length; i++) {
             fib[i] = arr[arr.length - 1];
@@ -52,11 +52,11 @@ public class FibonacciSearch_4 {
         while (low <= high) {
             int mid = low + f[k-1] - 1;
             if (target < fib[mid]) {
-                // å·¦è¾¹éå†
+                // ×ó±ß±éÀú
                 high = mid - 1;
                 k--;
             } else if (target > fib[mid]) {
-                // å³è¾¹éå†
+                // ÓÒ±ß±éÀú
                 low = mid + 1;
                 k -= 2;
             } else {

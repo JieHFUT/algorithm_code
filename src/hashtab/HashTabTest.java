@@ -18,16 +18,16 @@ public class HashTabTest {
         String input = "";
         Scanner scanner = new Scanner(System.in);
         while (true) {
-            System.out.println("add: æ·»åŠ é›‡å‘˜");
-            System.out.println("list: æ˜¾ç¤ºé›‡å‘˜");
-            System.out.println("find: å¯»æ‰¾é›‡å‘˜");
-            System.out.println("exit: é€€å‡ºç¨‹åº");
+            System.out.println("add: Ìí¼Ó¹ÍÔ±");
+            System.out.println("list: ÏÔÊ¾¹ÍÔ±");
+            System.out.println("find: Ñ°ÕÒ¹ÍÔ±");
+            System.out.println("exit: ÍË³ö³ÌĞò");
             input = scanner.next();
             switch (input) {
                 case "add":
-                    System.out.println("è¾“å…¥id:");
+                    System.out.println("ÊäÈëid:");
                     int id = scanner.nextInt();
-                    System.out.println("è¾“å…¥å§“å:");
+                    System.out.println("ÊäÈëĞÕÃû:");
                     String name = scanner.next();
                     Emp emp = new Emp(id, name);
                     tab.addEmp(emp);
@@ -36,16 +36,16 @@ public class HashTabTest {
                     tab.list();
                     break;
                 case "find":
-                    System.out.println("è¾“å…¥è¦å¯»æ‰¾çš„é›‡å‘˜ID");
+                    System.out.println("ÊäÈëÒªÑ°ÕÒµÄ¹ÍÔ±ID");
                     int toFind = scanner.nextInt();
                     if (tab.findEmpById(toFind) != null)
-                        System.out.println("é›‡å‘˜å§“åæ˜¯:" + tab.findEmpById(toFind).name);
+                        System.out.println("¹ÍÔ±ĞÕÃûÊÇ:" + tab.findEmpById(toFind).name);
                     break;
                 case "exit":
                     scanner.close();
                     System.exit(0);
                 default:
-                    System.out.println("æŒ‡ä»¤æœ‰è¯¯");
+                    System.out.println("Ö¸ÁîÓĞÎó");
                     break;
             }
         }
@@ -60,7 +60,7 @@ class HashTab {
         super();
         this.size = size;
         empLinkedLists = new EmpLinkedList[size];
-        // åˆå§‹åŒ–æ¯ä¸€æ¡é“¾è¡¨
+        // ³õÊ¼»¯Ã¿Ò»ÌõÁ´±í
         for (int i = 0; i < size; i++) {
             empLinkedLists[i] = new EmpLinkedList();
         }
@@ -68,23 +68,23 @@ class HashTab {
 
 
     public void addEmp(Emp emp) {
-        // æ ¹æ®å‘˜å·¥ id å¾—åˆ°è¯¥å‘˜å·¥åº”è¯¥æ”¾åœ¨å“ªæ¡é“¾è¡¨ä¸Š
+        // ¸ù¾İÔ±¹¤ id µÃµ½¸ÃÔ±¹¤Ó¦¸Ã·ÅÔÚÄÄÌõÁ´±íÉÏ
         int index = hashFun(emp.id);
-        // è°ƒç”¨é“¾è¡¨çš„æ·»åŠ æ–¹æ³•
+        // µ÷ÓÃÁ´±íµÄÌí¼Ó·½·¨
         empLinkedLists[index].add(emp);
     }
     public int hashFun(int id) {
         return id % size;
     }
 
-    // éå† hashtab
+    // ±éÀú hashtab
     public void list() {
         for (int i = 0; i < size; i++) {
             empLinkedLists[i].list(i);
         }
     }
 
-    // æŸ¥æ‰¾
+    // ²éÕÒ
     public Emp findEmpById(int id) {
         int index = hashFun(id);
 
@@ -99,31 +99,31 @@ class HashTab {
 
 
 class EmpLinkedList {
-    // æŒ‡å‘ç¬¬ä¸€ä¸ªå…ƒç´ çš„ head
+    // Ö¸ÏòµÚÒ»¸öÔªËØµÄ head
     private Emp head;
-    // æ·»åŠ é›‡å‘˜åˆ°é“¾è¡¨(å‡å®šåŠ åˆ°æœ€åä¸€ä¸ª)
+    // Ìí¼Ó¹ÍÔ±µ½Á´±í(¼Ù¶¨¼Óµ½×îºóÒ»¸ö)
     public void add(Emp emp) {
-        // æ·»åŠ ç¬¬ä¸€ä¸ª
+        // Ìí¼ÓµÚÒ»¸ö
         if (head == null) {
             head = emp;
             return;
         }
-        // ä¸æ˜¯ç¬¬ä¸€ä¸ª
+        // ²»ÊÇµÚÒ»¸ö
         Emp current = head;
         while (current.next != null) {
             current = current.next;
         }
-        // æ­¤æ—¶ current.next == null
+        // ´ËÊ± current.next == null
         current.next = emp;
     }
 
-    // éå†
+    // ±éÀú
     public void list(int no) {
         if (head == null) {
-            System.out.println("ç¬¬" + (no+1) + "dæ¡é“¾è¡¨ä¸ºç©º");
+            System.out.println("µÚ" + (no+1) + "dÌõÁ´±íÎª¿Õ");
             return;
         }
-        System.out.print("ç¬¬" + (no+1) + "æ¡é“¾è¡¨çš„ä¿¡æ¯ä¸º:");
+        System.out.print("µÚ" + (no+1) + "ÌõÁ´±íµÄĞÅÏ¢Îª:");
         Emp current = head;
         while (current != null) {
             System.out.printf("=> id=%d, name=%s\t", current.id, current.name);
@@ -132,7 +132,7 @@ class EmpLinkedList {
         System.out.println();
     }
 
-    // æ ¹æ® ID æ¥æŸ¥æ‰¾é›‡å‘˜
+    // ¸ù¾İ ID À´²éÕÒ¹ÍÔ±
     public Emp findEmpById(int id) {
         if (head == null) return null;
         Emp current = head;

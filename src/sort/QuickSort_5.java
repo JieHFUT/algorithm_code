@@ -2,7 +2,7 @@ package sort;
 
 import java.util.Arrays;
 
-// å¿«é€Ÿæ’åº 24ms
+// ¿ìËÙÅÅĞò 24ms
 public class QuickSort_5 {
     public static void main(String[] args) {
 //        int[] arr = new int[]{23,4,6,76,546,45,43,4,35,45,45,65,7,65,34,123,8};
@@ -25,7 +25,7 @@ public class QuickSort_5 {
     public static void quickSort(int[] arr, int leftKey, int rightKey) {
         int left = leftKey;
         int right = rightKey;
-        // é€‰å–ä¸€ä¸ªåŸºå‡†ï¼Œæ¯”å®ƒå¤§çš„æ”¾åœ¨å³è¾¹ï¼Œæ¯”ä»–å°çš„æ”¾åœ¨å·¦è¾¹ (ç°åœ¨ä»¥ä¸­é—´çš„å…ƒç´ ä¸ºåŸºå‡†æµ‹è¯•: ä¸­è½´ pivot)
+        // Ñ¡È¡Ò»¸ö»ù×¼£¬±ÈËü´óµÄ·ÅÔÚÓÒ±ß£¬±ÈËûĞ¡µÄ·ÅÔÚ×ó±ß (ÏÖÔÚÒÔÖĞ¼äµÄÔªËØÎª»ù×¼²âÊÔ: ÖĞÖá pivot)
         int pivot = (right + left) / 2;
         int toCompare = arr[pivot];
         while (left < right) {
@@ -36,10 +36,10 @@ public class QuickSort_5 {
                 right--;
             }
             if (left >= right) {
-                // æ­¤è½®æ’åºå·²ç»“æŸ
+                // ´ËÂÖÅÅĞòÒÑ½áÊø
                 break;
             }
-            // åˆ°è¿™ä¸ªåœ°æ–¹ï¼Œarr[left] >= arr[right]  => äº¤æ¢
+            // µ½Õâ¸öµØ·½£¬arr[left] >= arr[right]  => ½»»»
             swap(arr, left, right);
 
             if(arr[left] == toCompare)
@@ -51,14 +51,14 @@ public class QuickSort_5 {
             left++;
             right--;
         }
-        // å¯¹å·¦è¾¹æ¯”åŸºå‡†å°çš„å†æ¬¡æ’åº
+        // ¶Ô×ó±ß±È»ù×¼Ğ¡µÄÔÙ´ÎÅÅĞò
         if (leftKey < right)
             quickSort(arr, leftKey, right);
-        // å¯¹å³è¾¹æ¯”åŸºå‡†å¤§çš„å†æ¬¡æ’åº
+        // ¶ÔÓÒ±ß±È»ù×¼´óµÄÔÙ´ÎÅÅĞò
         if (left < rightKey)
             quickSort(arr, left, rightKey);
     }
-    // äº¤æ¢
+    // ½»»»
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];

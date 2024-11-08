@@ -6,26 +6,26 @@ public class BinaryTreeTest {
     public static void main(String[] args) {
         BinaryTree tree = new BinaryTree();
 
-        // åˆ›å»ºæ ¹èŠ‚ç‚¹
-        HeroNode node1 = new HeroNode(1, "å®‹æ±Ÿ");
-        HeroNode node2 = new HeroNode(2, "å´ç”¨");
-        HeroNode node3 = new HeroNode(3, "å¢ä¿Šä¹‰");
-        HeroNode node4 = new HeroNode(4, "æ—å†²");
+        // ´´½¨¸ù½Úµã
+        HeroNode node1 = new HeroNode(1, "ËÎ½­");
+        HeroNode node2 = new HeroNode(2, "ÎâÓÃ");
+        HeroNode node3 = new HeroNode(3, "Â¬¿¡Òå");
+        HeroNode node4 = new HeroNode(4, "ÁÖ³å");
 
-        // æ‰‹åŠ¨åˆ›å»ºæµ‹è¯•
+        // ÊÖ¶¯´´½¨²âÊÔ
         node1.setLeft(node2);
         node1.setRight(node3);
         node3.setRight(node4);
         tree.setRoot(node1);
 
         /*
-        System.out.println("å‰åºéå†ï¼š");
+        System.out.println("Ç°Ğò±éÀú£º");
         tree.preOrder(); // 1, 2, 3, 4
 
-        System.out.println("ä¸­åºéå†ï¼š");
+        System.out.println("ÖĞĞò±éÀú£º");
         tree.infixOrder(); // 2, 1, 3, 4
 
-        System.out.println("ååºéå†ï¼š");
+        System.out.println("ºóĞò±éÀú£º");
         tree.postOrder(); // 2, 4, 3, 1
         System.out.println("======================================");
 
@@ -40,34 +40,34 @@ public class BinaryTreeTest {
         System.out.println("post search=> ");
         System.out.println("the result is: " + tree.postSearch(4));
 
-        System.out.println("åˆ é™¤èŠ‚ç‚¹ä¹‹å‰ï¼š");
+        System.out.println("É¾³ı½ÚµãÖ®Ç°£º");
         tree.preOrder();
-        System.out.println("åˆ é™¤èŠ‚ç‚¹ä¹‹åï¼š");
+        System.out.println("É¾³ı½ÚµãÖ®ºó£º");
         tree.deleteByNo(3);
         tree.preOrder();*/
 
-        // å°†æ ‘çš„å‰åºéå†è½¬åŒ–ä¸º arraylist
-        HeroNode node5 = new HeroNode(5, "å®‹æ±Ÿ");
-        HeroNode node6 = new HeroNode(6, "å´ç”¨");
-        HeroNode node7 = new HeroNode(7, "å¢ä¿Šä¹‰");
-        HeroNode node8 = new HeroNode(8, "æ—å†²");
-        HeroNode node9 = new HeroNode(9, "å®‹æ±Ÿ");
-        HeroNode node10 = new HeroNode(10, "å´ç”¨");
-        HeroNode node11 = new HeroNode(11, "å¢ä¿Šä¹‰");
-        HeroNode node12 = new HeroNode(12, "æ—å†²");
-        // å°†è¯¥æ•°ç»„å˜æˆæ ‘ä»¥ååœ¨å­˜å‚¨åœ¨ arraylist ä¸­
+        // ½«Ê÷µÄÇ°Ğò±éÀú×ª»¯Îª arraylist
+        HeroNode node5 = new HeroNode(5, "ËÎ½­");
+        HeroNode node6 = new HeroNode(6, "ÎâÓÃ");
+        HeroNode node7 = new HeroNode(7, "Â¬¿¡Òå");
+        HeroNode node8 = new HeroNode(8, "ÁÖ³å");
+        HeroNode node9 = new HeroNode(9, "ËÎ½­");
+        HeroNode node10 = new HeroNode(10, "ÎâÓÃ");
+        HeroNode node11 = new HeroNode(11, "Â¬¿¡Òå");
+        HeroNode node12 = new HeroNode(12, "ÁÖ³å");
+        // ½«¸ÃÊı×é±ä³ÉÊ÷ÒÔºóÔÚ´æ´¢ÔÚ arraylist ÖĞ
         HeroNode[] heroNodes = new HeroNode[]{node5, node6, node7, node8, node9, node10, node11, node12};
         List<HeroNode> list = BinaryTree.preOrderToList(heroNodes);
         for(HeroNode heroNode : list){
             System.out.println(heroNode);
         }
 
-        // è·å¾—æ ‘çš„èŠ‚ç‚¹ä¸ªæ•°
+        // »ñµÃÊ÷µÄ½Úµã¸öÊı
         System.out.println("tree's node number is: " + tree.nodeOfNumber());
-        // è·å¾—æ ‘çš„å¶å­èŠ‚ç‚¹çš„ä¸ªæ•°
+        // »ñµÃÊ÷µÄÒ¶×Ó½ÚµãµÄ¸öÊı
         System.out.println("tree's level node number is: " + tree.getLeaveOfNumber());
 
-        System.out.println("ä¸‹é¢æ˜¯å±‚åºéå†çš„ç»“æœ: ");
+        System.out.println("ÏÂÃæÊÇ²ãĞò±éÀúµÄ½á¹û: ");
         List<List<HeroNode>> levelOrderByList= tree.levelOrderByList();
         for (List<HeroNode> levelList : levelOrderByList) {
             for (HeroNode heroNode : levelList) {

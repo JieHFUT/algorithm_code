@@ -37,7 +37,7 @@ public class HuffmanTree {
         while (nodes.size() > 1) {
             Collections.sort(nodes);
 
-            // å–ä¸¤ä¸ª
+            // È¡Á½¸ö
             Node left = nodes.get(0);
             Node right = nodes.get(1);
 

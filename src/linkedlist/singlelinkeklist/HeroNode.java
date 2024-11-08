@@ -1,21 +1,21 @@
 package linkedlist.singlelinkeklist;
 
 
-// 瀹氫箟鑺傜偣瀵硅薄
+// 定义节点对象
 public class HeroNode {
     public int no;
     public String name;
     public String nickname;
     public HeroNode next;
 
-    // 鏋勯�犲櫒
+    // 构造器
     public HeroNode(int no, String name, String nickname) {
         this.no = no;
         this.name = name;
         this.nickname = nickname;
     }
 
-    // 杈撳嚭
+    // 输出
     @Override
     public String toString() {
         return "[" + no + " name: " + name + " nickname: " + nickname + "]";

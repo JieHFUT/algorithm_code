@@ -12,7 +12,7 @@ import java.util.Arrays;
  * @Version 1.0
  */
 public class QuickSort {
-    // åŸºå‡†
+    // »ù×¼
     public static void main(String[] args) {
 
         int[] arr = new int[100_000];

@@ -27,18 +27,18 @@ public class InsertSort {
         for (int i = 0; i < arr.length - 1; i++) {
             int j = 0;
             int toInsert = arr[i + 1];
-            // å’Œå‰é¢çš„ i ä¸ªå…ƒç´ è¿›è¡Œæ¯”è¾ƒ
+            // ºÍÇ°ÃæµÄ i ¸öÔªËØ½øĞĞ±È½Ï
             for (j = i; j >= 0; j--) {
                 if (arr[j] > toInsert) {
-                    // åç§»
+                    // ºóÒÆ
                     arr[j + 1] = arr[j];
                 } else {
-                    // æ‰¾åˆ°ä½ç½®
+                    // ÕÒµ½Î»ÖÃ
                     break;
                 }
             }
-            // break 1. æ‰¾åˆ°ä½ç½®
-            //       2. å‰é¢çš„å…¨éƒ¨éƒ½æ¯” toInsert å¤§ï¼Œæ­¤æ—¶ j = -1
+            // break 1. ÕÒµ½Î»ÖÃ
+            //       2. Ç°ÃæµÄÈ«²¿¶¼±È toInsert ´ó£¬´ËÊ± j = -1
             arr[j + 1] = toInsert;
         }
     }

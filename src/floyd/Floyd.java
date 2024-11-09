@@ -62,8 +62,8 @@ public class Floyd {
         String[] vertexs = {"A地", "B地", "C地", "D地", "E地", "F地", "G地", "H地", "I地", "J地"};
         // 权值表
         int[][] weights = new int[vertexs.length][vertexs.length];
-        weights[0] =  new int[] { 0, 5, 7, N, N, N, 2, N, N, N };
-        weights[1] =  new int[] { 5, 0, N, 9, N, N, 3, N, N, N };
+        weights[0] =  new int[] { 0, 5, 7, N, N, N, 2, N, N, N  };
+        weights[1] =  new int[] { 5, 0, N, 9, N, N, 3, N, N, N  };
         weights[2] =  new int[] { 7, N, 0, N, 8, N, N, N, N, 6  };
         weights[3] =  new int[] { N, 9, N, 0, N, 4, N, 3, N, N  };
         weights[4] =  new int[] { N, N, 8, N, 0, 5, 4, N, 5, N  };

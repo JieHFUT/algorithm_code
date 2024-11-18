@@ -7,7 +7,7 @@ import java.util.Queue;
 
 public class BinaryTree {
 
-    // ?????
+    // ¸ù½Úµã
     private HeroNode root;
 
     public void setRoot(HeroNode root) {
@@ -15,7 +15,7 @@ public class BinaryTree {
     }
 
 
-    // ??????
+    // Ç°Ğò±éÀú
     public void preOrder() {
         if (root != null)
             root.preOrder();
@@ -23,7 +23,7 @@ public class BinaryTree {
             System.out.println("tree is null");
     }
 
-    // ???????
+    // ÖĞĞò±éÀú
     public void infixOrder() {
         if (root != null)
             root.infixOrder();
@@ -31,7 +31,7 @@ public class BinaryTree {
             System.out.println("tree is null");
     }
 
-    // ???????
+    // ºóĞò±éÀú
     public void postOrder() {
         if (root != null)
             root.postOrder();
@@ -40,7 +40,7 @@ public class BinaryTree {
     }
 
 
-    // ??? ???? ???? ????????
+    // Ç°Ğò ÖĞĞò ºóĞò ±éÀú²éÕÒ
     public HeroNode preSearch(int toFind) {
         if (root != null)
             return this.root.preSearch(toFind);
@@ -69,7 +69,7 @@ public class BinaryTree {
     }
 
 
-    // ???æ´¢??????
+    // Ç°Ğò´æ´¢¶ş²æÊ÷
     public static List<HeroNode> preOrderToList(HeroNode[] array) {
         return preOrderToList(array, 0);
     }
@@ -92,12 +92,12 @@ public class BinaryTree {
         return list;
     }
 
-    // ???????????? [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 ?Ğ¿??????
-    // ???? thread_binary_tree
+    // ÏßË÷»¯¶ş²æÊ÷ [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 ÓĞ¿ÕÖ¸ÕëÓò
+    // ¼û°ü thread_binary_tree
 
 
 
-    // ??????Ğ½??????
+    // »ñÈ¡Ê÷ÖĞ½ÚµãµÄ¸öÊı
     public int nodeOfNumber() {
         return this.nodeOfNumber(this.root);
     }
@@ -105,7 +105,7 @@ public class BinaryTree {
         if (node == null) return 0;
         return 1 + nodeOfNumber(node.getLeft()) + nodeOfNumber(node.getRight());
     }
-    // ????????????
+    // »ñÈ¡Ò¶×Ó½ÚµãµÄ¸öÊı
     public int getLeaveOfNumber() {
         return this.getLeaveOfNumber(this.root);
     }
@@ -123,7 +123,7 @@ public class BinaryTree {
         return getLeaveOfNumber2(node.getLeft()) +
                 getLeaveOfNumber2(node.getRight());
     }
-    // ?????K????????
+    // »ñÈ¡µÚK²ã½ÚµãµÄ¸öÊı
     public int getKLeaveOfNumber(int k) {
         return getKLeaveOfNumber(this.root, k);
     }
@@ -132,7 +132,7 @@ public class BinaryTree {
         if (k == 1 && node != null) return 1;
         return getKLeaveOfNumber(node.getLeft(), k - 1) + getKLeaveOfNumber(node.getRight(), k - 1);
     }
-    // ?????????????
+    // »ñÈ¡¶ş²æÊ÷µÄ¸ß¶È
     public int height() {
         return height(this.root);
     }
@@ -142,7 +142,7 @@ public class BinaryTree {
         int rightHeight = height(node.getRight());
         return Math.max(leftHeight, rightHeight) + 1;
     }
-    // ?????no???????????
+    // ¼ì²â±àºÅnoµÄÔªËØÊÇ·ñ´æÔÚ
     public HeroNode findByNo(int no) {
         return this.findByNo(this.root, no);
     }
@@ -155,7 +155,7 @@ public class BinaryTree {
             return findByNo(node.getRight(), no);
         return null;
     }
-    // ???????(1.????  2.????)
+    // ²ãĞò±éÀú(1.¶ÓÁĞ  2.·Çµİ¹é)
     public void levelOrderByQueue() {
         Queue<HeroNode> queue = new LinkedList<>();
         HeroNode node = this.root;
@@ -201,25 +201,25 @@ public class BinaryTree {
     }
 
 
-    // ?Ğ¶???????????????????? ??????????????????????????????????????Îµ??????????
+    // ÅĞ¶ÏÒ»¿ÃÊ÷ÊÇ²»ÊÇÍêÈ«¶ş²æÊ÷ £ºÒ¶½áµãÖ»ÄÜ³öÏÖÔÚ×îµ×²ãµÄÁ½²ã£¬ÇÒ×îµ×²ãÒ¶½áµã¾ù´¦ÓÚ´Îµ×²ãÒ¶½áµãµÄ×ó²à
     public boolean isCompleteTree() {
-        // ????????????????????????????
+        // Ïò¶ÓÁĞÖĞÒ»Ö±·Å½Úµã£¬Ö±µ½³öÏÖµÚÒ»¸ö¿Õ½Úµã
         HeroNode node = this.root;
         Queue<HeroNode> queue = new LinkedList();
         queue.add(node);
         while (!queue.isEmpty()) {
-            // ????????Ã³????
+            // ´Ó¶ÓÁĞÖĞÄÃ³ö½Úµã
             HeroNode top = queue.poll();
             if (top != null) {
                 queue.add(top.getLeft());
                 queue.add(top.getRight());
             } else {
-                // ??????????????????????????????????? node node node ... node node null null null ... null
-                // ?? node ??????? null
+                // Èç¹ûÊÇÒ»¸öÍêÈ«¶ş²æÊ÷£¬±»·Åµ½¶ÓÁĞÀïÓ¦¸ÃÊÇ node node node ... node node null null null ... null
+                // ÔÚ node Ö®¼ä²»»á´©²å null
                 break;
             }
         }
-        // ????????????????? null????????????????????
+        // Èç¹û¶ÓÁĞÖĞÊ£ÏÂµÄ²»È«ÊÇ null£¬¾ÍËµÃ÷Æä²»ÊÇÍêÈ«¶ş²æÊ÷
         while (!queue.isEmpty()) {
             HeroNode top = queue.poll();
             if (top != null) {
@@ -234,7 +234,7 @@ public class BinaryTree {
 
 
 
-    // ?Ğ¶?????????????
+    // ÅĞ¶ÏÁ½¿ÃÊ÷ÊÇ·ñÏàÍ¬
     public boolean isSameTree(HeroNode otherRoot) {
         HeroNode thisRoot = this.root;
         HeroNode otherRoot2 = otherRoot;
@@ -244,9 +244,9 @@ public class BinaryTree {
         if (thisRoot == null && otherRoot == null) return true;
         if (thisRoot == null) return false;
         if (otherRoot == null) return false;
-        // ???????????????????
+        // Èç¹ûÕâÁ½¸ö½ÚµãµÄÖµ²»Ò»Ñù
         if (!thisRoot.getName().equals(otherRoot.getName())) return false;
-        // ???????????????????????
+        // ÕâÁ½¸ö½ÚµãµÄÖµÒ»Ñù£¬±È½Ï×Ó½Úµã
         if (!isSameTree(thisRoot.getLeft(), otherRoot.getLeft())) return false;
         if (!isSameTree(thisRoot.getRight(), otherRoot.getRight())) return false;
         return true;
@@ -257,7 +257,7 @@ public class BinaryTree {
 
 
 
-    // ?Ğ¶?????????????????????
+    // ÅĞ¶ÏÒ»¿ÃÊ÷ÊÇ·ñ°üº¬ÁíÍâÒ»¿ÃÊ÷
     public boolean isSubTree(HeroNode otherRoot) {
         HeroNode thisRoot = this.root;
         HeroNode otherRoot2 = otherRoot;
@@ -271,16 +271,16 @@ public class BinaryTree {
 
 
 
-    // ?Ğ¶?????????????????(2 functions)
-    // ??????????????????????????????????1??????????????????????????????
+    // ÅĞ¶ÏÊÇ·ñÊÇ¸ß¶ÈÆ½ºâµÄ¶ş²æÊ÷(2 functions)
+    // ¸ß¶ÈÆ½ºâ¾ÍÊÇËµÒ»¸ö½ÚµãµÄÁ½¿Å×ÓÊ÷µÄ¸ß¶È²î²»´óÓÚ1£¬²¢ÇÒÆäÁ½¿Å×ÓÊ÷Ò²ÊÇ¸ß¶ÈÆ½ºâµÄ¶ş²æÊ÷
     public boolean isBanlanceTree(HeroNode thisRoot) {
 
         return true;
     }
-    // ?Ğ¶?????????????????(????????)
+    // ÅĞ¶ÏÊÇ·ñÊÇ¸ß¶ÈÆ½ºâµÄ¶ş²æÊ÷(µÚ¶şÖÖ·½·¨)
     public boolean isBanlanceTree2(HeroNode thisRoot) {
         if (thisRoot == null) return false;
-        // ?????????????????
+        // »ñÈ¡ÆäÁ½¿Å×ÓÊ÷µÄ¸ß¶È
         int leftHeight = height(thisRoot.getLeft());
         int rightHeight = height(thisRoot.getRight());
         if (Math.abs(leftHeight - rightHeight) > 1) return false;
@@ -298,11 +298,11 @@ public class BinaryTree {
 
 
 
-    // ?Ğ¶????????????????
+    // ÅĞ¶ÏÒ»¿Å¶ş²æÊ÷ÊÇ·ñÖá¶Ô³Æ
     public boolean isSymmetricTree(HeroNode thisRoot) {
-        // ?Â·??????????????????????????????????????????????????????????????????? => ????
+        // Ë¼Â·£º½«ÆäÒ»¿Å×ÓÊ÷µÄ×óÓÒÈ«²¿·´¹ıÀ´£¬Èç¹û·´¹ıÀ´µÄ×ÓÊ÷ºÍÁíÍâÒ»¿Å×ÓÊ÷ÊÇÏàÍ¬µÄÊ÷ => Öá¶Ô³Æ
         if (thisRoot == null) return false;
-        // ????????????????
+        // ½«ÆäÓÒ×ÓÊ÷·´¹ıÀ´
         turnOneTree(thisRoot.getRight());
         boolean flag = isSameTree(thisRoot.getLeft(), thisRoot.getRight());
         if (flag)
@@ -310,7 +310,7 @@ public class BinaryTree {
         return false;
     }
     public boolean isSymmetricTree(HeroNode left, HeroNode right) {
-        // ???????????????
+        // Ò»¿ÃÊ÷µÄ×óÓÒ×ÓÊ÷
         if (left == null && right == null) return true;
         if (left == null || right == null) return false;
         if (!left.getName().equals(right.getName())) return false;
@@ -322,7 +322,7 @@ public class BinaryTree {
 
 
 
-    // ??????????????????????????????(2 functions)
+    // ½«Ò»¿ÃÊ÷µÄÃ¿Ò»¸ö½ÚµãµÄ×óÓÒ½ÚµãµÄÖ¸Ïò·´¹ıÀ´(2 functions)
     public void turnOneTree(HeroNode thisRoot) {
         if (thisRoot == null) return;
         swap(thisRoot);
@@ -339,11 +339,11 @@ public class BinaryTree {
 
 
 
-    // ?????????????????????????
+    // ÕÒµ½Á½¸öÖ¸¶¨½Úµã×î½üµÄ¹«¹²×æÏÈ
     public static HeroNode lowestCommonAncestor(HeroNode root, HeroNode p, HeroNode q) {
-        // ?Â·???????????????????Â·????????Â·?????Ğ±??
-        // ?Â·????
-        
+        // Ë¼Â·Ò»£ºÕÒµ½Í¨ÍùÕâÁ½¸ö½ÚµãµÄÂ·¾¶£¬È»ºó¶ÔÂ·¾¶½øĞĞ±È¶Ô
+        // Ë¼Â·¶ş£º
+
         return null;
     }
 

@@ -7,7 +7,7 @@ import java.util.Queue;
  * ClassName: Node
  * Package: avl
  * Description:
- * Æ½ºâ¶ş²æÊ÷ ()
+ * å¹³è¡¡äºŒå‰æ ‘ ()
  * @Author jieHFUT
  * @Create 2024/11/3 19:58
  * @Version 1.0
@@ -47,37 +47,37 @@ public class Node implements Comparable<Node>{
     }
 
 
-    // Ìí¼ÓÊı¾İ£¬Í¬Ê±½«Æä½øĞĞÅÅĞò
-    // Èç¹ûµ±Ìí¼ÓÍêÒ»¸ö½Úµãºó£¬²»Âú×ã AVL Ê÷£¬¾ÍĞèÒªĞı×ª
+    // æ·»åŠ æ•°æ®ï¼ŒåŒæ—¶å°†å…¶è¿›è¡Œæ’åº
+    // å¦‚æœå½“æ·»åŠ å®Œä¸€ä¸ªèŠ‚ç‚¹åï¼Œä¸æ»¡è¶³ AVL æ ‘ï¼Œå°±éœ€è¦æ—‹è½¬
     public void add(Node toAdd) {
 
         if (value < toAdd.value) {
-            // Èç¹ûÊ÷ÖĞµÄ½Úµã±ÈÒªÌí¼ÓµÄ½ÚµãÔªËØĞ¡
-            // ÏòÊ÷µÄÓÒ×ÓÊ÷±È½Ï
+            // å¦‚æœæ ‘ä¸­çš„èŠ‚ç‚¹æ¯”è¦æ·»åŠ çš„èŠ‚ç‚¹å…ƒç´ å°
+            // å‘æ ‘çš„å³å­æ ‘æ¯”è¾ƒ
             if(this.right == null)
                 this.right = toAdd;
             else
                 this.right.add(toAdd);
         } else {
-            // Èç¹ûÊ÷ÖĞµÄ½Úµã±ÈÒªÌí¼ÓµÄ½ÚµãÔªËØ´ó
-            // Ïò×ó×ÓÊ÷±È½Ï
+            // å¦‚æœæ ‘ä¸­çš„èŠ‚ç‚¹æ¯”è¦æ·»åŠ çš„èŠ‚ç‚¹å…ƒç´ å¤§
+            // å‘å·¦å­æ ‘æ¯”è¾ƒ
             if (this.left == null)
                 this.left = toAdd;
             else
                 this.left.add(toAdd);
         }
-        // ĞèÒª×óĞı
+        // éœ€è¦å·¦æ—‹
         if (rightHeight() - leftHeight() > 1) {
-            // Èç¹ûÓÒ×ÓÊ÷µÄ×ó×ÓÊ÷ > ÓÒ×ÓÊ÷µÄÓÒ×ÓÊ÷ => ĞèÒªÏÈ¶ÔÓÒ×ÓÊ÷½øĞĞÓÒĞı
+            // å¦‚æœå³å­æ ‘çš„å·¦å­æ ‘ > å³å­æ ‘çš„å³å­æ ‘ => éœ€è¦å…ˆå¯¹å³å­æ ‘è¿›è¡Œå³æ—‹
             if (right != null && right.leftHeight() > right.rightHeight()) {
                 right.rightRotate();
             }
             leftRotate();
             return;
         }
-        // ĞèÒªÓÒĞı
+        // éœ€è¦å³æ—‹
         if (leftHeight() - rightHeight() > 1) {
-            // Èç¹û×ó×ÓÊ÷µÄÓÒ×ÓÊ÷ > ×ó×ÓÊ÷µÄ×ó×ÓÊ÷ => ĞèÒªÏÈ¶Ô×ó×ÓÊ÷½øĞĞ×óĞı
+            // å¦‚æœå·¦å­æ ‘çš„å³å­æ ‘ > å·¦å­æ ‘çš„å·¦å­æ ‘ => éœ€è¦å…ˆå¯¹å·¦å­æ ‘è¿›è¡Œå·¦æ—‹
             if (left != null && left.rightHeight() > left.leftHeight()) {
                 left.leftRotate();
             }
@@ -86,7 +86,7 @@ public class Node implements Comparable<Node>{
     }
 
 
-    // ²ãĞò±éÀú
+    // å±‚åºéå†
     public void levelOrder() {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(this);
@@ -102,7 +102,7 @@ public class Node implements Comparable<Node>{
 
 
     /**
-     * ·µ»Øµ±Ç°½ÚµãµÄÊ÷µÄ¸ß¶È
+     * è¿”å›å½“å‰èŠ‚ç‚¹çš„æ ‘çš„é«˜åº¦
      * @return
      */
     public int height() {
@@ -110,7 +110,7 @@ public class Node implements Comparable<Node>{
     }
 
     /**
-     * ·µ»Øµ±Ç°½ÚµãµÄ×ó×ÓÊ÷µÄ¸ß¶È
+     * è¿”å›å½“å‰èŠ‚ç‚¹çš„å·¦å­æ ‘çš„é«˜åº¦
      * @return
      */
     public int leftHeight() {
@@ -119,7 +119,7 @@ public class Node implements Comparable<Node>{
     }
 
     /**
-     * ·µ»Øµ±Ç°½ÚµãÓÒ×ÓÊ÷µÄ¸ß¶È
+     * è¿”å›å½“å‰èŠ‚ç‚¹å³å­æ ‘çš„é«˜åº¦
      * @return
      */
     public int rightHeight() {
@@ -129,8 +129,8 @@ public class Node implements Comparable<Node>{
 
 
     /**
-     * ×óĞı×ª
-     * Ô­Òò£ºÓÒ×ÓÊ÷µÄ¸ß¶È - ×ó×ÓÊ÷¸ß¶È > 1
+     * å·¦æ—‹è½¬
+     * åŸå› ï¼šå³å­æ ‘çš„é«˜åº¦ - å·¦å­æ ‘é«˜åº¦ > 1
      */
     public void leftRotate() {
         Node newLeft = new Node(this.value);
@@ -142,8 +142,8 @@ public class Node implements Comparable<Node>{
     }
 
     /**
-     * ÓÒĞı×ª
-     * Ô­Òò£º×ó×ÓÊ÷µÄ¸ß¶È - ÓÒ×ÓÊ÷¸ß¶È > 1
+     * å³æ—‹è½¬
+     * åŸå› ï¼šå·¦å­æ ‘çš„é«˜åº¦ - å³å­æ ‘é«˜åº¦ > 1
      */
     public void rightRotate() {
         Node newRight = new Node(this.value);

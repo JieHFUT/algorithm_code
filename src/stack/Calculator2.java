@@ -3,7 +3,7 @@ package stack;
 import java.util.Scanner;
 
 
-// ´¦Àí¶àÎ»ÊýµÄÊ±ºò
+// å¤„ç†å¤šä½æ•°çš„æ—¶å€™
 public class Calculator2 {
     public static void main(String[] args) {
 
@@ -11,39 +11,39 @@ public class Calculator2 {
         ArrayStack numStack = new ArrayStack(10);
         ArrayStack operStack = new ArrayStack(10);
 
-        System.out.println("ÇëÊäÈë¼ÆËã±í´ïÊ½£º");
+        System.out.println("è¯·è¾“å…¥è®¡ç®—è¡¨è¾¾å¼ï¼š");
         String input = sc.nextLine(); // "7-3+2*3-6"  = 4
         int index = 0;
         String keepNum = "";
         while(true) {
-            // »ñµÃ´ËÊ±×Ö·û´®µÄÊ×¸öÔªËØ
+            // èŽ·å¾—æ­¤æ—¶å­—ç¬¦ä¸²çš„é¦–ä¸ªå…ƒç´ 
             char ch = input.charAt(index);
-            // ÅÐ¶ÏÊÇ²»ÊÇÔËËã·û
+            // åˆ¤æ–­æ˜¯ä¸æ˜¯è¿ç®—ç¬¦
             if(ArrayStack.isOper(ch)) {
-                // ÊÇÔËËã·û£¬»ñµÃ¸ÃÔªËØµÄÓÅÏÈ¼¶ºÍ operStack Õ»ÖÐµÄÕ»¶¥±È½Ï
-                // operStack ÊÇ¿ÕµÄÖ±½ÓÈëÕ»
-                // Èç¹û operStack Îª·Ç¿ÕµÄ£¬²¢ÇÒ¸ÃÔËËã·ûµÄÓÅÏÈ¼¶Ð¡ÓÚµÈÓÚÕ»¶¥µÄÔËËã·ûµÄÓÅÏÈ¼¶ => ¼ÆËã
+                // æ˜¯è¿ç®—ç¬¦ï¼ŒèŽ·å¾—è¯¥å…ƒç´ çš„ä¼˜å…ˆçº§å’Œ operStack æ ˆä¸­çš„æ ˆé¡¶æ¯”è¾ƒ
+                // operStack æ˜¯ç©ºçš„ç›´æŽ¥å…¥æ ˆ
+                // å¦‚æžœ operStack ä¸ºéžç©ºçš„ï¼Œå¹¶ä¸”è¯¥è¿ç®—ç¬¦çš„ä¼˜å…ˆçº§å°äºŽç­‰äºŽæ ˆé¡¶çš„è¿ç®—ç¬¦çš„ä¼˜å…ˆçº§ => è®¡ç®—
                 if(!operStack.isEmpty() && ArrayStack.priority(ch)
                         <= ArrayStack.priority(operStack.peek())) {
-                    // ÓÅÏÈ¼¶µÍ => ¼ÆËã
-                    // 1. È¡³ö numStack ÖÐµÄÁ½¸öÊý×ÖºÍµ±Ç° operStack.peek() ½øÐÐÔËËã£¬ÔËËã½á¹û´æÈë numStack£¬ch ´æÈë operStack
+                    // ä¼˜å…ˆçº§ä½Ž => è®¡ç®—
+                    // 1. å–å‡º numStack ä¸­çš„ä¸¤ä¸ªæ•°å­—å’Œå½“å‰ operStack.peek() è¿›è¡Œè¿ç®—ï¼Œè¿ç®—ç»“æžœå­˜å…¥ numStackï¼Œch å­˜å…¥ operStack
                     numStack.push(ArrayStack.cal(numStack.pop(), numStack.pop(), operStack.pop()));
                     operStack.push(ch);
                 } else {
                     operStack.push(ch);
                 }
             } else {
-                // ch ÊÇÊý×Ö
+                // ch æ˜¯æ•°å­—
                 // numStack.push(Integer.parseInt(String.valueOf(ch)));
-                // ÔÚ´¦Àí¶àÎ»ÊýµÄÊ±ºò£¬ÐèÒªÏòºó¿´Ò»Î»£¬Èç¹ûÏÂÒ»Î»ÊÇÊý×Ö£¬¾Í¼ÌÐøÉ¨Ãè£¬·ñÔò¾ÍÖ±½ÓÈëÕ»
+                // åœ¨å¤„ç†å¤šä½æ•°çš„æ—¶å€™ï¼Œéœ€è¦å‘åŽçœ‹ä¸€ä½ï¼Œå¦‚æžœä¸‹ä¸€ä½æ˜¯æ•°å­—ï¼Œå°±ç»§ç»­æ‰«æï¼Œå¦åˆ™å°±ç›´æŽ¥å…¥æ ˆ
                 keepNum += ch;
                 if (index == input.length() - 1) {
-                    // µ±Ç°µÄ ch ÒÑ¾­ÊÇ input µÄ×îºóÒ»¸ö×Ö·ûÁË
+                    // å½“å‰çš„ ch å·²ç»æ˜¯ input çš„æœ€åŽä¸€ä¸ªå­—ç¬¦äº†
                     numStack.push(Integer.parseInt(keepNum));
                 } else {
-                    // ¶ÔÏÂÒ»¸ö×Ö·û½øÐÐÅÐ¶Ï
+                    // å¯¹ä¸‹ä¸€ä¸ªå­—ç¬¦è¿›è¡Œåˆ¤æ–­
                     if(ArrayStack.isOper(input.charAt(index + 1))) {
-                        // ÏÂÒ»¸ö×Ö·ûÊÇÔËËã·û£¬Ö±½Ó½«¸Ã keepNum push µ½ numStack ÖÐ   "1" "343"
+                        // ä¸‹ä¸€ä¸ªå­—ç¬¦æ˜¯è¿ç®—ç¬¦ï¼Œç›´æŽ¥å°†è¯¥ keepNum push åˆ° numStack ä¸­   "1" "343"
                         numStack.push(Integer.parseInt(keepNum));
                         keepNum = "";
                     }
@@ -54,13 +54,13 @@ public class Calculator2 {
                 break;
         }
 
-        // È»ºó¶ÔÁ½¸öÕ»½øÐÐ³öÕ» => ¼ÆËã×îÖÕ½á¹û
+        // ç„¶åŽå¯¹ä¸¤ä¸ªæ ˆè¿›è¡Œå‡ºæ ˆ => è®¡ç®—æœ€ç»ˆç»“æžœ
         while(true) {
             if (operStack.isEmpty())
                 break;
             numStack.push(ArrayStack.cal(numStack.pop(), numStack.pop(), operStack.pop()));
         }
-        // ´ËÊ± numStack ÖÐÊ£ÏÂµÄÄÇÒ»¸ö¾ÍÊÇ½á¹û
-        System.out.printf("¼ÆËã½á¹ûÊÇ£º%d", numStack.pop());
+        // æ­¤æ—¶ numStack ä¸­å‰©ä¸‹çš„é‚£ä¸€ä¸ªå°±æ˜¯ç»“æžœ
+        System.out.printf("è®¡ç®—ç»“æžœæ˜¯ï¼š%d", numStack.pop());
     }
 }

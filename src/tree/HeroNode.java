@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-// ���Ľڵ�
+// 树的节点
 public class HeroNode {
 
     private int no;
@@ -52,9 +52,9 @@ public class HeroNode {
 
 
 
-    // ǰ������ķ���
+    // 前序遍历的方法
     public void preOrder() {
-        // ��������׽ڵ�
+        // 先输出父亲节点
         System.out.println(this);
         if (left != null)
             left.preOrder();
@@ -62,7 +62,7 @@ public class HeroNode {
             right.preOrder();
     }
 
-    // ��������ķ���
+    // 中序遍历的方法
     public void infixOrder() {
         if (left != null)
             left.infixOrder();
@@ -71,7 +71,7 @@ public class HeroNode {
             right.infixOrder();
     }
 
-    // ��������ķ���
+    // 后序遍历的方法
     public void postOrder() {
         if (left != null)
             left.postOrder();
@@ -81,11 +81,11 @@ public class HeroNode {
     }
 
 
-    // ǰ�� ���� ���� ���ֲ��ҷ���
+    // 前序 中序 后序 三种查找方法
     public HeroNode preSearch(int toFind) {
         System.out.println("in preSearch");
         if (toFind == this.getNo()) return this;
-        // ���ҵݹ�
+        // 左、右递归
         HeroNode result = null;
         if (this.left != null)
             result = this.left.preSearch(toFind);
@@ -123,13 +123,13 @@ public class HeroNode {
     }
 
 
-    // �������Ľڵ�ɾ�������ɾ������Ҷ�ӽڵ㣬��ɾ���ýڵ�
-    // ���Ҫɾ�����Ƿ�Ҷ�ӽڵ㣬ֱ��ɾ��������
-    //                      => �����ĳ���ڵ�����ӽڵ㲻Ϊ�գ��������ӽڵ����Ҫɾ���Ľڵ㣬��ɾ����������return
-    //                      => �����ĳ���ڵ�����ӽڵ㲻Ϊ�գ��������ӽڵ����Ҫɾ���Ľڵ㣬��ɾ����������return
-    //                      => ������ҽڵ㶼û��������������������Ҫ�ݹ���������
-    //                      => �����ֻ�� root �ڵ㣬�ͽ�������ÿ�
-    //                      => ����Ҳ���Ҫɾ���Ľڵ㣬��ֱ�� return
+    // 二叉树的节点删除，如果删除的是叶子节点，则删除该节点
+    // 如果要删除的是非叶子节点，直接删除该子树
+    //                      => 即如果某个节点的左子节点不为空，并且左子节点就是要删除的节点，就删除左子树，return
+    //                      => 即如果某个节点的右子节点不为空，并且右子节点就是要删除的节点，就删除左子树，return
+    //                      => 如果左右节点都没有满足上述条件，就需要递归左右子树
+    //                      => 如果树只有 root 节点，就将这个树置空
+    //                      => 如果找不到要删除的节点，就直接 return
     public void deleteByNo(int no) {
 
         if (this.getLeft() != null && this.getLeft().getNo() == no) {
@@ -140,19 +140,19 @@ public class HeroNode {
             this.setRight(null);
             return;
         }
-        // �ݹ�
+        // 递归
         if (this.getLeft() != null)
             this.getLeft().deleteByNo(no);
         if (this.getRight() != null)
             this.getRight().deleteByNo(no);
     }
 
-    // ˳��洢������
-    // Ҫ��������Ľڵ�������ķ�ʽ����ţ������ڱ��������ʱ����Ȼ���԰�������ǰ���У��������
-    // ���������յ�һ��Ϊ 0 ���
-    // �� n ��Ԫ�ص����ӽڵ��� 2*n+1
-    // �� n ��Ԫ�ص����ӽڵ��� 2*n+2
-    // �� n ��Ԫ�صĸ��׽ڵ��� (n-1)/2
+    // 顺序存储二叉树
+    // 要求二叉树的节点以数组的方式来存放，但是在遍历数组的时候仍然可以按照树的前，中，后序遍历
+    // 二叉树按照第一个为 0 编号
+    // 第 n 个元素的左子节点是 2*n+1
+    // 第 n 个元素的右子节点是 2*n+2
+    // 第 n 个元素的父亲节点是 (n-1)/2
 
 
 

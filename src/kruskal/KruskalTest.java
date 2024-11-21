@@ -4,9 +4,9 @@ import static kruskal.Kruskal.INF;
 
 public class KruskalTest {
     public static void main(String[] args) {
-        // ¹¹½¨¶¥µãĞÅÏ¢
-        String[] vertexs = {"AµØ", "BµØ", "CµØ", "DµØ", "EµØ", "FµØ", "GµØ"};
-        // ÃèÊö±ßÓë±ßÖ®¼äµÄÈ¨Öµ
+        // æ„å»ºé¡¶ç‚¹ä¿¡æ¯
+        String[] vertexs = {"Aåœ°", "Båœ°", "Cåœ°", "Dåœ°", "Eåœ°", "Fåœ°", "Gåœ°"};
+        // æè¿°è¾¹ä¸è¾¹ä¹‹é—´çš„æƒå€¼
         int weights[][] = {
                 /*A*//*B*//*C*//*D*//*E*//*F*//*G*/
                 /*A*/ {   0,  12, INF, INF, INF,  16,  14},
@@ -18,20 +18,20 @@ public class KruskalTest {
                 /*G*/ {  14, INF, INF, INF,   8,   9,   0}};
 
         Kruskal kruskal = new Kruskal(vertexs, weights);
-//        // ³¢ÊÔ´òÓ¡ÁÚ½Ó±í
+//        // å°è¯•æ‰“å°é‚»æ¥è¡¨
 //        kruskal.print();
-//        // »ñÈ¡ËùÓĞµÄ±ßµÄĞÅÏ¢
+//        // è·å–æ‰€æœ‰çš„è¾¹çš„ä¿¡æ¯
 //        Link[] links = kruskal.getLinks();
-//        // ¸øËùÓĞµÄ±ß½øĞĞÅÅĞò
+//        // ç»™æ‰€æœ‰çš„è¾¹è¿›è¡Œæ’åº
 //        kruskal.sortLinks(links);
-//        System.out.println("ÅÅĞòºóµÄ±ßÎª£º");
+//        System.out.println("æ’åºåçš„è¾¹ä¸ºï¼š");
 //        for (Link link : links) {
 //            System.out.println(link);
 //        }
-        // ¿ªÊ¼½øĞĞ kruskal Ëã·¨
+        // å¼€å§‹è¿›è¡Œ kruskal ç®—æ³•
         Link[] result = kruskal.kruskal();
         for (Link link : result) {
-            System.out.printf("´Ó%sµ½%s£¬Â·¾¶³¤%d\n", link.start, link.end, link.weight);
+            System.out.printf("ä»%såˆ°%sï¼Œè·¯å¾„é•¿%d\n", link.start, link.end, link.weight);
         }
     }
 }

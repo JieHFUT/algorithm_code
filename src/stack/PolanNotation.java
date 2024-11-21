@@ -17,20 +17,20 @@ public class PolanNotation {
 
     public static void main(String[] args) {
 
-        // ¶¨ÒåÒ»¸öÄæ²¨À¼±í´ïÊ½
+        // å®šä¹‰ä¸€ä¸ªé€†æ³¢å…°è¡¨è¾¾å¼
         String suffixExpression = "30 10 + 5 * 6 -";
-        // ½«×Ö·û´®×ª³É arraylist ´æ´¢ÆğÀ´
+        // å°†å­—ç¬¦ä¸²è½¬æˆ arraylist å­˜å‚¨èµ·æ¥
         List<String> list = getListFromString(suffixExpression);
-        // ½«¸Ã list ´«µİ¸ø caclulate()£¬·µ»ØÄæ²¨À¼±í´ïÊ½µÄ¼ÆËã½á¹û
-        System.out.println("Ö±½ÓÄæĞò¼ÆËãµÄ½á¹ûÊÇ£º" + caclulate(list));
-        // ÖĞ×º±í´ïÊ½ => ºó×º±í´ïÊ½
+        // å°†è¯¥ list ä¼ é€’ç»™ caclulate()ï¼Œè¿”å›é€†æ³¢å…°è¡¨è¾¾å¼çš„è®¡ç®—ç»“æœ
+        System.out.println("ç›´æ¥é€†åºè®¡ç®—çš„ç»“æœæ˜¯ï¼š" + caclulate(list));
+        // ä¸­ç¼€è¡¨è¾¾å¼ => åç¼€è¡¨è¾¾å¼
         List<String> list2 = getListFromMidSuffixExpression("4+(36+4)*2-4");
-        System.out.println("ÖĞĞò×ªlist: " + list2); // [4, +, (, 36, +, 4, ), *, 2, -, 4]
-        System.out.println("ÖĞĞò×ªÄæĞò¼ÆËãµÄ½á¹ûÊÇ: " + caclulate(midToBehind("4+(36+4)*2-4")));
+        System.out.println("ä¸­åºè½¬list: " + list2); // [4, +, (, 36, +, 4, ), *, 2, -, 4]
+        System.out.println("ä¸­åºè½¬é€†åºè®¡ç®—çš„ç»“æœæ˜¯: " + caclulate(midToBehind("4+(36+4)*2-4")));
 
 
     }
-    // ½«×Ö·û´®×ª³É arraylist ´æ´¢ÆğÀ´  "30 10 + 5 * 6 -"  =>  [30, 10, +, 5, *, 6, -]
+    // å°†å­—ç¬¦ä¸²è½¬æˆ arraylist å­˜å‚¨èµ·æ¥  "30 10 + 5 * 6 -"  =>  [30, 10, +, 5, *, 6, -]
     public static List<String> getListFromString(String suffixExpression) {
         String[] expressions = suffixExpression.split(" ");
         List<String> list = new ArrayList<>();
@@ -39,13 +39,13 @@ public class PolanNotation {
         }
         return list;
     }
-    // ¸ù¾İ´«µİ½øÀ´µÄ list Êı×é¼ÆËãÆä½á¹û
+    // æ ¹æ®ä¼ é€’è¿›æ¥çš„ list æ•°ç»„è®¡ç®—å…¶ç»“æœ
     public static int caclulate(List<String> list) {
-        // ´´½¨Ò»¸öÕ»£¬ÓÃÓÚ´æ´¢ list ÖĞµÄÊıÖµ
+        // åˆ›å»ºä¸€ä¸ªæ ˆï¼Œç”¨äºå­˜å‚¨ list ä¸­çš„æ•°å€¼
         Stack<String> stack = new Stack<>();
         for(String item : list) {
-            // item ¾ÍÊÇĞèÒª½øÕ»»òÕß³öÕ»¼ÆËãµÄÔªËØ
-            if(item.matches("\\d+")) { // Æ¥Åä¶àÎ»Êı
+            // item å°±æ˜¯éœ€è¦è¿›æ ˆæˆ–è€…å‡ºæ ˆè®¡ç®—çš„å…ƒç´ 
+            if(item.matches("\\d+")) { // åŒ¹é…å¤šä½æ•°
                 stack.push(item);
             } else {
                 int num1 = Integer.parseInt(stack.pop());
@@ -62,41 +62,41 @@ public class PolanNotation {
                     throw new RuntimeException("oper is unsupported");
             }
         }
-        // ´ËÊ±Õ»ÖĞÖ»Ê£ÏÂÒ»¸öÔªËØ
+        // æ­¤æ—¶æ ˆä¸­åªå‰©ä¸‹ä¸€ä¸ªå…ƒç´ 
         return Integer.parseInt(stack.pop());
     }
 
-    // ÖĞ×º±í´ïÊ½×ª»»Îªºó×º±í´ïÊ½
-    public static List<String> midToBehind(String suffixExpression) {  // Èç£º2+(2+4)*4-5
-        // 1. ³õÊ¼»¯Á½¸öÕ», Óöµ½²Ù×÷ÊıÖ±½ÓÈëÕ»
-        // 2. Èç¹ûÓöµ½ÔËËã·ûÊ±(±È½ÏÔËËã·ûµÄÓÅÏÈ¼¶)
-        //    1. Èç¹ûÔËËã·ûÕ»ÊÇ¿ÕµÄ»òÕß¸ÃÔËËã·ûÊÇ ¡°(¡± Ö±½ÓÈëÕ»
-        //    2. Èç¹ûÔËËã·ûµÄÓÅÏÈ¼¶±ÈÕ»¶¥µÄÔËËã·ûµÄÓÅÏÈ¼¶¸ß£¬Ò²Ö±½ÓÑ¹ÈëÕ»(Ğ¡À¨ºÅ²»ËãÔËËã·û)
-        //    3. ·ñÔò½«ÔËËã·ûÕ»¶¥µÄÔËËã·ûµ¯³ö²¢Ñ¹Èëµ½²Ù×÷ÊıÕ»ÖĞ => ÔÙ´Î×ªÈëµ½ 2-1 ²½Öè£¬ÓëÔËËã·ûÕ»µÄÕ»¶¥±È½Ï
-        // 3. Èç¹ûÓöµ½×óÀ¨ºÅ ¡°(¡± Ö±½ÓÑ¹ÈëÔËËã·ûÕ»£¬Èç¹ûÓöµ½ÓÒÀ¨ºÅ ¡°)¡± ÒÀ´Îµ¯³öÔËËã·ûÕ»¶¥µÄÔËËã·û£¬Ö±µ½Óöµ½×óÀ¨ºÅ£¬´ËÊ±½«ÕâÒ»¶ÔÀ¨ºÅ¶ªÆú
-        // 4. ÖØÒÔÉÏ¸´²½Öè£¬Ö±µ½±í´ïÊ½µÄ×îÓÒ±ß£¬½«ÔËËã·ûÕ»ÖĞµÄÔËËã·ûÒÀ´Îµ¯³ö²¢ÇÒÑ¹Èëµ½²Ù×÷ÊıÕ»ÖĞ
-        // 5. ½«²Ù×÷ÊıÕ»ÖĞµÄÔªËØ³öÕ»£¬µÃµ½µÄ½á¹û¾ÍÊÇ¸Ãºó×º±í´ïÊ½µÄÄæĞò
-        int i = 0; // ÓÃÓÚ±éÀú list
+    // ä¸­ç¼€è¡¨è¾¾å¼è½¬æ¢ä¸ºåç¼€è¡¨è¾¾å¼
+    public static List<String> midToBehind(String suffixExpression) {  // å¦‚ï¼š2+(2+4)*4-5
+        // 1. åˆå§‹åŒ–ä¸¤ä¸ªæ ˆ, é‡åˆ°æ“ä½œæ•°ç›´æ¥å…¥æ ˆ
+        // 2. å¦‚æœé‡åˆ°è¿ç®—ç¬¦æ—¶(æ¯”è¾ƒè¿ç®—ç¬¦çš„ä¼˜å…ˆçº§)
+        //    1. å¦‚æœè¿ç®—ç¬¦æ ˆæ˜¯ç©ºçš„æˆ–è€…è¯¥è¿ç®—ç¬¦æ˜¯ â€œ(â€ ç›´æ¥å…¥æ ˆ
+        //    2. å¦‚æœè¿ç®—ç¬¦çš„ä¼˜å…ˆçº§æ¯”æ ˆé¡¶çš„è¿ç®—ç¬¦çš„ä¼˜å…ˆçº§é«˜ï¼Œä¹Ÿç›´æ¥å‹å…¥æ ˆ(å°æ‹¬å·ä¸ç®—è¿ç®—ç¬¦)
+        //    3. å¦åˆ™å°†è¿ç®—ç¬¦æ ˆé¡¶çš„è¿ç®—ç¬¦å¼¹å‡ºå¹¶å‹å…¥åˆ°æ“ä½œæ•°æ ˆä¸­ => å†æ¬¡è½¬å…¥åˆ° 2-1 æ­¥éª¤ï¼Œä¸è¿ç®—ç¬¦æ ˆçš„æ ˆé¡¶æ¯”è¾ƒ
+        // 3. å¦‚æœé‡åˆ°å·¦æ‹¬å· â€œ(â€ ç›´æ¥å‹å…¥è¿ç®—ç¬¦æ ˆï¼Œå¦‚æœé‡åˆ°å³æ‹¬å· â€œ)â€ ä¾æ¬¡å¼¹å‡ºè¿ç®—ç¬¦æ ˆé¡¶çš„è¿ç®—ç¬¦ï¼Œç›´åˆ°é‡åˆ°å·¦æ‹¬å·ï¼Œæ­¤æ—¶å°†è¿™ä¸€å¯¹æ‹¬å·ä¸¢å¼ƒ
+        // 4. é‡ä»¥ä¸Šå¤æ­¥éª¤ï¼Œç›´åˆ°è¡¨è¾¾å¼çš„æœ€å³è¾¹ï¼Œå°†è¿ç®—ç¬¦æ ˆä¸­çš„è¿ç®—ç¬¦ä¾æ¬¡å¼¹å‡ºå¹¶ä¸”å‹å…¥åˆ°æ“ä½œæ•°æ ˆä¸­
+        // 5. å°†æ“ä½œæ•°æ ˆä¸­çš„å…ƒç´ å‡ºæ ˆï¼Œå¾—åˆ°çš„ç»“æœå°±æ˜¯è¯¥åç¼€è¡¨è¾¾å¼çš„é€†åº
+        int i = 0; // ç”¨äºéå† list
         List<String> list = getListFromMidSuffixExpression(suffixExpression); // [4, +, (, 36, +, 4, ), *, 2, -, 4]
-        Stack<String> operStack = new Stack<>(); // ÓÃÓÚ´æ´¢ÔËËã·û
-        List<String> arrayList = new ArrayList<>(); // ÓÃÓÚ´æ´¢²Ù×÷Êı
+        Stack<String> operStack = new Stack<>(); // ç”¨äºå­˜å‚¨è¿ç®—ç¬¦
+        List<String> arrayList = new ArrayList<>(); // ç”¨äºå­˜å‚¨æ“ä½œæ•°
         for (String item : list) {
-            // ¶ÔÓÚÃ¿Ò»¸öÔªËØ, Èç¹ûÊÇÊı×Ö¾ÍÖ±½Ó½øÈë arraylist
+            // å¯¹äºæ¯ä¸€ä¸ªå…ƒç´ , å¦‚æœæ˜¯æ•°å­—å°±ç›´æ¥è¿›å…¥ arraylist
             if (item.matches("\\d+")) {
                 arrayList.add(item);
             } else if (item.equals("(") || operStack.isEmpty()) {
                 operStack.push(item);
             } else if (item.equals(")")) {
-                // Èç¹ûÓöµ½ÓÒÀ¨ºÅ ¡°)¡± ÒÀ´Îµ¯³öÔËËã·ûÕ»¶¥µÄÔËËã·û£¬Ö±µ½Óöµ½×óÀ¨ºÅ£¬´ËÊ±½«ÕâÒ»¶ÔÀ¨ºÅ¶ªÆú
+                // å¦‚æœé‡åˆ°å³æ‹¬å· â€œ)â€ ä¾æ¬¡å¼¹å‡ºè¿ç®—ç¬¦æ ˆé¡¶çš„è¿ç®—ç¬¦ï¼Œç›´åˆ°é‡åˆ°å·¦æ‹¬å·ï¼Œæ­¤æ—¶å°†è¿™ä¸€å¯¹æ‹¬å·ä¸¢å¼ƒ
                 while(!operStack.peek().equals("(")) {
                     arrayList.add(operStack.pop());
                 }
                 operStack.pop();
             } else {
-                // ±È½ÏÓÅÏÈ¼¶,Èç¹ûÔËËã·ûµÄÓÅÏÈ¼¶±ÈÕ»¶¥µÄÔËËã·ûµÄÓÅÏÈ¼¶¸ß£¬Ò²Ö±½ÓÑ¹ÈëÕ»
+                // æ¯”è¾ƒä¼˜å…ˆçº§,å¦‚æœè¿ç®—ç¬¦çš„ä¼˜å…ˆçº§æ¯”æ ˆé¡¶çš„è¿ç®—ç¬¦çš„ä¼˜å…ˆçº§é«˜ï¼Œä¹Ÿç›´æ¥å‹å…¥æ ˆ
                 while(!operStack.isEmpty() && PolanNotation.operPriority(item) <=
                         PolanNotation.operPriority(operStack.peek())) {
-                    // ½«Õ»ÖĞµÄÔËËã·û³öÕ»£¬È»ºó add ½ø arraylist ÖĞ
+                    // å°†æ ˆä¸­çš„è¿ç®—ç¬¦å‡ºæ ˆï¼Œç„¶å add è¿› arraylist ä¸­
                     arrayList.add(operStack.pop());
                 }
                 operStack.push(item);
@@ -108,20 +108,20 @@ public class PolanNotation {
         return arrayList;
     }
 
-    // ½«Ò»¸öÕı³£µÄÖĞĞò×Ö·û´®×ª»»ÎªÒ»¸ö list
+    // å°†ä¸€ä¸ªæ­£å¸¸çš„ä¸­åºå­—ç¬¦ä¸²è½¬æ¢ä¸ºä¸€ä¸ª list
     public static List<String> getListFromMidSuffixExpression(String suffixExpression) {
         // "4+(36+4)*2-4"  => [4, +, (, 36, +, 4, ), *, 2, -, 4]
-        int i = 0; // Ë÷Òı£¬ÓÃÀ´±éÀú¸Ã×Ö·û´®
+        int i = 0; // ç´¢å¼•ï¼Œç”¨æ¥éå†è¯¥å­—ç¬¦ä¸²
         List<String> list = new ArrayList<>();
         while(true) {
             if (suffixExpression.equals("")) return list;
             if(suffixExpression.charAt(i) < 48 || suffixExpression.charAt(i) > 57) {
-                // ËµÃ÷¸Ã×Ö·û²»ÊÇÊı×Ö£¬Ö±½ÓÌí¼Óµ½ list ÖĞ
+                // è¯´æ˜è¯¥å­—ç¬¦ä¸æ˜¯æ•°å­—ï¼Œç›´æ¥æ·»åŠ åˆ° list ä¸­
                 list.add("" + suffixExpression.charAt(i++));
             }else {
                 StringBuffer str = new StringBuffer();
                 while(i < suffixExpression.length() && suffixExpression.charAt(i) >= 48 && suffixExpression.charAt(i) <= 57) {
-                    // ¸ÃÎ»ÖÃµÄ×Ö·ûÊÇÊı×Ö²¢ÇÒÃ»ÓĞÔ½½ç
+                    // è¯¥ä½ç½®çš„å­—ç¬¦æ˜¯æ•°å­—å¹¶ä¸”æ²¡æœ‰è¶Šç•Œ
                     str.append(suffixExpression.charAt(i++));
                 }
                 list.add(str.toString());
@@ -131,7 +131,7 @@ public class PolanNotation {
         return list;
     }
 
-    // ·µ»ØÒ»¸öÔËËã·û¶ÔÓ¦µÄÓÅÏÈ¼¶
+    // è¿”å›ä¸€ä¸ªè¿ç®—ç¬¦å¯¹åº”çš„ä¼˜å…ˆçº§
     public static int operPriority(String operation) {
         if(operation.equals("+") || operation.equals("-"))
             return 1;

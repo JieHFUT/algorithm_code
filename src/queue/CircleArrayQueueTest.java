@@ -5,42 +5,42 @@ import java.util.Scanner;
 public class CircleArrayQueueTest {
     public static void main(String[] args) {
 
-        System.out.println("²âÊÔÊı×éÍê³É»·ĞÎ¶ÓÁĞ£º");
-        // ´´½¨Ò»¸ö»·ĞÎ¶ÓÁĞ
+        System.out.println("æµ‹è¯•æ•°ç»„å®Œæˆç¯å½¢é˜Ÿåˆ—ï¼š");
+        // åˆ›å»ºä¸€ä¸ªç¯å½¢é˜Ÿåˆ—
         CircleArrayQueue queue = new CircleArrayQueue(3);
 
-        char input = ' '; // ½ÓÊÕÓÃ»§ÊäÈë
+        char input = ' '; // æ¥æ”¶ç”¨æˆ·è¾“å…¥
         Scanner scanner = new Scanner(System.in);
         boolean flag = true;
 
         while (flag) {
-            System.out.println("s(show): ÏÔÊ¾¶ÓÁĞ");
-            System.out.println("e(exit): ÍË³ö³ÌĞò");
-            System.out.println("a(add): Ìí¼ÓÊı¾İµ½¶ÓÁĞ");
-            System.out.println("g(get): ´Ó¶ÓÁĞÈ¡³öÊı¾İ");
-            System.out.println("h(head): ²é¿´¶ÓÁĞÍ·µÄÊı¾İ");
+            System.out.println("s(show): æ˜¾ç¤ºé˜Ÿåˆ—");
+            System.out.println("e(exit): é€€å‡ºç¨‹åº");
+            System.out.println("a(add): æ·»åŠ æ•°æ®åˆ°é˜Ÿåˆ—");
+            System.out.println("g(get): ä»é˜Ÿåˆ—å–å‡ºæ•°æ®");
+            System.out.println("h(head): æŸ¥çœ‹é˜Ÿåˆ—å¤´çš„æ•°æ®");
 
-            // ½ÓÊÕÓÃ»§ÊäÈëµÄ²Ù×÷
+            // æ¥æ”¶ç”¨æˆ·è¾“å…¥çš„æ“ä½œ
             input = scanner.next().charAt(0);
             switch (input) {
                 case 's':
                     queue.showQueue();
                     break;
                 case 'a':
-                    System.out.println("ÇëÊäÈëÒªÌí¼ÓµÄÊı¾İ£º");
+                    System.out.println("è¯·è¾“å…¥è¦æ·»åŠ çš„æ•°æ®ï¼š");
                     int value = scanner.nextInt();
                     queue.add(value);
                     break;
                 case 'g':
                     try {
-                        System.out.println("È¡³öµÄÊı¾İÊÇ: " + queue.getQueue());
+                        System.out.println("å–å‡ºçš„æ•°æ®æ˜¯: " + queue.getQueue());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
                     break;
                 case 'h':
                     try {
-                        System.out.println("¶ÓÁĞÍ·²¿µÄÊı¾İÊÇ: " + queue.headQueue());
+                        System.out.println("é˜Ÿåˆ—å¤´éƒ¨çš„æ•°æ®æ˜¯: " + queue.headQueue());
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

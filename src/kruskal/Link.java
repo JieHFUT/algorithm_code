@@ -2,14 +2,14 @@ package kruskal;
 
 
 /**
- * ÕâÊÇ±ßµÄÀà£¬ÓÃÀ´ÃèÊöÒ»Ìõ±ßµÄĞÅÏ¢
+ * è¿™æ˜¯è¾¹çš„ç±»ï¼Œç”¨æ¥æè¿°ä¸€æ¡è¾¹çš„ä¿¡æ¯
  */
 public class Link {
-    // ±ßµÄÆğµã
+    // è¾¹çš„èµ·ç‚¹
     public String start;
-    // ±ßµÄÖÕµã
+    // è¾¹çš„ç»ˆç‚¹
     public String end;
-    // ±ßµÄÈ¨Öµ
+    // è¾¹çš„æƒå€¼
     public int weight;
 
     public Link(String start, String end, int weight) {

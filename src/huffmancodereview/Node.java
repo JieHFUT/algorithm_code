@@ -1,11 +1,11 @@
 package huffmancodereview;
 
 public class Node implements Comparable<Node>{
-    // Êı¾İ
+    // æ•°æ®
     Byte value;
-    // È¨ÖØ
+    // æƒé‡
     int weight;
-    // ×óÓÒ½Úµã
+    // å·¦å³èŠ‚ç‚¹
     Node left;
     Node right;
     public Node(Byte value, int weight) {
@@ -13,9 +13,9 @@ public class Node implements Comparable<Node>{
         this.weight = weight;
     }
 
-    // ±éÀú·½·¨
+    // éå†æ–¹æ³•
     public void preOrder() {
-        System.out.println("¸Ã½ÚµãµÄÈ¨ÖØÊÇ: " + this.weight);
+        System.out.println("è¯¥èŠ‚ç‚¹çš„æƒé‡æ˜¯: " + this.weight);
         if (this.left != null)
             this.left.preOrder();
         if (this.right != null)

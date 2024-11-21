@@ -1,20 +1,20 @@
 package linkedlist.josepfu;
 
-// ´´½¨Ò»¸ö»·ĞÎµ¥ÏòÁ´±í
+// åˆ›å»ºä¸€ä¸ªç¯å½¢å•å‘é“¾è¡¨
 public class CircleSingleLinkedList {
 
-    // ´´½¨Ò»¸ö first ½Úµã
+    // åˆ›å»ºä¸€ä¸ª first èŠ‚ç‚¹
     private Boy first;
 
 
-    // Ìí¼ÓĞ¡º¢½Úµã£¬¹¹½¨»·ĞÎÁ´±í
+    // æ·»åŠ å°å­©èŠ‚ç‚¹ï¼Œæ„å»ºç¯å½¢é“¾è¡¨
     public void addBoy (int nums) {
-        // Êı¾İĞ£Ñé
+        // æ•°æ®æ ¡éªŒ
         if(nums < 1) return;
 
         Boy curBoy = null;
         for (int i = 1; i <= nums; i++) {
-            // ¸ù¾İ±àºÅ£¬´´½¨Ğ¡º¢½Úµã
+            // æ ¹æ®ç¼–å·ï¼Œåˆ›å»ºå°å­©èŠ‚ç‚¹
             Boy boy = new Boy(i);
             if (i == 1) {
                 first = boy;
@@ -28,7 +28,7 @@ public class CircleSingleLinkedList {
         }
     }
 
-    // ±éÀúµ±Ç°»·ĞÎÁĞ±íËùÓĞµÄ½Úµã N ¸öÈË£¬´Ó M ¿ªÊ¼, Ã¿¸ô K ¸ö³öÒ»¸ö
+    // éå†å½“å‰ç¯å½¢åˆ—è¡¨æ‰€æœ‰çš„èŠ‚ç‚¹ N ä¸ªäººï¼Œä» M å¼€å§‹, æ¯éš” K ä¸ªå‡ºä¸€ä¸ª
     public void showBoy() {
         if (first == null) return;
         Boy curBoy = first;
@@ -44,10 +44,10 @@ public class CircleSingleLinkedList {
 
 
     /**
-     * ¸ù¾İÓÃ»§µÄÊäÈë£¬Éú³ÉÒ»¸öĞ¡º¢³öÈ¦µÄË³Ğò
-     * @param startNo ±íÊ¾´ÓµÚ¼¸¸öĞ¡º¢¿ªÊ¼ÊıÊı
-     * @param countNo ±íÊ¾Êı¼¸ÏÂ
-     * @param nums ±íÊ¾×î³õÓĞ¶àÉÙĞ¡º¢ÔÚÈ¦ÖĞ
+     * æ ¹æ®ç”¨æˆ·çš„è¾“å…¥ï¼Œç”Ÿæˆä¸€ä¸ªå°å­©å‡ºåœˆçš„é¡ºåº
+     * @param startNo è¡¨ç¤ºä»ç¬¬å‡ ä¸ªå°å­©å¼€å§‹æ•°æ•°
+     * @param countNo è¡¨ç¤ºæ•°å‡ ä¸‹
+     * @param nums è¡¨ç¤ºæœ€åˆæœ‰å¤šå°‘å°å­©åœ¨åœˆä¸­
      */
     public void countBoy(int startNo, int countNo, int nums) {
         if (first == null || startNo < 1 || startNo > nums) {
@@ -56,7 +56,7 @@ public class CircleSingleLinkedList {
         }
         Boy helper = first;
 
-        // ÏÈÈÃ helper Ö¸Ïò×îºóÒ»¸ö½Úµã
+        // å…ˆè®© helper æŒ‡å‘æœ€åä¸€ä¸ªèŠ‚ç‚¹
         while(true) {
             if (helper.getNext() == first)
                 break;
@@ -67,21 +67,21 @@ public class CircleSingleLinkedList {
             helper = helper.getNext();
             first = first.getNext();
         }
-        //µ±Ğ¡º¢±¨ÊıÊ±£¬ÈÃfirst ºÍ helper Ö¸ÕëÍ¬Ê± µÄÒÆ¶¯  m  - 1 ´Î, È»ºó³öÈ¦
-        //ÕâÀïÊÇÒ»¸öÑ­»·²Ù×÷£¬ÖªµÀÈ¦ÖĞÖ»ÓĞÒ»¸ö½Úµã
+        //å½“å°å­©æŠ¥æ•°æ—¶ï¼Œè®©first å’Œ helper æŒ‡é’ˆåŒæ—¶ çš„ç§»åŠ¨  m  - 1 æ¬¡, ç„¶åå‡ºåœˆ
+        //è¿™é‡Œæ˜¯ä¸€ä¸ªå¾ªç¯æ“ä½œï¼ŒçŸ¥é“åœˆä¸­åªæœ‰ä¸€ä¸ªèŠ‚ç‚¹
         while(true) {
             if (first == helper) {
-                break; // ËµÃ÷È¦ÀïÄ¿Ç°Ö»Ê£ÏÂÒ»¸ö½ÚµãÁË
+                break; // è¯´æ˜åœˆé‡Œç›®å‰åªå‰©ä¸‹ä¸€ä¸ªèŠ‚ç‚¹äº†
             }
             for (int i = 0; i < countNo - 1; i++) {
                 first = first.getNext();
                 helper = helper.getNext();
             }
-            System.out.printf("ĞèÒª³öÈ¦µÄÊÇ %d\n", first.getNo());
+            System.out.printf("éœ€è¦å‡ºåœˆçš„æ˜¯ %d\n", first.getNo());
             first = first.getNext();
             helper.setNext(first);
         }
-        System.out.printf("×îºóÒ»¸ö³öÈ¦µÄÊÇ %d\n", helper.getNo());
+        System.out.printf("æœ€åä¸€ä¸ªå‡ºåœˆçš„æ˜¯ %d\n", helper.getNo());
     }
 
 }

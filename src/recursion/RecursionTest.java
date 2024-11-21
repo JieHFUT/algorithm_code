@@ -2,8 +2,8 @@ package recursion;
 
 public class RecursionTest {
     public static void main(String[] args) {
-        // 计算一个数字的阶乘
-        System.out.printf("%d的阶乘是:%d.", 5, recursionNum(5));
+        // 璁＄畻涓�涓暟瀛楃殑闃朵箻
+        System.out.printf("%d鐨勯樁涔樻槸:%d.", 5, recursionNum(5));
     }
     public static int recursionNum(int num) {
         if (num == 0 || num == 1) {

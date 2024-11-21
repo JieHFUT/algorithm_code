@@ -4,22 +4,22 @@ package sparsearray;
  * ClassName: SparseArray
  * Package: sparsearray
  * Description:
- * Á·Ï°Ï¡ÊèÊı×é
+ * ç»ƒä¹ ç¨€ç–æ•°ç»„
  * @Author jieHFUT
  * @Create 2024/10/16 23:54
  * @Version 1.0
  */
 public class SparseArray {
     public static void main(String[] args) {
-        // ´´½¨Ò»¸öÔ­Ê¼µÄ¶şÎ¬Êı×é
-        // 0: ±íÊ¾Ã»ÓĞÆå×Ó  1£º±íÊ¾ºÚ×Ó  2£º±íÊ¾À¶×Ó
+        // åˆ›å»ºä¸€ä¸ªåŸå§‹çš„äºŒç»´æ•°ç»„
+        // 0: è¡¨ç¤ºæ²¡æœ‰æ£‹å­  1ï¼šè¡¨ç¤ºé»‘å­  2ï¼šè¡¨ç¤ºè“å­
         int[][] chessArr1 = new int[11][11];
         chessArr1[1][2] = 1;
         chessArr1[2][3] = 2;
         chessArr1[3][4] = 2;
 
-        // Êä³öÔ­Ê¼µÄ¶şÎ¬Êı×é
-        System.out.println("Ô­Ê¼µÄ¶şÎ¬Êı×é£º");
+        // è¾“å‡ºåŸå§‹çš„äºŒç»´æ•°ç»„
+        System.out.println("åŸå§‹çš„äºŒç»´æ•°ç»„ï¼š");
         for(int[] arr : chessArr1) {
             for(int num : arr) {
                 System.out.print(num + "\t");
@@ -27,8 +27,8 @@ public class SparseArray {
             System.out.println();
         }
 
-        // ½«¶şÎ¬Êı×é×ªÏ¡ÊèÊı×é
-        // 1. ÏÈ±éÀú¶şÎ¬Êı×é£¬»ñÈ¡Êı×éÖĞÆå×ÓµÄ¸öÊı£¬µÃµ½Ï¡ÊèÊı×éµÄ´óĞ¡
+        // å°†äºŒç»´æ•°ç»„è½¬ç¨€ç–æ•°ç»„
+        // 1. å…ˆéå†äºŒç»´æ•°ç»„ï¼Œè·å–æ•°ç»„ä¸­æ£‹å­çš„ä¸ªæ•°ï¼Œå¾—åˆ°ç¨€ç–æ•°ç»„çš„å¤§å°
         int chessNumber = 0;
         for (int i = 0; i < chessArr1.length; i++) {
             for (int j = 0; j < chessArr1[0].length; j++) {
@@ -38,17 +38,17 @@ public class SparseArray {
             }
         }
 
-        // ´´½¨Ï¡ÊèÊı×é²¢ÇÒ¸øÏ¡ÊèÊı×éÊ×ĞĞ¸³Öµ
+        // åˆ›å»ºç¨€ç–æ•°ç»„å¹¶ä¸”ç»™ç¨€ç–æ•°ç»„é¦–è¡Œèµ‹å€¼
         int[][] sparseArr = new int[chessNumber + 1][3];
         sparseArr[0][0] = chessArr1.length;
         sparseArr[0][1] = chessArr1[0].length;
         sparseArr[0][2] = chessNumber;
 
-        // ±éÀú¶şÎ¬Êı×é£¬½«·Ç 0 µÄÖµ´æ·ÅÔÚÏ¡ÊèÊı×éÖĞ
+        // éå†äºŒç»´æ•°ç»„ï¼Œå°†é 0 çš„å€¼å­˜æ”¾åœ¨ç¨€ç–æ•°ç»„ä¸­
         int count = 0;
         for (int i = 0; i < chessArr1.length; i++) {
             for (int j = 0; j < chessArr1[0].length; j++) {
-                // µÚ i ĞĞ£¬µÚ j ÁĞ£¬ÊıÖµÎª chessARR1[i][j], ·ÅÔÚµÚÏ¡ÊèÊı×é count + 1 ĞĞ
+                // ç¬¬ i è¡Œï¼Œç¬¬ j åˆ—ï¼Œæ•°å€¼ä¸º chessARR1[i][j], æ”¾åœ¨ç¬¬ç¨€ç–æ•°ç»„ count + 1 è¡Œ
                 if (chessArr1[i][j] != 0) {
                     //
                     count++;
@@ -59,24 +59,24 @@ public class SparseArray {
             }
         }
 
-        //Êä³öÏ¡ÊèÊı×é
-        System.out.println("Ï¡ÊèÊı×é: ");
+        //è¾“å‡ºç¨€ç–æ•°ç»„
+        System.out.println("ç¨€ç–æ•°ç»„: ");
         for(int[] arr : sparseArr) {
             for(int num : arr) {
                 System.out.print(num + "\t");
             }
             System.out.println();
         }
-        // Ï¡ÊèÊı×é»Ö¸´³ÉÔ­Ê¼µÄ¶şÎ¬Êı×é
-        // 1. ÏÈ¶ÁÈ¡Ï¡ÊèÊı×éµÄµÚÒ»ĞĞ£¬ÏÈ´´½¨´¦Ô­Ê¼Êı×é
+        // ç¨€ç–æ•°ç»„æ¢å¤æˆåŸå§‹çš„äºŒç»´æ•°ç»„
+        // 1. å…ˆè¯»å–ç¨€ç–æ•°ç»„çš„ç¬¬ä¸€è¡Œï¼Œå…ˆåˆ›å»ºå¤„åŸå§‹æ•°ç»„
         int[][] chessArr2 = new int[sparseArr[0][0]][sparseArr[0][1]];
-        // 2. ¶ÁÈ¡Ï¡ÊèÊı×éµÚ¶şĞĞ¿ªÊ¼µÄÊı×é¸øÔ­Ê¼Êı×é¸³Öµ
+        // 2. è¯»å–ç¨€ç–æ•°ç»„ç¬¬äºŒè¡Œå¼€å§‹çš„æ•°ç»„ç»™åŸå§‹æ•°ç»„èµ‹å€¼
         for (int i = 1; i < sparseArr.length; i++) {
-            // µÚ¶şĞĞ¿ªÊ¼
+            // ç¬¬äºŒè¡Œå¼€å§‹
             chessArr2[sparseArr[i][0]][sparseArr[i][1]] = sparseArr[i][2];
         }
-        // Êä³öÔ­Ê¼Êı×é£º
-        System.out.println("Êä³öÏ¡ÊèÊı×éµ¼³öµÄÔ­Ê¼Êı×é£º");
+        // è¾“å‡ºåŸå§‹æ•°ç»„ï¼š
+        System.out.println("è¾“å‡ºç¨€ç–æ•°ç»„å¯¼å‡ºçš„åŸå§‹æ•°ç»„ï¼š");
         for(int[] arr : chessArr2) {
             for(int num : arr) {
                 System.out.print(num + "\t");

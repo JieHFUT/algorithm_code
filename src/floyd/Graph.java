@@ -12,74 +12,74 @@ import java.util.Arrays;
  * @Version 1.0
  */
 
-// ´´½¨Í¼
+// åˆ›å»ºå›¾
 public class Graph {
-    // ´æ·Å¶¥µãµÄÊı×é
+    // å­˜æ”¾é¡¶ç‚¹çš„æ•°ç»„
     String[] vertexs;
-    // ÓÃÀ´±£´æ¾àÀëµÄ¶şÎ¬Êı×é
+    // ç”¨æ¥ä¿å­˜è·ç¦»çš„äºŒç»´æ•°ç»„
     int[][] distance;
-    // ÓÃÀ´¼ÇÂ¼Ç°ÇıµÄ¶şÎ¬Êı×é
+    // ç”¨æ¥è®°å½•å‰é©±çš„äºŒç»´æ•°ç»„
     int[][] prev;
-    // ±íÊ¾Á½¸ö¶¥µã²»ÁªÍ¨
+    // è¡¨ç¤ºä¸¤ä¸ªé¡¶ç‚¹ä¸è”é€š
     public static final int N = 65535;
 
 
-    // ¹¹Ôì·½·¨¶ÔÆä½øĞĞ³õÊ¼»¯
+    // æ„é€ æ–¹æ³•å¯¹å…¶è¿›è¡Œåˆå§‹åŒ–
     public Graph(int count, String[] vertexs, int[][] distance) {
         this.vertexs = vertexs;
         this.distance = distance;
         this.prev = new int[vertexs.length][vertexs.length];
-        // ¶ÔÇ°Çı½Úµã½øĞĞ³õÊ¼»¯
+        // å¯¹å‰é©±èŠ‚ç‚¹è¿›è¡Œåˆå§‹åŒ–
         for (int i = 0; i < count; i++) {
             Arrays.fill(this.prev[i], i);
         }
     }
 
-    // ´òÓ¡¹¹ÔìµÄÓÃÀ´¼ÇÂ¼
-    // 1.ÓÃÀ´¼ÇÂ¼ÊµÊ±×î¶Ì¾àÀëµÄ distance Êı×é
-    // 2.ÓÃÀ´¼ÇÂ¼ÊµÊ±µÄÇ°Çı¶¥µãµÄ prev Êı×é
+    // æ‰“å°æ„é€ çš„ç”¨æ¥è®°å½•
+    // 1.ç”¨æ¥è®°å½•å®æ—¶æœ€çŸ­è·ç¦»çš„ distance æ•°ç»„
+    // 2.ç”¨æ¥è®°å½•å®æ—¶çš„å‰é©±é¡¶ç‚¹çš„ prev æ•°ç»„
     public void print() {
         for (int[] dis : distance) {
             System.out.println(Arrays.toString(dis));
         }
-        System.out.println("ÏÂÃæÊÇÇ°Çı¶¥µãµÄÇé¿ö£º");
+        System.out.println("ä¸‹é¢æ˜¯å‰é©±é¡¶ç‚¹çš„æƒ…å†µï¼š");
         for (int[] pre : prev) {
             System.out.println(Arrays.toString(pre));
         }
     }
 
 
-    // ¿ªÊ¼Í¨¹ı¸¥ÂåÒÁµÂËã·¨Ñ°ÕÒ¸÷¸öÂ·¾¶
-    // Ç°Çı¶¥µã ==> ÖĞ¼ä¶¥µã ==> ÖÕµã
+    // å¼€å§‹é€šè¿‡å¼—æ´›ä¼Šå¾·ç®—æ³•å¯»æ‰¾å„ä¸ªè·¯å¾„
+    // å‰é©±é¡¶ç‚¹ ==> ä¸­é—´é¡¶ç‚¹ ==> ç»ˆç‚¹
     public void floyd() {
-        // Ã¿¸ö¶¥µã¶¼Òª³äµ±Ò»±éÖĞ¼ä¶¥µã£¬Ò»¹² vertexs.length ¸ö
+        // æ¯ä¸ªé¡¶ç‚¹éƒ½è¦å……å½“ä¸€éä¸­é—´é¡¶ç‚¹ï¼Œä¸€å…± vertexs.length ä¸ª
         for (int k = 0; k < this.vertexs.length; k++) {
-            // Õâ¸öÖĞ¼ä¶¥µãÖÜ±ßµÄÇ°Çı¶¥µã
+            // è¿™ä¸ªä¸­é—´é¡¶ç‚¹å‘¨è¾¹çš„å‰é©±é¡¶ç‚¹
             for (int i = 0; i < this.vertexs.length; i++) {
-                // Õâ¸öÖĞ¼ä¶¥µãÖÜ±ßµÄºó¼Ì¶¥µã
+                // è¿™ä¸ªä¸­é—´é¡¶ç‚¹å‘¨è¾¹çš„åç»§é¡¶ç‚¹
                 for (int j = 0; j < this.vertexs.length; j++) {
-                    // Ô­±¾¼ÇÂ¼µÄÇ°Çı¶¥µãµ½ºó¼Ì¶¥µãµÄ¾àÀë
+                    // åŸæœ¬è®°å½•çš„å‰é©±é¡¶ç‚¹åˆ°åç»§é¡¶ç‚¹çš„è·ç¦»
                     int init = distance[i][j];
-                    // Ç°Çı¶¥µãÍ¨¹ı¸ÃÖĞ×ª¶¥µãµ½ºó¼Ì¶¥µãµÄ¾àÀë
+                    // å‰é©±é¡¶ç‚¹é€šè¿‡è¯¥ä¸­è½¬é¡¶ç‚¹åˆ°åç»§é¡¶ç‚¹çš„è·ç¦»
                     int len = distance[i][k] + distance[k][j];
                     if (len < init) {
-                        // ¶ÔÇ°Çı¶¥µãµ½ºó¼Ì¶¥µãµÄ¾àÀë½øĞĞĞŞ¸Ä
+                        // å¯¹å‰é©±é¡¶ç‚¹åˆ°åç»§é¡¶ç‚¹çš„è·ç¦»è¿›è¡Œä¿®æ”¹
                         distance[i][j] = len;
-                        // ¶ÔÆğÇ°Çı¶¥µãÊı×é½øĞĞĞŞ¸Ä
+                        // å¯¹èµ·å‰é©±é¡¶ç‚¹æ•°ç»„è¿›è¡Œä¿®æ”¹
                         prev[i][j] = prev[k][j];
                     }
                 }
             }
         }
 
-        // Êä³ö½á¹û
+        // è¾“å‡ºç»“æœ
         result();
     }
 
     public void result() {
         for (int i = 0; i < distance.length; i++) {
             for (int j = i; j < distance.length; j++) {
-                System.out.printf("%sµ½%sµÄ×î¶Ì¾àÀëÎª:%d\t", vertexs[i], vertexs[j], distance[i][j]);
+                System.out.printf("%såˆ°%sçš„æœ€çŸ­è·ç¦»ä¸º:%d\t", vertexs[i], vertexs[j], distance[i][j]);
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append(vertexs[i] + "=>");
                 int m = i;
@@ -90,7 +90,7 @@ public class Graph {
                     m = prev[n][m];
                 }
                 stringBuilder.append(vertexs[j]);
-                System.out.printf("Â·¾¶Îª:%s\n", stringBuilder);
+                System.out.printf("è·¯å¾„ä¸º:%s\n", stringBuilder);
                 System.out.println("====================================");
             }
         }

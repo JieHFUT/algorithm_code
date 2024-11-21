@@ -8,7 +8,7 @@ import java.util.Queue;
  * ClassName: Node
  * Package: binarysorttree
  * Description:
- * ¶ş²æÅÅĞòÊ÷
+ * äºŒå‰æ’åºæ ‘
  * @Author jieHFUT
  * @Create 2024/11/1 22:09
  * @Version 1.0
@@ -49,18 +49,18 @@ public class Node implements Comparable<Node>{
     }
 
 
-    // Ìí¼ÓÊı¾İ£¬Í¬Ê±½«Æä½øĞĞÅÅĞò
+    // æ·»åŠ æ•°æ®ï¼ŒåŒæ—¶å°†å…¶è¿›è¡Œæ’åº
     public void add(Node toAdd) {
         if (this.compareTo(toAdd) < 0) {
-            // Èç¹ûÊ÷ÖĞµÄ½Úµã±ÈÒªÌí¼ÓµÄ½ÚµãÔªËØĞ¡
-            // ÏòÊ÷µÄÓÒ×ÓÊ÷±È½Ï
+            // å¦‚æœæ ‘ä¸­çš„èŠ‚ç‚¹æ¯”è¦æ·»åŠ çš„èŠ‚ç‚¹å…ƒç´ å°
+            // å‘æ ‘çš„å³å­æ ‘æ¯”è¾ƒ
             if(this.right == null)
                 this.right = toAdd;
             else
                 this.right.add(toAdd);
         } else {
-            // Èç¹ûÊ÷ÖĞµÄ½Úµã±ÈÒªÌí¼ÓµÄ½ÚµãÔªËØ´ó
-            // Ïò×ó×ÓÊ÷±È½Ï
+            // å¦‚æœæ ‘ä¸­çš„èŠ‚ç‚¹æ¯”è¦æ·»åŠ çš„èŠ‚ç‚¹å…ƒç´ å¤§
+            // å‘å·¦å­æ ‘æ¯”è¾ƒ
             if (this.left == null)
                 this.left = toAdd;
             else
@@ -69,7 +69,7 @@ public class Node implements Comparable<Node>{
     }
 
 
-    // ²ãĞò±éÀú
+    // å±‚åºéå†
     public void levelOrder() {
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(this);
@@ -84,7 +84,7 @@ public class Node implements Comparable<Node>{
     }
 
     /**
-     * ¸ù¾İÖµÀ´ÕÒµ½½Úµã£¬Èç¹ûÃ»ÓĞÕÒµ½¾Í·µ»Ø null
+     * æ ¹æ®å€¼æ¥æ‰¾åˆ°èŠ‚ç‚¹ï¼Œå¦‚æœæ²¡æœ‰æ‰¾åˆ°å°±è¿”å› null
      * @param value
      * @return
      */
@@ -92,9 +92,9 @@ public class Node implements Comparable<Node>{
         return search(this, value);
     }
     public Node search(Node node, int value) {
-        // 1. Èç¹ûÒªÕÒµÄÖµ¾ÍÔÚ¸Ã½ÚµãÉÏ
+        // 1. å¦‚æœè¦æ‰¾çš„å€¼å°±åœ¨è¯¥èŠ‚ç‚¹ä¸Š
         if (node.value == value) return node;
-        // 2. Èç¹ûÒªÕÒµÄÖµ±È¸Ã½ÚµãµÄÖµ´ó¾ÍÏòÓÒµİ¹é£¬·ñÔò¾ÍÏñ×óµİ¹é
+        // 2. å¦‚æœè¦æ‰¾çš„å€¼æ¯”è¯¥èŠ‚ç‚¹çš„å€¼å¤§å°±å‘å³é€’å½’ï¼Œå¦åˆ™å°±åƒå·¦é€’å½’
         if (node.value > value) {
             if (node.left != null)
                 return search(node.left, value);
@@ -109,7 +109,7 @@ public class Node implements Comparable<Node>{
     }
 
     /**
-     * ²éÕÒ¸Ã½ÚµãµÄ¸¸Ç×½Úµã£¬Ã»ÓĞ¸¸½Úµã»òÕßÃ»ÓĞÕÒµ½¸Ã½Úµã¾Í·µ»Ø null
+     * æŸ¥æ‰¾è¯¥èŠ‚ç‚¹çš„çˆ¶äº²èŠ‚ç‚¹ï¼Œæ²¡æœ‰çˆ¶èŠ‚ç‚¹æˆ–è€…æ²¡æœ‰æ‰¾åˆ°è¯¥èŠ‚ç‚¹å°±è¿”å› null
      * @param value
      * @return
      */
@@ -117,13 +117,13 @@ public class Node implements Comparable<Node>{
         if (this.value == value) return null;
 
         if (this.left != null && this.left.value == value) {
-            // ¸Ã½ÚµãµÄ×ó×Ó½Úµã¾ÍÊÇ target
+            // è¯¥èŠ‚ç‚¹çš„å·¦å­èŠ‚ç‚¹å°±æ˜¯ target
             return this;
         } else if (this.right != null && this.right.value == value) {
-            // ¸Ã½ÚµãµÄÓÒ×Ó½Úµã¾ÍÊÇ target
+            // è¯¥èŠ‚ç‚¹çš„å³å­èŠ‚ç‚¹å°±æ˜¯ target
             return this;
         } else {
-            // ¸Ã½ÚµãµÄ×Ó½Úµã²»ÊÇÒªÕÒµÄ½Úµã£¬ÍùÏÂÑ°ÕÒ
+            // è¯¥èŠ‚ç‚¹çš„å­èŠ‚ç‚¹ä¸æ˜¯è¦æ‰¾çš„èŠ‚ç‚¹ï¼Œå¾€ä¸‹å¯»æ‰¾
             if (this.value > value && this.left != null) {
                 return this.left.searchParent(value);
             } else if (this.value <= value && this.right != null) {

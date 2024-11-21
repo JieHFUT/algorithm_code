@@ -1,12 +1,12 @@
 package binarysearchnorecursion;
 
 /**
- * ¶ş·Ö²éÕÒ£¬µ«ÊÇ²»Ê¹ÓÃµİ¹é
+ * äºŒåˆ†æŸ¥æ‰¾ï¼Œä½†æ˜¯ä¸ä½¿ç”¨é€’å½’
  */
 public class BinarySearchNoRecursion {
     public static void main(String[] args) {
         int[] arr = {1,3,5,7,13,24,35,44,67,132};
-        System.out.println("target µÄÏÂ±êÊÇ£º" + binarySearchNoRecursion(arr, 44));
+        System.out.println("target çš„ä¸‹æ ‡æ˜¯ï¼š" + binarySearchNoRecursion(arr, 44));
     }
 
 

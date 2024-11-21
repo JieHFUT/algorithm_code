@@ -17,7 +17,7 @@ public class AVLTree {
     public Node getRoot() {return root;}
 
     /**
-     * ÏòÅÅĞòÊ÷ÖĞÌí¼ÓÔªËØ
+     * å‘æ’åºæ ‘ä¸­æ·»åŠ å…ƒç´ 
      * @param toAdd
      */
     public void add(Node toAdd) {
@@ -31,7 +31,7 @@ public class AVLTree {
 
 
     /**
-     * Êä³öÅÅĞòÊ÷µÄÇ°Ğò±éÀú
+     * è¾“å‡ºæ’åºæ ‘çš„å‰åºéå†
      */
     public void preOrder() {
         if (root == null) return;
@@ -39,14 +39,14 @@ public class AVLTree {
     }
 
     /**
-     * ²ãĞò±éÀú
+     * å±‚åºéå†
      */
     public void levelOrder() {
         if (root == null) return;
         this.getRoot().levelOrder();
     }
 
-    // »ñµÃÊ÷µÄ¸ß¶È
+    // è·å¾—æ ‘çš„é«˜åº¦
     public int height() {
         if (root == null) return 0;
         return root.height();
@@ -61,11 +61,11 @@ public class AVLTree {
     }
 
 
-    // ×óĞı
+    // å·¦æ—‹
     public void leftRotate() {
         root.leftRotate();
     }
-    // ÓÒĞı
+    // å³æ—‹
     public void rightRotate() {
         root.rightRotate();
     }

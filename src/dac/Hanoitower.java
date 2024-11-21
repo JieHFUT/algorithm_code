@@ -16,27 +16,27 @@ public class Hanoitower {
 
 
     /**
-     * ººÅµËş
-     * @param level  ËşµÄ²ãÊı
-     * @param first  µÚÒ»×ùËşÃû
-     * @param second µÚ¶ş×ùËşÃû
-     * @param third  µÚÈı×ùËşÃû
+     * æ±‰è¯ºå¡”
+     * @param level  å¡”çš„å±‚æ•°
+     * @param first  ç¬¬ä¸€åº§å¡”å
+     * @param second ç¬¬äºŒåº§å¡”å
+     * @param third  ç¬¬ä¸‰åº§å¡”å
      */
     public static void hanoitower(int level, String first, String second, String third) {
         if (level <= 0) throw new RuntimeException("Invalid level");
         if (level == 1)
-            System.out.println("µÚ" + level + "²ã => ´Ó" + first + "ËşÒÆ¶¯µ½" + third + "Ëş");
+            System.out.println("ç¬¬" + level + "å±‚ => ä»" + first + "å¡”ç§»åŠ¨åˆ°" + third + "å¡”");
         else {
-            // ´óÓÚµÈÓÚÁ½²ãËş
+            // å¤§äºç­‰äºä¸¤å±‚å¡”
 
 
-            // 1. ½«ÉÏÃæµÄ n-1 ²ãÒÆ¶¯µ½ÖĞ¼äµÄËşÉÏ
+            // 1. å°†ä¸Šé¢çš„ n-1 å±‚ç§»åŠ¨åˆ°ä¸­é—´çš„å¡”ä¸Š
             hanoitower(level - 1, first, third, second);
 
-            // 2. ½«×îÏÂÃæµÄÒ»²ãÒÆ¶¯µ½ÓÒ±ßµÄËşÉÏ
-            System.out.println("µÚ" + level + "²ã => ´Ó" + first + "ËşÒÆ¶¯µ½" + third + "Ëş");
+            // 2. å°†æœ€ä¸‹é¢çš„ä¸€å±‚ç§»åŠ¨åˆ°å³è¾¹çš„å¡”ä¸Š
+            System.out.println("ç¬¬" + level + "å±‚ => ä»" + first + "å¡”ç§»åŠ¨åˆ°" + third + "å¡”");
 
-            // 3. ÔÙ½«ÖĞ¼äµÄ n-1 ²ãÒÆ¶¯µ½×îÓÒ±ßµÄËşÉÏ
+            // 3. å†å°†ä¸­é—´çš„ n-1 å±‚ç§»åŠ¨åˆ°æœ€å³è¾¹çš„å¡”ä¸Š
             hanoitower(level - 1, second, first, third);
         }
     }

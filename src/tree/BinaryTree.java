@@ -343,7 +343,7 @@ public class BinaryTree {
     public static HeroNode lowestCommonAncestor(HeroNode root, HeroNode p, HeroNode q) {
         // 思路一：找到通往这两个节点的路径，然后对路径进行比对
         // 思路二：
-        
+
         return null;
     }
 

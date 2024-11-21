@@ -8,7 +8,7 @@ public class DoubleLinkedList {
         return head;
     }
 
-    // ±éÀúË«ÏòÁ´±íµÄ·½·¨
+    // éå†åŒå‘é“¾è¡¨çš„æ–¹æ³•
     public void list() {
         if (head.next == null) {
             System.out.println("linkeklist is empty");
@@ -24,7 +24,7 @@ public class DoubleLinkedList {
     }
 
 
-    // Ìí¼Ó½Úµãµ½µ¥ÏòÁ´±í
+    // æ·»åŠ èŠ‚ç‚¹åˆ°å•å‘é“¾è¡¨
     public void addInTail(HeroNode newNode) {
         HeroNode current = head;
         while(true) {
@@ -38,7 +38,7 @@ public class DoubleLinkedList {
     }
 
 
-    // ĞŞ¸Ä½ÚµãµÄĞÅÏ¢£¬¸ù¾İ no ½ÚµãÀ´¸ü¸Ä£¬¼´ no ²»ÄÜ¸ü¸Ä ==========
+    // ä¿®æ”¹èŠ‚ç‚¹çš„ä¿¡æ¯ï¼Œæ ¹æ® no èŠ‚ç‚¹æ¥æ›´æ”¹ï¼Œå³ no ä¸èƒ½æ›´æ”¹ ==========
     public void update(HeroNode newNode) {
         if (head.next == null) {
             System.out.println("linkeklist is empty");
@@ -61,12 +61,12 @@ public class DoubleLinkedList {
             current.name = newNode.name;
             current.nickname = newNode.nickname;
         } else {
-            System.out.printf("Ã»ÓĞÕÒµ½ %d ½Úµã", newNode.no);
+            System.out.printf("æ²¡æœ‰æ‰¾åˆ° %d èŠ‚ç‚¹", newNode.no);
         }
     }
 
 
-    // É¾³ı½Úµã  Ö±½ÓÕÒ£¬ÕÒµ½×ÔÎÒÉ¾³ı¼´¿É
+    // åˆ é™¤èŠ‚ç‚¹  ç›´æ¥æ‰¾ï¼Œæ‰¾åˆ°è‡ªæˆ‘åˆ é™¤å³å¯
     public void del(int no) {
         if (head.next == null) {
             System.out.println("linkeklist is empty");

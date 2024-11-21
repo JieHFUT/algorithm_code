@@ -5,42 +5,42 @@ import java.util.List;
 
 public class ThreadBinaryTree {
 
-    // ¸ù½Úµã
+    // æ ¹èŠ‚ç‚¹
     private HeroNode root;
-    private HeroNode prev; // ÓÃÀ´¼ÇÂ¼ node µÄÇ°Çı½ÚµãµÄÖµ
+    private HeroNode prev; // ç”¨æ¥è®°å½• node çš„å‰é©±èŠ‚ç‚¹çš„å€¼
     public void setRoot(HeroNode root) {
         this.root = root;
     }
 
-    // ±àĞ´¶Ô¶ş²æÊ÷½øĞĞÖĞĞòÏßË÷»¯µÄ·½·¨
+    // ç¼–å†™å¯¹äºŒå‰æ ‘è¿›è¡Œä¸­åºçº¿ç´¢åŒ–çš„æ–¹æ³•
     public void threadBinaryTree(HeroNode node) {
         if (node == null) return;
-        // ±éÀú×ó×ÓÊ÷
+        // éå†å·¦å­æ ‘
         threadBinaryTree(node.getLeft());
-        // ±éÀú½Úµã
-        // ¿¼ÂÇ½Úµã left
+        // éå†èŠ‚ç‚¹
+        // è€ƒè™‘èŠ‚ç‚¹ left
         if (node.getLeft() == null) {
             node.setLeft(prev);
             node.setLeftType(1);
         }
-        // ¿¼ÂÇ½Úµã right
+        // è€ƒè™‘èŠ‚ç‚¹ right
         if (prev != null && prev.getRight() == null) {
             prev.setRight(node);
             prev.setRightType(1);
         }
         prev = node;
-        // ±éÀúÓÒ×ÓÊ÷
+        // éå†å³å­æ ‘
         threadBinaryTree(node.getRight());
     }
-    // ±éÀúÏßË÷»¯¶ş²æÊ÷
+    // éå†çº¿ç´¢åŒ–äºŒå‰æ ‘
     public void threadTreeList() {
         HeroNode node = this.root;
         if (node == null) throw new RuntimeException("Tree is empty");
         while (node != null) {
-            // Ò»Ö±Ïò×ó
+            // ä¸€ç›´å‘å·¦
             while (node.getLeft() != null)
                 node = node.getLeft();
-            // ÒÑ¾­µ½ÁË×î×ó±ß
+            // å·²ç»åˆ°äº†æœ€å·¦è¾¹
             System.out.println(node);
             if (node.getLeftType() == 1) {
                 node = node.getRight();
@@ -51,7 +51,7 @@ public class ThreadBinaryTree {
 
     }
 
-    // Ç°Ğò±éÀú
+    // å‰åºéå†
     public void preOrder() {
         if (root != null)
             root.preOrder();
@@ -59,7 +59,7 @@ public class ThreadBinaryTree {
             System.out.println("tree is null");
     }
 
-    // ÖĞĞò±éÀú
+    // ä¸­åºéå†
     public void infixOrder() {
         if (root != null)
             root.infixOrder();
@@ -67,7 +67,7 @@ public class ThreadBinaryTree {
             System.out.println("tree is null");
     }
 
-    // ºóĞò±éÀú
+    // ååºéå†
     public void postOrder() {
         if (root != null)
             root.postOrder();
@@ -76,7 +76,7 @@ public class ThreadBinaryTree {
     }
 
 
-    // Ç°Ğò ÖĞĞò ºóĞò ±éÀú²éÕÒ
+    // å‰åº ä¸­åº ååº éå†æŸ¥æ‰¾
     public HeroNode preSearch(int toFind) {
         if (root != null)
             return this.root.preSearch(toFind);
@@ -105,7 +105,7 @@ public class ThreadBinaryTree {
     }
 
 
-    // Ç°Ğò´æ´¢¶ş²æÊ÷
+    // å‰åºå­˜å‚¨äºŒå‰æ ‘
     public static List<tree.HeroNode> preOrderToList(tree.HeroNode[] array) {
         return preOrderToList(array, 0);
     }
@@ -128,7 +128,7 @@ public class ThreadBinaryTree {
         return list;
     }
 
-    // ÏßË÷»¯¶ş²æÊ÷ [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 ÓĞ¿ÕÖ¸ÕëÓò
+    // çº¿ç´¢åŒ–äºŒå‰æ ‘ [1,2,3,4,5,6] => infix[4,2,5,1,6,3] => 4,5,6,3 æœ‰ç©ºæŒ‡é’ˆåŸŸ
     //
 
 

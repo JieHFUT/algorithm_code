@@ -18,12 +18,12 @@ public class BinarySortTreeTest {
         int[] content = new int[100_000];
         for (int i = 0; i < content.length; i++)
             content[i] = (int) (Math.random() * 100_000);
-        // ½«ÕâÐ©Ëæ»úÔªËØ·ÅÖÃÔÚÅÅÐòÊ÷ÖÐ
+        // å°†è¿™äº›éšæœºå…ƒç´ æ”¾ç½®åœ¨æŽ’åºæ ‘ä¸­
         for (int i = 0; i < content.length; i++)
             tree.add(new Node(content[i]));
-        System.out.println("Êä³öÅÅÐòÊ÷µÄÇ°Ðò±éÀú½á¹ûÎª£º");
+        System.out.println("è¾“å‡ºæŽ’åºæ ‘çš„å‰åºéåŽ†ç»“æžœä¸ºï¼š");
         tree.preOrder();
-        System.out.println("Êä³öÅÅÐòÊ÷µÄ²ãÐò±éÀú½á¹ûÎª£º");
+        System.out.println("è¾“å‡ºæŽ’åºæ ‘çš„å±‚åºéåŽ†ç»“æžœä¸ºï¼š");
         tree.levelOrder();
     }
     @Test
@@ -33,9 +33,9 @@ public class BinarySortTreeTest {
         for (int i = 0; i < toSort.length; i++) {
             tree.add(new Node(toSort[i]));
         }
-        System.out.println("Êä³öÅÅÐòÊ÷µÄÇ°Ðò±éÀú½á¹ûÎª£º");
+        System.out.println("è¾“å‡ºæŽ’åºæ ‘çš„å‰åºéåŽ†ç»“æžœä¸ºï¼š");
         tree.preOrder();
-        System.out.println("Êä³öÅÅÐòÊ÷µÄ²ãÐò±éÀú½á¹ûÎª£º");
+        System.out.println("è¾“å‡ºæŽ’åºæ ‘çš„å±‚åºéåŽ†ç»“æžœä¸ºï¼š");
         tree.levelOrder();
         tree.delete(18);
     }

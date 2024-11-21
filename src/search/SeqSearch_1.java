@@ -4,7 +4,7 @@ package search;
  * ClassName: SeqSearch_1
  * Package: search
  * Description:
- * 顺序查找: 找到一个满足条件的值就返回 (返回该值的下标)         20ms
+ * 椤哄簭鏌ユ壘: 鎵惧埌涓�涓弧瓒虫潯浠剁殑鍊煎氨杩斿洖 (杩斿洖璇ュ�肩殑涓嬫爣)         20ms
  * @Author jieHFUT
  * @Create 2024/10/25 2:15
  * @Version 1.0

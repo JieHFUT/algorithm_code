@@ -22,13 +22,13 @@ public class Node implements Comparable<Node>{
         return "Node [value=" + value + "]";
     }
 
-    // 按照从小到大排序
+    // 鎸夌収浠庡皬鍒板ぇ鎺掑簭
     @Override
     public int compareTo(Node o) {
         return this.value - o.value;
     }
 
-    // 遍历
+    // 閬嶅巻
     public void preOrder() {
         System.out.println(this.value);
         if (this.left != null)

@@ -12,12 +12,12 @@ import java.util.Arrays;
  * @Version 1.0
  */
 public class Dijkstra {
-    // ÓÃÀ´±íÊ¾Á½¸öµãÖ®¼ä²»ÁªÍ¨
+    // ç”¨æ¥è¡¨ç¤ºä¸¤ä¸ªç‚¹ä¹‹é—´ä¸è”é€š
     public static final int N = 65535;
     public static void main(String[] args) {
-        // ËùÓĞ¶¥µãµÄÃû³Æ
-        String[] vertexs = {"AµØ", "BµØ", "CµØ", "DµØ", "EµØ", "FµØ", "GµØ"};
-        // ¸÷¸ö¶¥µãÖ®¼äµÄÈ¨Öµ
+        // æ‰€æœ‰é¡¶ç‚¹çš„åç§°
+        String[] vertexs = {"Aåœ°", "Båœ°", "Cåœ°", "Dåœ°", "Eåœ°", "Fåœ°", "Gåœ°"};
+        // å„ä¸ªé¡¶ç‚¹ä¹‹é—´çš„æƒå€¼
         int[][] weights = new int[vertexs.length][vertexs.length];
         weights[0]=new int[]{N,5,7,N,N,N,2};
         weights[1]=new int[]{5,N,N,9,N,N,3};
@@ -27,9 +27,9 @@ public class Dijkstra {
         weights[5]=new int[]{N,N,N,4,5,N,6};
         weights[6]=new int[]{2,3,N,N,4,6,N};
 
-        // ´´½¨Í¼¶ÔÏó
+        // åˆ›å»ºå›¾å¯¹è±¡
         Graph graph = new Graph(vertexs, weights);
-        // Ñ°ÕÒµ½Ä³Ò»¸ö¶¥µãµ½ÆäËû¶¥µãµÄ×î¶ÌÂ·¾¶
+        // å¯»æ‰¾åˆ°æŸä¸€ä¸ªé¡¶ç‚¹åˆ°å…¶ä»–é¡¶ç‚¹çš„æœ€çŸ­è·¯å¾„
         graph.dijkstra(2);
 
     }

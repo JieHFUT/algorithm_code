@@ -6,7 +6,7 @@ import java.util.Arrays;
  * ClassName: BubbleSort
  * Package: sort
  * Description:
- * Ã°ÅİÅÅĞò => 10Íò¸öÊı¾İ£ºspent time: 11828 ms
+ * å†’æ³¡æ’åº => 10ä¸‡ä¸ªæ•°æ®ï¼šspent time: 11828 ms
  * @Author jieHFUT
  * @Create 2024/10/23 22:50
  * @Version 1.0
@@ -46,7 +46,7 @@ public class BubbleSort_1 {
         for (int i = 0; i < arr.length - 1; i++) {
             for (int j = 0; j < arr.length - i - 1; j++) {
                 if (arr[j] > arr[j + 1]) {
-                    // Èç¹ûÒ»¸öÊı±ÈºóÒ»¸öÊı´ó£¬½»»»
+                    // å¦‚æœä¸€ä¸ªæ•°æ¯”åä¸€ä¸ªæ•°å¤§ï¼Œäº¤æ¢
                     swap(j, j + 1, arr);
                 }
             }
@@ -54,7 +54,7 @@ public class BubbleSort_1 {
     }
 
 
-    // µÚÒ»´Î¸Ä½ø(Èç¹ûÄ³Ò»´ÎÔÚÅÅĞò¹ı³ÌÖĞÃ»ÓĞ½øĞĞ½»»»£¬ËµÃ÷ÒÑ¾­ÓĞĞò£¬½áÊøÅÅĞò)
+    // ç¬¬ä¸€æ¬¡æ”¹è¿›(å¦‚æœæŸä¸€æ¬¡åœ¨æ’åºè¿‡ç¨‹ä¸­æ²¡æœ‰è¿›è¡Œäº¤æ¢ï¼Œè¯´æ˜å·²ç»æœ‰åºï¼Œç»“æŸæ’åº)
     public static void bubbleSort2(int[] arr) {
         boolean flag = true;
         for (int i = 0; i < arr.length; i++) {
@@ -70,11 +70,11 @@ public class BubbleSort_1 {
                 flag = true;
         }
     }
-    // µÚ¶ş´Î¸Ä½ø
+    // ç¬¬äºŒæ¬¡æ”¹è¿›
     public static void bubbleSort3(int[] arr) {
 
     }
-    // ½»»»Ò»¸öÊı×éÁ½¸öÏÂ±êÎ»ÖÃµÄÔªËØ i j arr
+    // äº¤æ¢ä¸€ä¸ªæ•°ç»„ä¸¤ä¸ªä¸‹æ ‡ä½ç½®çš„å…ƒç´  i j arr
     public static void swap(int i, int j, int[] arr) {
         int temp = arr[i];
         arr[i] = arr[j];

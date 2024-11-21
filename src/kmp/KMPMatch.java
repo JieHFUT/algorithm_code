@@ -11,7 +11,7 @@ public class KMPMatch {
         int[] next = kmpNext(dest);
         System.out.println("next=" + Arrays.toString(next));
         int ret = kmpMatch(toMatch, dest, next);
-        System.out.println("·µ»ØÖµ£ºindex=" + ret);
+        System.out.println("è¿”å›å€¼ï¼šindex=" + ret);
 
     }
 
@@ -20,15 +20,15 @@ public class KMPMatch {
 //    public static int[] kmpNext(String dest) {
 //        int[] next = new int[dest.length()];
 //        next[0] = 0;
-//        // i Ö¸Ïò dest µÄÄ³Ò»¸ö×Ö·û£¬ j Ö¸Ïò
+//        // i æŒ‡å‘ dest çš„æŸä¸€ä¸ªå­—ç¬¦ï¼Œ j æŒ‡å‘
 //        for (int i = 0, j = 0; i < next.length; i++) {
-//            // ´Ë´¦µÄ×Ö·û´®µÄ³¤¶ÈÎª i
+//            // æ­¤å¤„çš„å­—ç¬¦ä¸²çš„é•¿åº¦ä¸º i
 //            //
 //            if (j > 0 && dest.charAt(i) != dest.charAt(j)) {
 //
 //            }
 //
-//            // Èç¹ûÖ¸ÏòµÄ×Ö·ûºÍÇ°ÃæµÄÒ»Ñù
+//            // å¦‚æœæŒ‡å‘çš„å­—ç¬¦å’Œå‰é¢çš„ä¸€æ ·
 //            if (dest.charAt(i) == dest.charAt(j)) {
 //                j++;
 //            }
@@ -36,7 +36,7 @@ public class KMPMatch {
 //        }
 //    }
 
-    //»ñÈ¡µ½Ò»¸ö×Ö·û´®(×Ó´®) µÄ²¿·ÖÆ¥ÅäÖµ±í
+    //è·å–åˆ°ä¸€ä¸ªå­—ç¬¦ä¸²(å­ä¸²) çš„éƒ¨åˆ†åŒ¹é…å€¼è¡¨
     public static int[] kmpNext(String dest) {
         int[] next = new int[dest.length()];
         next[0] = 0;
@@ -44,7 +44,7 @@ public class KMPMatch {
             while (j > 0 && dest.charAt(i) != dest.charAt(j)) {
                 j = next[j - 1];
             }
-            // Èç¹ûËµ´ËÊ±µÄÔªËØµÈÓÚÖ®Ç°Æ¥ÅäµÄºóÒ»¸ö
+            // å¦‚æœè¯´æ­¤æ—¶çš„å…ƒç´ ç­‰äºä¹‹å‰åŒ¹é…çš„åä¸€ä¸ª
             if (dest.charAt(i) == dest.charAt(j)) {
                 j++;
             }

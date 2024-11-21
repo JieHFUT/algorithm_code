@@ -2,7 +2,7 @@ package sort;
 
 import java.util.Arrays;
 
-// ¹é²¢ÅÅÐò wrong
+// å½’å¹¶æŽ’åº wrong
 public class MergeSort_6 {
     public static void main(String[] args) {
         int[] arr = new int[100_000];
@@ -22,7 +22,7 @@ public class MergeSort_6 {
 
 
 
-    // ·Ö
+    // åˆ†
     public static void mergeSort(int[] arr, int left, int right, int[] temp) {
         if (left == right) return;
         int mid = (left + right) / 2;
@@ -31,22 +31,22 @@ public class MergeSort_6 {
         merge(arr, left, mid, right, temp);
 
     }
-    // ¹é²¢ÅÅÐòµÄºÏ²¢·½·¨
+    // å½’å¹¶æŽ’åºçš„åˆå¹¶æ–¹æ³•
     public static void merge(int[] arr, int left, int mid, int right, int[] ret) {
         /**
          * [2,6,3,4,7,2,6,9]
          *  2 6   3 4
          *  2 3 4 6
-         * ËùÒÔÖ»ÐèÒª¿½±´ left µ½ right µÄÄÚÈÝ¾Í¿ÉÒÔÁË
+         * æ‰€ä»¥åªéœ€è¦æ‹·è´ left åˆ° right çš„å†…å®¹å°±å¯ä»¥äº†
          */
         int i = left;
         int count = 0;
         int j = mid + 1;
-        // ¿ÉÒÔ¿¼ÂÇÏÖÔÚÊÇÁ½¸öÓÐÐòÊý×é Ò»¸öÊÇarr[0 => mid] Ò»¸öÊÇarr[mid+1 => right]
+        // å¯ä»¥è€ƒè™‘çŽ°åœ¨æ˜¯ä¸¤ä¸ªæœ‰åºæ•°ç»„ ä¸€ä¸ªæ˜¯arr[0 => mid] ä¸€ä¸ªæ˜¯arr[mid+1 => right]
         while(i <= mid && j <= right) {
-            // Á½¸öÓÐÐòÊý×é¶¼»¹Ã»ÓÐµ½Í·
+            // ä¸¤ä¸ªæœ‰åºæ•°ç»„éƒ½è¿˜æ²¡æœ‰åˆ°å¤´
             if(arr[i] < arr[j]) {
-                // ½«½ÏÐ¡µÄ¼ÓÈëµ½ÁãÊ±Êý×éÖÐ
+                // å°†è¾ƒå°çš„åŠ å…¥åˆ°é›¶æ—¶æ•°ç»„ä¸­
                 ret[count] = arr[i];
                 count++;
                 i++;
@@ -56,7 +56,7 @@ public class MergeSort_6 {
                 j++;
             }
         }
-        // ÒÑ¾­ÓÐÄ³Ò»¸öÊý×éµ½Í·ÁË
+        // å·²ç»æœ‰æŸä¸€ä¸ªæ•°ç»„åˆ°å¤´äº†
         if(i == mid) {
             while(j <= right) {
                 ret[count] = arr[j];
@@ -71,7 +71,7 @@ public class MergeSort_6 {
                 i++;
             }
         }
-        // ÒÑ¾­½« arr ÖÐÊý¾ÝÔÚ ret ÖÐÓÐÐò·ÅÖÃ£¬²¢²»ÊÇÃ¿´Î¶¼¿½±´ 8 ¸ö
+        // å·²ç»å°† arr ä¸­æ•°æ®åœ¨ ret ä¸­æœ‰åºæ”¾ç½®ï¼Œå¹¶ä¸æ˜¯æ¯æ¬¡éƒ½æ‹·è´ 8 ä¸ª
         count = 0;
         int tempLeft = left;
         while(tempLeft <= right) {

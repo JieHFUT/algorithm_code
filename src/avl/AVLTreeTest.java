@@ -20,8 +20,8 @@ public class AVLTreeTest {
         }
 
         avlTree.add(new Node(9));
-//        System.out.println("Ê÷µÄ¸ß¶ÈÎª£º" + avlTree.height());
-//        System.out.println("Ê÷µÄ×ó¸ß¶ÈÎª£º" + avlTree.leftHeight());
-//        System.out.println("Ê÷µÄÓÒ¸ß¶ÈÎª£º" + avlTree.rightHeight());
+//        System.out.println("æ ‘çš„é«˜åº¦ä¸ºï¼š" + avlTree.height());
+//        System.out.println("æ ‘çš„å·¦é«˜åº¦ä¸ºï¼š" + avlTree.leftHeight());
+//        System.out.println("æ ‘çš„å³é«˜åº¦ä¸ºï¼š" + avlTree.rightHeight());
     }
 }

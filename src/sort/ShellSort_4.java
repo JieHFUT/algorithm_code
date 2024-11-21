@@ -2,9 +2,9 @@ package sort;
 
 import java.util.Arrays;
 
-// Ï£¶ûÅÅĞò => Ò²±»³ÆÎªËõĞ¡ÔöÁ¿ÅÅĞò => ÊÇ²åÈëÅÅĞòµÄ¸Ä½ø°æ
-// Ï£¶ûÅÅĞò(½»»»Ê½) => 10Íò¸öÊı¾İ: spent time: 7234 ms
-// Ï£¶ûÅÅĞò(²åÈëÊ½) => 10Íò¸öÊı¾İ: spent time: 23 ms
+// å¸Œå°”æ’åº => ä¹Ÿè¢«ç§°ä¸ºç¼©å°å¢é‡æ’åº => æ˜¯æ’å…¥æ’åºçš„æ”¹è¿›ç‰ˆ
+// å¸Œå°”æ’åº(äº¤æ¢å¼) => 10ä¸‡ä¸ªæ•°æ®: spent time: 7234 ms
+// å¸Œå°”æ’åº(æ’å…¥å¼) => 10ä¸‡ä¸ªæ•°æ®: spent time: 23 ms
 public class ShellSort_4 {
     public static void main(String[] args) {
         int[] arr = new int[100_000];
@@ -19,25 +19,25 @@ public class ShellSort_4 {
         // System.out.println(Arrays.toString(arr));
 
     }
-    // Ï£¶ûÅÅĞò => ½»»»·¨
+    // å¸Œå°”æ’åº => äº¤æ¢æ³•
     public static void shellSort(int[] arr) {
-        // ÏÈ½«Êı×é·ÖÎª arr.length / 2 ×é
+        // å…ˆå°†æ•°ç»„åˆ†ä¸º arr.length / 2 ç»„
         int count = 0;
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
             count++;
-            // ÏÈÊÇÁ½¸öÇ°ºóÔªËØ¶Ô±È£¬Ğ¡µÄ·ÅÖÃÔÚÇ°Ãæ => ½»»»Ê½
+            // å…ˆæ˜¯ä¸¤ä¸ªå‰åå…ƒç´ å¯¹æ¯”ï¼Œå°çš„æ”¾ç½®åœ¨å‰é¢ => äº¤æ¢å¼
             for (int i = gap; i < arr.length; i++) {
                 for (int j = i - gap; j >= 0; j -= gap) {
                     if (arr[j] > arr[j + gap]) {
-                        // ½»»»ÕâÁ½¸öÔªËØ
+                        // äº¤æ¢è¿™ä¸¤ä¸ªå…ƒç´ 
                         swap(arr, j, j + gap);
                     }
                 }
             }
-            // System.out.println("µÚ" + count + "ÂÖµÄ½á¹ûÊÇ: " + Arrays.toString(arr));
+            // System.out.println("ç¬¬" + count + "è½®çš„ç»“æœæ˜¯: " + Arrays.toString(arr));
         }
     }
-    // Ï£¶ûÅÅĞò => ÒÆÎ»·¨
+    // å¸Œå°”æ’åº => ç§»ä½æ³•
     public static void shellSort2(int[] arr) {
         for (int gap = arr.length / 2; gap > 0; gap /= 2) {
             for (int i = gap; i < arr.length; i++) {
@@ -45,10 +45,10 @@ public class ShellSort_4 {
                 int toInsert = arr[i];
                 for (j = i - gap; j >= 0; j -= gap) {
                     if (arr[j] > toInsert) {
-                        // ´óÓÚÒª²åÈëÖµµÄÊı¾İºóÒÆ
+                        // å¤§äºè¦æ’å…¥å€¼çš„æ•°æ®åç§»
                         arr[j + gap] = arr[j];
                     } else {
-                        // ÕÒµ½²åÈëµã
+                        // æ‰¾åˆ°æ’å…¥ç‚¹
                         arr[j + gap] = toInsert;
                         break;
                     }
@@ -59,7 +59,7 @@ public class ShellSort_4 {
             }
         }
     }
-    // ½»»»Á½¸öÔªËØ
+    // äº¤æ¢ä¸¤ä¸ªå…ƒç´ 
     public static void swap(int[] arr, int i, int j) {
         int temp = arr[i];
         arr[i] = arr[j];

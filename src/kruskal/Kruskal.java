@@ -4,32 +4,32 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 public class Kruskal {
-    // ÓÃÀ´±íÊ¾Á½¸ö¶¥µã²»ÁªÍ¨µÄÇé¿ö
+    // ç”¨æ¥è¡¨ç¤ºä¸¤ä¸ªé¡¶ç‚¹ä¸è”é€šçš„æƒ…å†µ
     public static final int INF = 65535;
-    // ÓÃÀ´ÃèÊö¶¥µãĞÅÏ¢
+    // ç”¨æ¥æè¿°é¡¶ç‚¹ä¿¡æ¯
     private String[] vertexs;
-    // ÓÃÀ´ÃèÊö±ßÓë±ßÖ®¼äµÄÈ¨ÖµĞÅÏ¢
+    // ç”¨æ¥æè¿°è¾¹ä¸è¾¹ä¹‹é—´çš„æƒå€¼ä¿¡æ¯
     private int[][] weights;
-    // ÓÃÀ´¼ÇÂ¼±ßµÄ¸öÊı£¬ÓÃÀ´¸ø±ßÅÅĞò
+    // ç”¨æ¥è®°å½•è¾¹çš„ä¸ªæ•°ï¼Œç”¨æ¥ç»™è¾¹æ’åº
     private int linkNum;
 
 
-    // Í¨¹ı¹¹Ôì·½·¨À´½øĞĞ³õÊ¼»¯
+    // é€šè¿‡æ„é€ æ–¹æ³•æ¥è¿›è¡Œåˆå§‹åŒ–
     public Kruskal(String[] vertexs, int[][] weights) {
         int len = vertexs.length;
-        // ³õÊ¼»¯¶¥µãĞÅÏ¢
+        // åˆå§‹åŒ–é¡¶ç‚¹ä¿¡æ¯
         this.vertexs = new String[len];
         for (int i = 0; i < len; i++) {
             this.vertexs[i] = vertexs[i];
         }
-        // ³õÊ¼»¯±ßµÄÈ¨ÖµĞÅÏ¢
+        // åˆå§‹åŒ–è¾¹çš„æƒå€¼ä¿¡æ¯
         this.weights = new int[len][len];
         for (int i = 0; i < len; i++) {
             for (int j = 0; j < len; j++) {
                 this.weights[i][j] = weights[i][j];
             }
         }
-        // ¼ÆËãÒ»¹²ÓĞ¶àÉÙÌõ±ß
+        // è®¡ç®—ä¸€å…±æœ‰å¤šå°‘æ¡è¾¹
         for (int i = 0; i < len; i++) {
             for (int j = i + 1; j < len; j++) {
                 if (this.weights[i][j] != INF) {
@@ -39,7 +39,7 @@ public class Kruskal {
         }
     }
 
-    // ´òÓ¡ÁÚ½Ó±í
+    // æ‰“å°é‚»æ¥è¡¨
     public void print(){
         for (int i = 0; i < this.weights.length; i++) {
             for (int j = 0; j < this.weights[i].length; j++) {
@@ -49,7 +49,7 @@ public class Kruskal {
         }
     }
 
-    // »ñµÃËùÓĞµÄ±ß link[]
+    // è·å¾—æ‰€æœ‰çš„è¾¹ link[]
     public Link[] getLinks() {
         int index = 0;
         Link[] links = new Link[this.linkNum];
@@ -62,7 +62,7 @@ public class Kruskal {
         }
         return links;
     }
-    // ¸øËùÓĞµÄ±ß½øĞĞÅÅĞò
+    // ç»™æ‰€æœ‰çš„è¾¹è¿›è¡Œæ’åº
     public void sortLinks(Link[] links) {
         Arrays.sort(links, new Comparator<Link>() {
             @Override
@@ -72,7 +72,7 @@ public class Kruskal {
         });
     }
 
-    // »ñµÃÄ³Ò»¸ö¶¥µã¶ÔÓ¦µÄÏÂ±ê
+    // è·å¾—æŸä¸€ä¸ªé¡¶ç‚¹å¯¹åº”çš„ä¸‹æ ‡
     public int getIndex(String vertex) {
         for (int i = 0; i < this.vertexs.length; i++) {
             if (this.vertexs[i].equals(vertex)) {
@@ -82,10 +82,10 @@ public class Kruskal {
         return -1;
     }
 
-    // ¿ªÊ¼ kruskal Ëã·¨
+    // å¼€å§‹ kruskal ç®—æ³•
 
     /**
-     * »ñµÃÄ³Ò»¸ö¶¥µãÔÚ×îĞ¡Éú³ÉÊ÷ÖĞµÄÖÕµã
+     * è·å¾—æŸä¸€ä¸ªé¡¶ç‚¹åœ¨æœ€å°ç”Ÿæˆæ ‘ä¸­çš„ç»ˆç‚¹
      * @param ends
      * @param index
      * @return
@@ -97,34 +97,34 @@ public class Kruskal {
         return index;
     }
     /**
-     * ¿ªÊ¼Ñ°ÕÒÒ»ÌõÂ·¾¶¿ÉÒÔÍ¨¹ıËùÓĞµÄ¶¥µã
+     * å¼€å§‹å¯»æ‰¾ä¸€æ¡è·¯å¾„å¯ä»¥é€šè¿‡æ‰€æœ‰çš„é¡¶ç‚¹
      */
     public Link[] kruskal() {
-        // ÅĞ¶ÏÃ¿Ò»¸ö½ÚµãµÄÖÕµãµÄÊı×é
+        // åˆ¤æ–­æ¯ä¸€ä¸ªèŠ‚ç‚¹çš„ç»ˆç‚¹çš„æ•°ç»„
         int[] ends = new int[this.vertexs.length];
-        // ÓÃÀ´±£´æÃ¿´ÎÌí¼ÓÄÄÒ»Ìõ±ßµÄ·µ»ØÊı×é
+        // ç”¨æ¥ä¿å­˜æ¯æ¬¡æ·»åŠ å“ªä¸€æ¡è¾¹çš„è¿”å›æ•°ç»„
         int index = 0;
         Link[] ret = new Link[this.vertexs.length - 1];
-        // »ñµÃÅÅĞòºÃµÄËùÓĞµÄ±ßµÄ¼¯ºÏ
+        // è·å¾—æ’åºå¥½çš„æ‰€æœ‰çš„è¾¹çš„é›†åˆ
         Link[] links = this.getLinks();
         sortLinks(links);
 
-        // »ñÈ¡ÅÅĞòÖĞ´ËÊ±µÄ×î¶Ì±ß
-        // Ã¿´Î»ñµÃÒ»Ìõ±ß£¬Ò»¹²Òª»ñµÃ¶¥µãÊı-1Ìõ±ß£¬±éÀúËùÓĞµÄ±ß£¬Èç¹ûÃ»ÓĞ²úÉú»ØÂ·¾Í½«ÆäÌí¼Óµ½ ret ÖĞ
+        // è·å–æ’åºä¸­æ­¤æ—¶çš„æœ€çŸ­è¾¹
+        // æ¯æ¬¡è·å¾—ä¸€æ¡è¾¹ï¼Œä¸€å…±è¦è·å¾—é¡¶ç‚¹æ•°-1æ¡è¾¹ï¼Œéå†æ‰€æœ‰çš„è¾¹ï¼Œå¦‚æœæ²¡æœ‰äº§ç”Ÿå›è·¯å°±å°†å…¶æ·»åŠ åˆ° ret ä¸­
         for (int i = 0; i < this.linkNum; i++) {
-            // »ñµÃ¸Ã±ßµÄÁ½¸ö¶¥µã¶ÔÓ¦µÄÏÂ±ê
+            // è·å¾—è¯¥è¾¹çš„ä¸¤ä¸ªé¡¶ç‚¹å¯¹åº”çš„ä¸‹æ ‡
             int prev = getIndex(links[i].start);
             int post = getIndex(links[i].end);
-            // »ñµÃÁ½¸ö¶¥µã¶ÔÓ¦µÄÖÕµã
+            // è·å¾—ä¸¤ä¸ªé¡¶ç‚¹å¯¹åº”çš„ç»ˆç‚¹
             int prevDest = getDest(ends, prev);
             int postDest = getDest(ends, post);
 
-            // ÅĞ¶ÏÕâÌõ±ßÊÇ·ñ»á²úÉú»ØÂ·
+            // åˆ¤æ–­è¿™æ¡è¾¹æ˜¯å¦ä¼šäº§ç”Ÿå›è·¯
             if (prevDest != postDest) {
-                // prevDest != postDest ²»»á²úÉú»ØÂ·
-                // ÉèÖÃÖÕµã
+                // prevDest != postDest ä¸ä¼šäº§ç”Ÿå›è·¯
+                // è®¾ç½®ç»ˆç‚¹
                 ends[prevDest] = postDest;
-                // ½«ÕâÌõ±ß·µ»Øµ½½á¹û
+                // å°†è¿™æ¡è¾¹è¿”å›åˆ°ç»“æœ
                 ret[index++] = links[i];
             }
         }

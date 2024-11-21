@@ -1,6 +1,6 @@
 package linkedlist.josepfu;
 
-// Ô¼Éª·òÎÊÌâ(µ¥Ïò»·ĞÎÁ´±í)
+// çº¦ç‘Ÿå¤«é—®é¢˜(å•å‘ç¯å½¢é“¾è¡¨)
 public class Josepfu {
     public static void main(String[] args) {
 

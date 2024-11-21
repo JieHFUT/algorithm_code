@@ -3,19 +3,19 @@ package prim;
 import java.util.Arrays;
 
 
-// ÓÃÀ´¹¹Ôì×îĞ¡Éú³ÉÊ÷
+// ç”¨æ¥æ„é€ æœ€å°ç”Ÿæˆæ ‘
 public class MinTree {
 
 
     /**
-     * ´«ÈëÊı¾İ¹¹ÔìÁÚ½Ó¾ØÕó
-     * @param graph Í¼µÄÊµÌå
-     * @param verxs ¶¥µã¸öÊı
-     * @param names  ¶¥µãÃû³Æ
-     * @param weight È¨Öµ
+     * ä¼ å…¥æ•°æ®æ„é€ é‚»æ¥çŸ©é˜µ
+     * @param graph å›¾çš„å®ä½“
+     * @param verxs é¡¶ç‚¹ä¸ªæ•°
+     * @param names  é¡¶ç‚¹åç§°
+     * @param weight æƒå€¼
      */
     public void createGraph(MGraph graph, int verxs, String[] names, int[][] weight) {
-        // ÔÚ´«Èë MGraph graph Ê±£¬ÆäÍ¼µÄ verxs ÒÑ¾­¸³Öµ
+        // åœ¨ä¼ å…¥ MGraph graph æ—¶ï¼Œå…¶å›¾çš„ verxs å·²ç»èµ‹å€¼
         for (int i = 0; i < verxs; i++) {
             graph.names[i] = names[i];
             for (int j = 0; j < verxs; j++) {
@@ -24,7 +24,7 @@ public class MinTree {
         }
     }
 
-    // Êä³öÁÚ½Ó±í
+    // è¾“å‡ºé‚»æ¥è¡¨
     public void printGraph(MGraph graph) {
         for (int[] link : graph.weight) {
             System.out.println(Arrays.toString(link));
@@ -32,30 +32,30 @@ public class MinTree {
     }
 
 
-    // ¿ªÊ¼¹¹½¨×îĞ¡Éú³ÉÊ÷
+    // å¼€å§‹æ„å»ºæœ€å°ç”Ÿæˆæ ‘
     public void prim(MGraph graph, int begin) {
-        // ÓÃÓÚ¼ÇÂ¼Ä³Ò»¸ö¶¥µãÓĞÃ»ÓĞ±»Ê¹ÓÃ¹ı  0±íÊ¾Ã»±»Ê¹ÓÃ¹ı 1±íÊ¾±»Ê¹ÓÃ¹ı
+        // ç”¨äºè®°å½•æŸä¸€ä¸ªé¡¶ç‚¹æœ‰æ²¡æœ‰è¢«ä½¿ç”¨è¿‡  0è¡¨ç¤ºæ²¡è¢«ä½¿ç”¨è¿‡ 1è¡¨ç¤ºè¢«ä½¿ç”¨è¿‡
         int[] visited = new int[graph.verxs];
-        // Ê×ÏÈ¼ÇÂ¼´«ÈëµÄ¿ªÊ¼¶¥µã => ±»Ê¹ÓÃ
+        // é¦–å…ˆè®°å½•ä¼ å…¥çš„å¼€å§‹é¡¶ç‚¹ => è¢«ä½¿ç”¨
         visited[begin] = 1;
         int m = -1;
-        int n = -1; // m ºÍ n ÓÃÀ´±£´æÒ»´ÎÑ°ÕÒ×î¶ÌÂ·¾¶¹ı³ÌÖĞÉæ¼°µ½µÄÁ½¸ö¶¥µã
-        // Ò»¹²ÒªÕÒµ½ verxs - 1 Ìõ±ß
+        int n = -1; // m å’Œ n ç”¨æ¥ä¿å­˜ä¸€æ¬¡å¯»æ‰¾æœ€çŸ­è·¯å¾„è¿‡ç¨‹ä¸­æ¶‰åŠåˆ°çš„ä¸¤ä¸ªé¡¶ç‚¹
+        // ä¸€å…±è¦æ‰¾åˆ° verxs - 1 æ¡è¾¹
         for (int i = 1; i < graph.verxs; i++) {
-            int toFindMinPath = PrimTest.INF; // Ñ°ÕÒÃ¿´Î×î¶ÌÂ·¾¶Ê±ÓÃÀ´¼ÇÂ¼×î¶ÌÂ·¾¶µÄÖµ
-            // Ã¿´ÎËø¶¨Ò»Ìõ±ß => ÔÚÒÑ¾­±»Ê¹ÓÃ¹ıµÄ¶¥µãºÍÎ´±»Ê¹ÓÃ¹ıµÄ¶¥µãÖ®¼ä => ÕÒµ½Ò»Ìõ×î¶ÌÂ·¾¶
-            for (int j = 0; j < graph.verxs; j++) { // ÓÃÀ´±éÀúÉ¸Ñ¡ => Ñ¡³öÊ¹ÓÃ¹ıµÄ¶¥µã
-                for (int k = 0; k < graph.verxs; k++) { // ÓÃÀ´±éÀúÉ¸Ñ¡ => Ñ¡³öÃ»ÓĞÊ¹ÓÃ¹ıµÄ¶¥µã
+            int toFindMinPath = PrimTest.INF; // å¯»æ‰¾æ¯æ¬¡æœ€çŸ­è·¯å¾„æ—¶ç”¨æ¥è®°å½•æœ€çŸ­è·¯å¾„çš„å€¼
+            // æ¯æ¬¡é”å®šä¸€æ¡è¾¹ => åœ¨å·²ç»è¢«ä½¿ç”¨è¿‡çš„é¡¶ç‚¹å’Œæœªè¢«ä½¿ç”¨è¿‡çš„é¡¶ç‚¹ä¹‹é—´ => æ‰¾åˆ°ä¸€æ¡æœ€çŸ­è·¯å¾„
+            for (int j = 0; j < graph.verxs; j++) { // ç”¨æ¥éå†ç­›é€‰ => é€‰å‡ºä½¿ç”¨è¿‡çš„é¡¶ç‚¹
+                for (int k = 0; k < graph.verxs; k++) { // ç”¨æ¥éå†ç­›é€‰ => é€‰å‡ºæ²¡æœ‰ä½¿ç”¨è¿‡çš„é¡¶ç‚¹
                     if (visited[j] == 1 && visited[k] == 0 && graph.weight[j][k] < toFindMinPath) {
-                        // ÕÒµ½±È¼ÇÂ¼×î¶ÌµÄÖµĞ¡µÄÂ·¾¶
+                        // æ‰¾åˆ°æ¯”è®°å½•æœ€çŸ­çš„å€¼å°çš„è·¯å¾„
                         toFindMinPath = graph.weight[j][k];
                         m = j;
                         n = k;
                     }
                 }
             }
-            // ÕÒµ½×î¶ÌÂ·¾¶ i => j
-            System.out.printf("´Ó%sµ½%s Â·¾¶³¤¶È£º%d\n", graph.names[m], graph.names[n], toFindMinPath);
+            // æ‰¾åˆ°æœ€çŸ­è·¯å¾„ i => j
+            System.out.printf("ä»%såˆ°%s è·¯å¾„é•¿åº¦ï¼š%d\n", graph.names[m], graph.names[n], toFindMinPath);
             visited[n] = 1;
             toFindMinPath = PrimTest.INF;
             m = -1;

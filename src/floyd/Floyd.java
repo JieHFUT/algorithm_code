@@ -8,7 +8,7 @@ import static floyd.Graph.N;
  * ClassName: Floyd
  * Package: floyd
  * Description:
- * ¸¥ÂåÒÁµÂËã·¨£º¼ÆËã¸÷¸ö¶¥µãµ½ÆäËû¶¥µãµÄ×î¶Ì¾àÀë
+ * å¼—æ´›ä¼Šå¾·ç®—æ³•ï¼šè®¡ç®—å„ä¸ªé¡¶ç‚¹åˆ°å…¶ä»–é¡¶ç‚¹çš„æœ€çŸ­è·ç¦»
  * @Author jieHFUT
  * @Create 2024/11/7 22:02
  * @Version 1.0
@@ -17,9 +17,9 @@ public class Floyd {
 
     public static void main(String[] args) {
 
-        // Í¼µÄ¶¥µã
-        String[] vertexs = {"AµØ", "BµØ", "CµØ", "DµØ", "EµØ", "FµØ", "GµØ"};
-        // È¨Öµ±í
+        // å›¾çš„é¡¶ç‚¹
+        String[] vertexs = {"Aåœ°", "Båœ°", "Cåœ°", "Dåœ°", "Eåœ°", "Fåœ°", "Gåœ°"};
+        // æƒå€¼è¡¨
         int[][] weights = new int[vertexs.length][vertexs.length];
         weights[0] = new int[] { 0, 5, 7, N, N, N, 2 };
         weights[1] = new int[] { 5, 0, N, 9, N, N, 3 };
@@ -29,9 +29,9 @@ public class Floyd {
         weights[5] = new int[] { N, N, N, 4, 5, 0, 6 };
         weights[6] = new int[] { 2, 3, N, N, 4, 6, 0 };
 
-        // ¹¹ÔìÍ¼
+        // æ„é€ å›¾
         Graph graph = new Graph(vertexs.length, vertexs, weights);
-        // ¶ÔÕâĞ©Êı¾İ½øĞĞ¸¥ÂåÒÁµÂËã·¨
+        // å¯¹è¿™äº›æ•°æ®è¿›è¡Œå¼—æ´›ä¼Šå¾·ç®—æ³•
         long start = System.currentTimeMillis();
         graph.floyd();
         long end = System.currentTimeMillis();
@@ -40,9 +40,9 @@ public class Floyd {
 
     @Test
     public void test(){
-        // Í¼µÄ¶¥µã
-        String[] vertexs = {"AµØ", "BµØ", "CµØ", "DµØ", "EµØ", "FµØ"};
-        // È¨Öµ±í
+        // å›¾çš„é¡¶ç‚¹
+        String[] vertexs = {"Aåœ°", "Båœ°", "Cåœ°", "Dåœ°", "Eåœ°", "Fåœ°"};
+        // æƒå€¼è¡¨
         int[][] weights = new int[vertexs.length][vertexs.length];
         weights[0] = new int[] { 0, 2, N, 4, N, N };
         weights[1] = new int[] { 2, 0, 5, N, N, N };
@@ -58,9 +58,9 @@ public class Floyd {
 
     @Test
     public void test1(){
-        // Í¼µÄ¶¥µã
-        String[] vertexs = {"AµØ", "BµØ", "CµØ", "DµØ", "EµØ", "FµØ", "GµØ", "HµØ", "IµØ", "JµØ"};
-        // È¨Öµ±í
+        // å›¾çš„é¡¶ç‚¹
+        String[] vertexs = {"Aåœ°", "Båœ°", "Cåœ°", "Dåœ°", "Eåœ°", "Fåœ°", "Gåœ°", "Håœ°", "Iåœ°", "Jåœ°"};
+        // æƒå€¼è¡¨
         int[][] weights = new int[vertexs.length][vertexs.length];
         weights[0] =  new int[] { 0, 5, 7, N, N, N, 2, N, N, N  };
         weights[1] =  new int[] { 5, 0, N, 9, N, N, 3, N, N, N  };
@@ -75,9 +75,9 @@ public class Floyd {
 
 
 
-        // ¹¹ÔìÍ¼
+        // æ„é€ å›¾
         Graph graph = new Graph(vertexs.length, vertexs, weights);
-        // ¶ÔÕâĞ©Êı¾İ½øĞĞ¸¥ÂåÒÁµÂËã·¨
+        // å¯¹è¿™äº›æ•°æ®è¿›è¡Œå¼—æ´›ä¼Šå¾·ç®—æ³•
         long start = System.currentTimeMillis();
         graph.floyd();
         long end = System.currentTimeMillis();

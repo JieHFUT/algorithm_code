@@ -6,7 +6,7 @@ import java.util.Arrays;
  * ClassName: InsertSort_3
  * Package: sort
  * Description:
- * ²åÈëÅÅĞò => 10Íò¸öÊı¾İ: spent time: 1509 ms
+ * æ’å…¥æ’åº => 10ä¸‡ä¸ªæ•°æ®: spent time: 1509 ms
  *                     spent time: 3640 ms
  * @Author jieHFUT
  * @Create 2024/10/23 23:56
@@ -30,21 +30,21 @@ public class InsertSort_3 {
 
     public static void insertSort(int[] arr) {
         for (int i = 0; i < arr.length - 1; i++) {
-            // ½«ºóÃæ n -1 ¸öÔªËØÒÀ´Î²åÈëÇ°ÃæµÄÓĞĞò, ´ËÊ±ÊÇµÚ i+1 ¸öÔªËØ
+            // å°†åé¢ n -1 ä¸ªå…ƒç´ ä¾æ¬¡æ’å…¥å‰é¢çš„æœ‰åº, æ­¤æ—¶æ˜¯ç¬¬ i+1 ä¸ªå…ƒç´ 
             int j = 0;
             int toInsert = arr[i + 1];
             for (j = i; j >= 0; j--) {
-                // ¶ÔÇ°Ãæ i ¸öÔªËØÒÀ´Î±È¶Ô
+                // å¯¹å‰é¢ i ä¸ªå…ƒç´ ä¾æ¬¡æ¯”å¯¹
                 if (arr[j] > toInsert) {
-                    // Èç¹ûºóÃæµÄÔªËØ
+                    // å¦‚æœåé¢çš„å…ƒç´ 
                     arr[j + 1] = arr[j];
                 } else {
-                    // ÕÒµ½¸Ã²åÈëµÄµã£¬ÆäºóÃæµÄÔªËØÒÑ¾­ÒÀ´ÎºóÒÆÁË
+                    // æ‰¾åˆ°è¯¥æ’å…¥çš„ç‚¹ï¼Œå…¶åé¢çš„å…ƒç´ å·²ç»ä¾æ¬¡åç§»äº†
                     arr[j + 1] = toInsert;
                     break;
                 }
             }
-            // Èç¹û±éÀú½áÊø£¬ÓĞĞòÁĞ±íµÄËùÓĞÔªËØ¶¼±È toInsert ´ó
+            // å¦‚æœéå†ç»“æŸï¼Œæœ‰åºåˆ—è¡¨çš„æ‰€æœ‰å…ƒç´ éƒ½æ¯” toInsert å¤§
             if (j == -1) {
                 arr[j + 1] = toInsert;
             }
@@ -57,29 +57,29 @@ public class InsertSort_3 {
     public static void insertSort1(int[] arr) {
         int insertVal = 0;
         int insertIndex = 0;
-        //Ê¹ÓÃforÑ­»·À´°Ñ´úÂë¼ò»¯
+        //ä½¿ç”¨forå¾ªç¯æ¥æŠŠä»£ç ç®€åŒ–
         for (int i = 1; i < arr.length; i++) {
-            //¶¨Òå´ı²åÈëµÄÊı
+            //å®šä¹‰å¾…æ’å…¥çš„æ•°
             insertVal = arr[i];
-            insertIndex = i - 1; // ¼´arr[1]µÄÇ°ÃæÕâ¸öÊıµÄÏÂ±ê
+            insertIndex = i - 1; // å³arr[1]çš„å‰é¢è¿™ä¸ªæ•°çš„ä¸‹æ ‡
 
-            // ¸øinsertVal ÕÒµ½²åÈëµÄÎ»ÖÃ
-            // ËµÃ÷
-            // 1. insertIndex >= 0 ±£Ö¤ÔÚ¸øinsertVal ÕÒ²åÈëÎ»ÖÃ£¬²»Ô½½ç
-            // 2. insertVal < arr[insertIndex] ´ı²åÈëµÄÊı£¬»¹Ã»ÓĞÕÒµ½²åÈëÎ»ÖÃ
-            // 3. ¾ÍĞèÒª½« arr[insertIndex] ºóÒÆ
+            // ç»™insertVal æ‰¾åˆ°æ’å…¥çš„ä½ç½®
+            // è¯´æ˜
+            // 1. insertIndex >= 0 ä¿è¯åœ¨ç»™insertVal æ‰¾æ’å…¥ä½ç½®ï¼Œä¸è¶Šç•Œ
+            // 2. insertVal < arr[insertIndex] å¾…æ’å…¥çš„æ•°ï¼Œè¿˜æ²¡æœ‰æ‰¾åˆ°æ’å…¥ä½ç½®
+            // 3. å°±éœ€è¦å°† arr[insertIndex] åç§»
             while (insertIndex >= 0 && insertVal < arr[insertIndex]) {
                 arr[insertIndex + 1] = arr[insertIndex];// arr[insertIndex]
                 insertIndex--;
             }
-            // µ±ÍË³öwhileÑ­»·Ê±£¬ËµÃ÷²åÈëµÄÎ»ÖÃÕÒµ½, insertIndex + 1
-            // ¾ÙÀı£ºÀí½â²»ÁË£¬ÎÒÃÇÒ»»á debug
-            //ÕâÀïÎÒÃÇÅĞ¶ÏÊÇ·ñĞèÒª¸³Öµ
+            // å½“é€€å‡ºwhileå¾ªç¯æ—¶ï¼Œè¯´æ˜æ’å…¥çš„ä½ç½®æ‰¾åˆ°, insertIndex + 1
+            // ä¸¾ä¾‹ï¼šç†è§£ä¸äº†ï¼Œæˆ‘ä»¬ä¸€ä¼š debug
+            //è¿™é‡Œæˆ‘ä»¬åˆ¤æ–­æ˜¯å¦éœ€è¦èµ‹å€¼
             if (insertIndex + 1 != i) {
                 arr[insertIndex + 1] = insertVal;
             }
 
-            //System.out.println("µÚ"+i+"ÂÖ²åÈë");
+            //System.out.println("ç¬¬"+i+"è½®æ’å…¥");
             //System.out.println(Arrays.toString(arr));
         }
     }

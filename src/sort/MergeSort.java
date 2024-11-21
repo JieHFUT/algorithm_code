@@ -28,12 +28,12 @@ public class MergeSort {
         mergeSort(arr, 0, arr.length - 1, new int[arr.length]);
     }
     public static void mergeSort(int[] arr, int left, int right, int[] temp) {
-        // ·Ö
+        // åˆ†
         if (left == right) return;
         int mid = (left + right) / 2;
         mergeSort(arr, left, mid, temp);
         mergeSort(arr, mid + 1, right, temp);
-        // ºÏ
+        // åˆ
         merge(arr, left, mid, right, temp);
     }
     public static void merge(int[] arr, int left, int mid, int right, int[] temp) {
@@ -46,14 +46,14 @@ public class MergeSort {
             else
                 temp[recodeIndexOfTemp++] = arr[j++];
         }
-        // ÒÑ¾­ÓĞÒ»±ßµÄÊı×éµ½Í·ÁË
+        // å·²ç»æœ‰ä¸€è¾¹çš„æ•°ç»„åˆ°å¤´äº†
         while(j <= right)
             temp[recodeIndexOfTemp++] = arr[j++];
 
         while (i <= mid)
             temp[recodeIndexOfTemp++] = arr[i++];
 
-        // Á½¸öÊı×é¶ÔÓ¦µÄÎ»ÖÃ£¬ÒÑ¾­ÔÚ temp ÖĞÅÅĞòÍê³É
+        // ä¸¤ä¸ªæ•°ç»„å¯¹åº”çš„ä½ç½®ï¼Œå·²ç»åœ¨ temp ä¸­æ’åºå®Œæˆ
         int count =0;
         for (int k = left; k <= right ; k++) {
             arr[k] = temp[count++];

@@ -3,7 +3,7 @@ package prim;
 public class PrimTest {
     public static final int INF = Integer.MAX_VALUE;
     public static void main(String[] args) {
-        String[] names = new String[]{"AÇø", "BÇø", "CÇø", "DÇø", "EÇø", "FÇø", "GÇø"};
+        String[] names = new String[]{"AåŒº", "BåŒº", "CåŒº", "DåŒº", "EåŒº", "FåŒº", "GåŒº"};
         int verxs = names.length;
         int[][] weights = new int[][]{
                 {INF,5,7,INF,INF,INF,2},
@@ -14,11 +14,11 @@ public class PrimTest {
                 {INF,INF,INF,4,5,INF,6},
                 {2,3,INF,INF,4,6,INF}};
         MGraph graph = new MGraph(verxs);
-        // ¹¹½¨ÁÚ½Ó¾ØÕó
+        // æ„å»ºé‚»æ¥çŸ©é˜µ
         MinTree tree = new MinTree();
         tree.createGraph(graph, verxs, names, weights);
 
-        // Í¨¹ıÁÚ½Ó¾ØÕóÑ°ÕÒ×îĞ¡Éú³ÉÊ÷£¨Ö¸¶¨¿ªÊ¼½Úµã£©
+        // é€šè¿‡é‚»æ¥çŸ©é˜µå¯»æ‰¾æœ€å°ç”Ÿæˆæ ‘ï¼ˆæŒ‡å®šå¼€å§‹èŠ‚ç‚¹ï¼‰
         tree.prim(graph, 0);
     }
 }

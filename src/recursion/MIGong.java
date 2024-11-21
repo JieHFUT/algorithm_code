@@ -2,9 +2,9 @@ package recursion;
 
 public class MIGong {
     public static void main(String[] args) {
-        // ÃÔ¹¬´óĞ¡
+        // è¿·å®«å¤§å°
         int[][] miGong = new int[8][10];
-        // ¶ÔÃÔ¹¬½øĞĞ±ß½çÉè¶¨
+        // å¯¹è¿·å®«è¿›è¡Œè¾¹ç•Œè®¾å®š
         for (int i = 0; i < miGong.length; i++) {
             miGong[i][0] = 1;
             miGong[i][miGong[0].length - 1] = 1;
@@ -13,23 +13,23 @@ public class MIGong {
             miGong[0][i] = 1;
             miGong[miGong.length - 1][i] = 1;
         }
-        // Ò»Ğ©ÕÏ°­
+        // ä¸€äº›éšœç¢
         miGong[2][0] = 1;
         miGong[2][1] = 1;
         miGong[2][2] = 1;
         miGong[6][3] = 1;
         miGong[7][3] = 1;
-        // ÏÔÊ¾ÃÔ¹¬
-        System.out.println("ÏÔÊ¾ÃÔ¹¬£º");
+        // æ˜¾ç¤ºè¿·å®«
+        System.out.println("æ˜¾ç¤ºè¿·å®«ï¼š");
         for (int i = 0; i < miGong.length; i++) {
             for (int j = 0; j < miGong[0].length; j++) {
                 System.out.print(miGong[i][j] + " ");
             }
             System.out.println();
         }
-        // ¿ªÊ¼Ñ°ÕÒÂ·¾¶
+        // å¼€å§‹å¯»æ‰¾è·¯å¾„
         if (findWay(1,1, miGong)){
-            System.out.println("ÏÔÊ¾ÃÔ¹¬£º");
+            System.out.println("æ˜¾ç¤ºè¿·å®«ï¼š");
             for (int i = 0; i < miGong.length; i++) {
                 for (int j = 0; j < miGong[0].length; j++) {
                     System.out.print(miGong[i][j] + " ");
@@ -42,22 +42,22 @@ public class MIGong {
 
     /**
      * target = miGong[miGong.length - 1][miGong[0].length - 1]
-     * @param row ³ö·¢ĞĞ
-     * @param col ³ö·¢ÁĞ
-     * @param matrix µØÍ¼Êµ¿ö
-     * @return Èç¹ûÕÒµ½ÁË¾Í·µ»ØÕæ£¬·ñÔò¾Í·µ»Ø¼Ù
-     * Ô¼¶¨£ºµ± map[i][j] Îª 0 ±íÊ¾¸ÃµãÃ»ÓĞ×ß¹ı µ±Îª 1 ±íÊ¾Ç½  £» 2 ±íÊ¾Í¨Â·¿ÉÒÔ×ß £» 3 ±íÊ¾¸ÃµãÒÑ¾­×ß¹ı£¬µ«ÊÇ×ß²»Í¨
-     * ÔÚ×ßÃÔ¹¬Ê±£¬ĞèÒªÈ·¶¨Ò»¸ö²ßÂÔ(·½·¨) ÏÂ->ÓÒ->ÉÏ->×ó , Èç¹û¸Ãµã×ß²»Í¨£¬ÔÙ»ØËİ
+     * @param row å‡ºå‘è¡Œ
+     * @param col å‡ºå‘åˆ—
+     * @param matrix åœ°å›¾å®å†µ
+     * @return å¦‚æœæ‰¾åˆ°äº†å°±è¿”å›çœŸï¼Œå¦åˆ™å°±è¿”å›å‡
+     * çº¦å®šï¼šå½“ map[i][j] ä¸º 0 è¡¨ç¤ºè¯¥ç‚¹æ²¡æœ‰èµ°è¿‡ å½“ä¸º 1 è¡¨ç¤ºå¢™  ï¼› 2 è¡¨ç¤ºé€šè·¯å¯ä»¥èµ° ï¼› 3 è¡¨ç¤ºè¯¥ç‚¹å·²ç»èµ°è¿‡ï¼Œä½†æ˜¯èµ°ä¸é€š
+     * åœ¨èµ°è¿·å®«æ—¶ï¼Œéœ€è¦ç¡®å®šä¸€ä¸ªç­–ç•¥(æ–¹æ³•) ä¸‹->å³->ä¸Š->å·¦ , å¦‚æœè¯¥ç‚¹èµ°ä¸é€šï¼Œå†å›æº¯
      */
     public static boolean findWay(int row, int col, int[][] matrix) {
-        // ÓĞÈË×ßµ½Ä¿µÄµØ£¬·µ»Ø true
+        // æœ‰äººèµ°åˆ°ç›®çš„åœ°ï¼Œè¿”å› true
         if(matrix[matrix.length - 2][matrix[0].length - 2] == 2){
             return true;
         } else {
             if (matrix[row][col] == 0) {
-                // ¸ÃÎ»ÖÃÃ»ÓĞ×ß¹ı
-                matrix[row][col] = 2; // ¼ÙÉè¸ÃµØÄÜ¹»×ßµÄÍ¨
-                // ÏÂÃæ¿¼ÂÇÍù ÏÂ-ÓÒ-ÉÏ-×ó ×ß
+                // è¯¥ä½ç½®æ²¡æœ‰èµ°è¿‡
+                matrix[row][col] = 2; // å‡è®¾è¯¥åœ°èƒ½å¤Ÿèµ°çš„é€š
+                // ä¸‹é¢è€ƒè™‘å¾€ ä¸‹-å³-ä¸Š-å·¦ èµ°
                 if(findWay(row + 1, col, matrix)){
                     return true;
                 } else if(findWay(row, col + 1, matrix)){
@@ -67,7 +67,7 @@ public class MIGong {
                 } else if (findWay(row, col - 1, matrix)) {
                     return true;
                 } else {
-                    // ËÄÌõÂ·¶¼×ß²»Í¨
+                    // å››æ¡è·¯éƒ½èµ°ä¸é€š
                     return false;
                 }
             } else {
@@ -77,7 +77,7 @@ public class MIGong {
     }
 
     /**
-     * Ñ°ÕÒ×î¶ÌÂ·¾¶
+     * å¯»æ‰¾æœ€çŸ­è·¯å¾„
      * @param row
      * @param col
      * @param matrix
